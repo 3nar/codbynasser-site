@@ -7,7 +7,7 @@ import { SITE } from '@/config/site';
  * (astro preview ignores _headers, so it is checked here), security.txt and robots.txt.
  */
 const read = (file: string) => readFileSync(new URL(`../../${file}`, import.meta.url), 'utf8');
-const site = read('astro.config.mjs').match(/site: '([^']+)'/)![1];
+const site = read('astro.config.mjs').match(/SITE_URL \?\? '([^']+)'/)![1];
 
 /** the headers of the `/*` rule in public/_headers, by lower-case name */
 function headersForEveryPage() {

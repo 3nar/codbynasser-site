@@ -4,7 +4,7 @@
  * Nasser, the site, the page and its breadcrumb, and on a service page the solutions it offers. Head.astro renders it
  * on the pages search engines may list (lib/seo/pages.ts).
  */
-import { routesFor } from '@/config/routes';
+import { routesFor, withBase } from '@/config/routes';
 import { links, SITE } from '@/config/site';
 import { useTranslations } from '@/i18n';
 import { LOCALE_ORDER, toLocale } from '@/i18n/config';
@@ -31,13 +31,13 @@ const name = service?.name ?? (page.label ? (t(page.label) as string) : title);
 
 const data = structuredData(
   {
-    origin: at('/'),
+    origin: at(withBase('/')),
     locale,
     locales: LOCALE_ORDER,
     brand: t('common.brandName'),
     // the handle, the same on every account
     alternateNames: [SITE.contact.instagram],
-    logo: { url: at('/icon-512.png'), size: 512 },
+    logo: { url: at(withBase('/icon-512.png')), size: 512 },
     email: SITE.contact.email,
     sameAs: [links.telegram(), links.instagram()],
     person: { name: t('home.hero.signature'), jobTitle: t('home.hero.role'), url: at(routes.about) },

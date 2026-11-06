@@ -12,10 +12,16 @@ import { DEFAULT_LOCALE, LOCALE_ORDER, toLocale, type Locale } from '@/i18n/conf
 export const SERVICE_IDS = ['ai', 'software', 'accounts'] as const;
 export type ServiceId = (typeof SERVICE_IDS)[number];
 
-/** the start of every address in a language: '' for Arabic, '/en' for English */
+/** where the site sits on its host: '' at the root, '/codbynasser-site' on GitHub Pages (base in astro.config.mjs) */
+export const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+/** a file from public/ (an icon, the manifest), at its address on the host */
+export const withBase = (path: string) => `${BASE}${path}`;
+
+/** the start of every address in a language: '' for Arabic, '/en' for English (after BASE) */
 export const localeBase = (locale?: string) => {
   const code = toLocale(locale);
-  return code === DEFAULT_LOCALE ? '' : `/${code}`;
+  return BASE + (code === DEFAULT_LOCALE ? '' : `/${code}`);
 };
 
 export function routesFor(locale?: string) {

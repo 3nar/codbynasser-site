@@ -1,8 +1,14 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 
+// Where the site lives: codbynasser.com at the root by default; the GitHub Pages workflow
+// (.github/workflows/deploy.yml) builds it for https://<user>.github.io/<repository>/ instead
+const SITE_URL = process.env.SITE_URL ?? 'https://codbynasser.com';
+const BASE_PATH = process.env.BASE_PATH ?? '/';
+
 export default defineConfig({
-  site: 'https://codbynasser.com',
+  site: SITE_URL,
+  base: BASE_PATH,
   // Arabic at the root, English and Russian under /en/ and /ru/; Astro.currentLocale follows the address
   i18n: {
     locales: ['ar', 'en', 'ru'],
