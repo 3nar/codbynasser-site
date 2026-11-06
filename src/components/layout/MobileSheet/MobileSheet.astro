@@ -1,0 +1,41 @@
+---
+/**
+ * The phone menu (#sheet), in the same order as the bar; the pages in preparation say so in place of an arrow.
+ * Opened by the bar's menu toggle (mobile-sheet.ts).
+ */
+import Icon from '@/components/ui/Icon/Icon.astro';
+import Pill from '@/components/ui/Pill/Pill.astro';
+import ScriptData from '@/components/ui/ScriptData/ScriptData.astro';
+import { aboutLinks, soonSections } from '@/config/navigation';
+import { routesFor, type ServiceId } from '@/config/routes';
+import { links } from '@/config/site';
+import { useTranslations } from '@/i18n';
+import { getServices } from '@/lib/content';
+import LanguageList from '../LanguageMenu/LanguageList.astro';
+import type { MenuTexts } from './mobile-sheet';
+
+const routes = routesFor(Astro.currentLocale);
+
+interface Props {
+  current?: 'request';
+  /** the service the reader is on, so the request keeps it */
+  service?: ServiceId;
+}
+const { current, service } = Astro.props;
+const t = useTranslations(Astro.currentLocale);
+const services = await getServices(Astro.currentLocale);
+// the toggle's label once the menu is open, and back
+const menuTexts: MenuTexts = { open: t('nav.menu.open'), close: t('nav.menu.close') };
+---
+
+<div class="sheet" id="sheet" role="navigation" aria-label={t('nav.menu.sheet')}>
+  <details open><summary>{t('nav.services')} <Icon name="caret" /></summary><div>{services.map((s) => <a href={routes.service(s.id)}>{s.name}</a>)}<a class="quiet" href={routes.requestFor({ service: 'unsure' })}>{t('common.requestConsult')}</a></div></details>
+  {soonSections.map((id) => <div class="sheet-soon"><span>{t(`nav.soon.${id}.label`)}</span><small>{t('common.soon')}</small></div>)}
+  <details><summary>{t('nav.about')} <Icon name="caret" /></summary><div>{aboutLinks(routes).map((link) => <a href={link.href}>{t(link.label)}</a>)}</div></details>
+  <div class="sheet-foot">
+    <LanguageList variant="row" />
+    <Pill tone="ink" href={routes.requestFor({ service })} aria-current={current === 'request' ? 'page' : undefined}>{t('common.requestService')}</Pill>
+    <Pill tone="line" href={links.whatsapp()}><Icon name="whatsapp" />{t('common.contact.talkOnWhatsapp')}</Pill>
+  </div>
+</div>
+<ScriptData name="menu" value={menuTexts} />

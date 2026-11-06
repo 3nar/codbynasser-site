@@ -1,0 +1,70 @@
+/* MessagePreview: the message as it will arrive, beside the form or folded under it. */
+
+/* the phone beside the form writes the message as you fill it in */
+.preview {
+  position: sticky;
+  top: 112px;
+}
+.bubble {
+  unicode-bidi: plaintext;
+  margin-top: 18px;
+  margin-inline-start: auto;
+  width: 90%;
+  padding: 12px 14px;
+  border-radius: 18px 18px 4px 18px;
+  background: var(--ink);
+  color: var(--k12);
+  font-size: 0.78125rem;
+  line-height: 1.75;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+.bubble .ph {
+  color: var(--k6);
+}
+.preview .dev-cap {
+  margin-top: 14px;
+}
+/* on a phone the message folds into the form, just above the send button */
+.mpreview {
+  display: none;
+}
+
+@media (max-width: 1023px) {
+  .preview {
+    display: none;
+  }
+  .mpreview {
+    display: block;
+    padding: 4px 16px 16px;
+    border-radius: 16px;
+    background: var(--k12);
+  }
+  .mpreview summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 48px;
+    font-family: var(--voice);
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    list-style: none;
+  }
+  .mpreview summary::-webkit-details-marker {
+    display: none;
+  }
+  .mpreview summary svg {
+    width: 18px;
+    height: 18px;
+    transition: transform 0.3s var(--ease);
+  }
+  .mpreview[open] summary svg {
+    transform: rotate(180deg);
+  }
+  .mpreview .bubble {
+    width: 100%;
+    margin-top: 4px;
+    font-size: 0.875rem;
+  }
+}

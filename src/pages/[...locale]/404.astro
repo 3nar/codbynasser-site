@@ -1,0 +1,15 @@
+---
+/** The 404 in the other languages (/en/404/, /ru/404/); the Arabic one is src/pages/404.astro, which hosts serve by default. */
+import { localePaths } from '@/config/routes';
+import { useTranslations } from '@/i18n';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Lost from '@/sections/not-found/Lost/Lost.astro';
+
+export const getStaticPaths = () => localePaths().filter(({ params }) => params.locale);
+
+const t = useTranslations(Astro.currentLocale);
+---
+
+<BaseLayout title={t('notFound.meta.title')} description={t('notFound.meta.description')}>
+  <Lost />
+</BaseLayout>

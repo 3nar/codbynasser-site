@@ -1,0 +1,20 @@
+---
+/** The page that is not there: the aura scattered, and two ways back (home, or straight to a request). */
+import Aura from '@/components/effects/Aura/Aura.astro';
+import Pill from '@/components/ui/Pill/Pill.astro';
+import { routesFor } from '@/config/routes';
+import { useTranslations } from '@/i18n';
+
+const routes = routesFor(Astro.currentLocale);
+
+const t = useTranslations(Astro.currentLocale);
+---
+
+<section class="lost dark" id="top" data-stage="dark" aria-labelledby="page-title">
+    <Aura class="grid" shape="scatter" />
+    <div class="wrap">
+      <h1 id="page-title" data-echo>{t('notFound.title')}</h1>
+      <p>{t('notFound.text')}</p>
+      <div class="ctas" data-dock-hide><Pill tone="snow" href={routes.home}>{t('notFound.home')}</Pill><Pill tone="line" href={routes.request}>{t('common.requestService')}</Pill></div>
+    </div>
+  </section>

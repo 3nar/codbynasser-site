@@ -1,0 +1,112 @@
+{
+  "meta": {
+    "title": "cod by nasser | AI, software and branding for your business",
+    "description": "AI and data analysis, websites, online stores and custom systems, and a brand that wins clients. I build what works for your business, and stay after launch."
+  },
+  "hero": {
+    "signature": "Nasser",
+    "role": "AI engineer and software engineer",
+    "titleHtml": "I turn your <b>data</b> and ideas into systems that <b>work for you</b>.",
+    "lede": "For business owners and companies: AI that understands your data, software made to fit your work, and a brand that reaches your audience. I build it myself, and stay with you after launch.",
+    "start": "Start from your problem",
+    "photoAlt": "Nasser with his eyes closed, his ghost behind him"
+  },
+  "problems": {
+    "title": "Does this happen in your business?",
+    "intro": "If you find your problem here, it has a solution. Click it and I’ll show you how.",
+    "other": "Didn’t find your problem? Tell me about it",
+    "items": [
+      {
+        "service": "ai",
+        "n": 1,
+        "cost": "So you decide by instinct, without knowing where you gain and where you lose."
+      },
+      {
+        "service": "ai",
+        "n": 4,
+        "cost": "So your day goes on replying and copying, and the customer who got no answer leaves."
+      },
+      {
+        "service": "software",
+        "n": 1,
+        "cost": "So the idea stays on hold, or you spend on it before you ask."
+      },
+      {
+        "service": "software",
+        "n": 2,
+        "cost": "So a customer looks for you, and finds someone else."
+      },
+      {
+        "service": "accounts",
+        "n": 3,
+        "cost": "So your account goes quiet for weeks, and your followers forget you."
+      },
+      {
+        "service": "accounts",
+        "n": 4,
+        "cost": "So you work hard at posting, and sales stay where they are."
+      }
+    ]
+  },
+  "doors": {
+    "title": "Three divisions for your business.",
+    "intro": "Each division is a set of services that complete each other. Start with the one closest to your need.",
+    "switchLabel": "The three divisions"
+  },
+  "industries": {
+    "title": "Solutions made for your field.",
+    "intro": "The same services, as they look in your field’s work.",
+    "items": [
+      {
+        "name": "Clinics and doctors",
+        "text": "An assistant that answers patients’ questions and arranges appointments, and a website that introduces the doctor and their experience."
+      },
+      {
+        "name": "Lawyers and consultants",
+        "text": "A professional website that builds trust, and an internal assistant that answers from the office’s files and templates."
+      },
+      {
+        "name": "Shops and stores",
+        "text": "An online shop that runs orders and stock, content that sells, and a forecast of demand before the goods run out."
+      },
+      {
+        "name": "Education and training",
+        "text": "Platforms and management systems, an assistant that answers students, and content that reaches learners."
+      },
+      {
+        "name": "Companies and organisations",
+        "text": "Performance dashboards, models on the company’s data, and internal systems that automate the workflow."
+      },
+      {
+        "name": "Startups",
+        "text": "Studying the idea, a first product that tests the market, and a brand to launch with."
+      }
+    ],
+    "cta": "Tell me about your field"
+  },
+  "work": {
+    "title": "Work that runs now.",
+    "intro": "Two of my projects: one with Sberbank, the other I run myself for real users.",
+    "similar": "Request a similar project",
+    "all": "All work"
+  },
+  "why": {
+    "title": "So why work with me?",
+    "intro": "Because what I offer you, I build with my own hands.",
+    "deskAlt": "Nasser at his desk, writing in a notebook with a pen, his computer in front of him",
+    "points": [
+      {
+        "title": "I build it myself",
+        "text": "I train the model on your business’s own data, so it fits your work, unlike a generic tool you pay for every month. That’s how my project with Sberbank did away with a paid subscription."
+      },
+      {
+        "title": "I run what I build",
+        "text": "What I launch, I run myself, like the TutuBot platform on Telegram, with people who actually use it, so I know what happens after launch, not only before it."
+      },
+      {
+        "title": "I explain what I deliver",
+        "text": "You don’t just receive a tool. You understand it. And as your business grows, I develop it with you."
+      }
+    ]
+  }
+}

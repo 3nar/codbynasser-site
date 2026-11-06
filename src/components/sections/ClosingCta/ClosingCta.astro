@@ -1,0 +1,32 @@
+---
+/**
+ * The close of a page: the spectrum walks back into the dark, and the light gathers around the decision.
+ * On a service page the request link keeps the service the reader is on.
+ */
+import Aura from '@/components/effects/Aura/Aura.astro';
+import Spectrum from '@/components/effects/Spectrum/Spectrum.astro';
+import Pill from '@/components/ui/Pill/Pill.astro';
+import { routesFor, type ServiceId } from '@/config/routes';
+import { links } from '@/config/site';
+import { useTranslations } from '@/i18n';
+
+const routes = routesFor(Astro.currentLocale);
+
+interface Props {
+  service?: ServiceId;
+}
+const { service } = Astro.props;
+const t = useTranslations(Astro.currentLocale);
+const [altBefore, altAfter] = t('common.close.alt').split('{link}');
+---
+
+<Spectrum reverse />
+  <section class="close dark" id="close" data-stage="dark" aria-labelledby="close-title">
+    <Aura id="closeAura" shape="gather" />
+    <div class="wrap">
+      <h2 id="close-title" data-echo>{t('common.close.title')}</h2>
+      <p>{t('common.close.text')}</p>
+      <div class="ctas" data-dock-hide><Pill tone="snow" href={routes.requestFor({ service })}>{t('common.requestService')}</Pill><Pill tone="line" href={routes.requestFor({ service: 'unsure' })}>{t('common.requestConsult')}</Pill></div>
+      <p class="alt">{altBefore}<a href={links.whatsapp()}>{t('common.close.altLink')}</a>{altAfter}</p>
+    </div>
+  </section>

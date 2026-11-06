@@ -1,0 +1,9 @@
+---
+/** The same preview on small screens, folded under the form (#bubbleM). */
+import Icon from '@/components/ui/Icon/Icon.astro';
+import { useTranslations } from '@/i18n';
+
+const t = useTranslations(Astro.currentLocale);
+---
+
+<details class="mpreview"><summary>{t('forms.preview.fold')} <Icon name="caret" /></summary><p class="bubble" id="bubbleM"></p></details>

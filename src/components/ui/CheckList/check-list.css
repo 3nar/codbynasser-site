@@ -1,0 +1,49 @@
+/* CheckList: chips, and «يشمل» as a checked list under a problem. */
+
+.chips {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 22px;
+}
+
+.chips li {
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--k10);
+  font-size: 0.875rem;
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+/* in a problem, what the service includes reads as a checked list under a label: grey pills there looked like buttons that do nothing */
+.incl-h {
+  margin-top: 24px;
+  font-size: 0.8125rem;
+  color: var(--ink-3);
+}
+.prob .chips {
+  gap: 4px 20px;
+  margin-top: 6px;
+}
+.prob .chips li {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0;
+  border-radius: 0;
+  background: none;
+  font-size: 0.9375rem;
+  color: var(--ink);
+}
+.prob .chips li::before {
+  content: '';
+  width: 13px;
+  height: 13px;
+  flex: none;
+  background: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E")
+    center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E")
+    center / contain no-repeat;
+}

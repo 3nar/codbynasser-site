@@ -1,0 +1,86 @@
+/* Field: labels, inputs, hints and errors. */
+
+.field {
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+  border: 0;
+}
+.field > label,
+.field > legend {
+  font-family: var(--voice);
+  font-weight: 700;
+  font-size: 1.125rem;
+  padding: 0;
+}
+.field > legend {
+  margin-bottom: 10px;
+}
+.opt {
+  font-family: var(--read);
+  font-weight: 400;
+  font-size: 0.8125rem;
+  color: var(--ink-3);
+  margin-inline-start: 8px;
+}
+.input {
+  width: 100%;
+  min-height: 54px;
+  padding: 13px 18px;
+  border-radius: 14px;
+  background: var(--k12);
+  border: 1px solid var(--k9);
+  font: inherit;
+  font-size: 1rem;
+  color: var(--ink);
+  transition:
+    border-color 0.2s var(--ease),
+    box-shadow 0.2s var(--ease);
+}
+.input::placeholder {
+  color: var(--ink-3);
+  opacity: 1;
+}
+.input:hover {
+  border-color: var(--k7);
+}
+.input:focus {
+  outline: none;
+  border-color: var(--ink);
+  box-shadow: 0 0 0 4px rgba(29, 29, 31, 0.1);
+}
+textarea.input {
+  min-height: 136px;
+  resize: vertical;
+  line-height: 1.7;
+}
+/* a line takes its direction from what is typed, so Latin on an Arabic page keeps its punctuation in place */
+.input:not([dir]) {
+  unicode-bidi: plaintext;
+}
+/* a number or an address on an Arabic page lines up with the Arabic fields */
+html[dir='rtl'] .input[dir='ltr'] {
+  text-align: right;
+}
+.hint {
+  font-size: 0.8125rem;
+  color: var(--ink-3);
+}
+/* empty, the error line stays in the page so screen readers hear it when it is written, but takes no room */
+.err {
+  font-size: 0.875rem;
+  color: var(--red);
+}
+.err:empty {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+.field.bad .input {
+  border-color: var(--red);
+}
+.field.bad .input:focus {
+  box-shadow: 0 0 0 4px rgba(215, 0, 21, 0.12);
+}

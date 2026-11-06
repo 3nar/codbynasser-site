@@ -1,0 +1,26 @@
+{
+  "brandHome": "cod, home page",
+  "home": "Home",
+  "brandName": "cod by nasser",
+  "brandBy": "by nasser",
+  "brandLine": "An idea stays a ghost until it becomes code.",
+  "ownerLine": "Nasser, AI engineer and software engineer.",
+  "skip": "Skip to content",
+  "requestService": "Request a service",
+  "requestConsult": "Ask for advice",
+  "soon": "Coming soon",
+  "contact": {
+    "title": "Contact",
+    "whatsapp": "WhatsApp",
+    "telegram": "Telegram",
+    "instagram": "Instagram",
+    "email": "Email",
+    "talkOnWhatsapp": "Talk to me on WhatsApp"
+  },
+  "close": {
+    "title": "The idea you keep putting off won’t wait for you.",
+    "text": "One message is enough. Tell me about your business or idea, even if your problem isn’t listed here.",
+    "alt": "Or talk to me directly on {link}.",
+    "altLink": "WhatsApp"
+  }
+}

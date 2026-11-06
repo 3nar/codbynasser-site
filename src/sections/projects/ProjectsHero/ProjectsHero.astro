@@ -1,0 +1,16 @@
+---
+/** The projects page's first screen, dark, with the «works» aura: one large shape and two small. */
+import Aura from '@/components/effects/Aura/Aura.astro';
+import PageHero from '@/components/sections/PageHero/PageHero.astro';
+import Icon from '@/components/ui/Icon/Icon.astro';
+import { useTranslations } from '@/i18n';
+
+const t = useTranslations(Astro.currentLocale);
+---
+
+<PageHero tone="dark">
+  <Aura slot="aura" class="grid" shape="works" />
+      <h1 id="page-title" data-echo>{t('projects.hero.title')}</h1>
+      <p class="say">{t('projects.hero.say')}</p>
+      <a class="link down" href="#featured" data-dock-hide>{t('projects.hero.browse')} <Icon name="down" /></a>
+</PageHero>

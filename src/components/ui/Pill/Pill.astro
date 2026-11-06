@@ -1,0 +1,14 @@
+---
+/**
+ * The rounded action link («اطلب خدمة» and every other call to act).
+ * tone: ink (dark on light), snow (light on dark), line (outlined). Other attributes pass through.
+ */
+import type { HTMLAttributes } from 'astro/types';
+
+interface Props extends HTMLAttributes<'a'> {
+  tone: 'ink' | 'snow' | 'line';
+}
+const { tone, ...attrs } = Astro.props;
+---
+
+<a class={`pill ${tone}`} {...attrs}><slot /></a>

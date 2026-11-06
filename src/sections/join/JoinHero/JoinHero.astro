@@ -1,0 +1,19 @@
+---
+/**
+ * «اعمل معي»'s first screen. The light here keeps moving: soft shapes that merge and part (the liquid light),
+ * each on its own long period so the pattern never repeats in a beat the eye can catch.
+ */
+import LiquidLight from '@/components/effects/LiquidLight/LiquidLight.astro';
+import PageHero from '@/components/sections/PageHero/PageHero.astro';
+import Pill from '@/components/ui/Pill/Pill.astro';
+import { useTranslations } from '@/i18n';
+
+const t = useTranslations(Astro.currentLocale);
+---
+
+<PageHero tone="light">
+  <LiquidLight slot="aura" surface="light" aria-hidden="true" />
+      <h1 id="page-title" data-echo>{t('join.hero.title')}</h1>
+      <p class="say">{t('join.hero.say')}</p>
+      <Pill tone="ink" href="#apply" data-dock-hide>{t('join.hero.cta')}</Pill>
+</PageHero>

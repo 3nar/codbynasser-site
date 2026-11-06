@@ -1,0 +1,19 @@
+---
+/** «ما أعمله»: the three services (services content), each a link to its page. */
+import Icon from '@/components/ui/Icon/Icon.astro';
+import { routesFor } from '@/config/routes';
+import { useTranslations } from '@/i18n';
+import { getServices } from '@/lib/content';
+
+const routes = routesFor(Astro.currentLocale);
+
+const t = useTranslations(Astro.currentLocale);
+const services = await getServices(Astro.currentLocale);
+---
+
+<section class="does" data-stage="light" aria-labelledby="does-title"><div class="wrap">
+    <h2 class="h2" id="does-title">{t('about.doesTitle')}</h2>
+    <ul class="does-list">
+      {services.map((s) => <li><a href={routes.service(s.id)}><b>{s.name}</b><span>{s.summary}</span><Icon name="chevron" /></a></li>)}
+    </ul>
+  </div></section>

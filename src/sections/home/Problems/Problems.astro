@@ -1,0 +1,32 @@
+---
+/**
+ * 2 · problems: the visitor's one question here is «is this mine?». Six pains, two from each division, each the
+ * question its fix opens with on the division's page, with what it costs to leave it; a row leads to its fix.
+ * The divisions and the fixes' names wait for the services right after, so nothing is read twice. Dark, so the
+ * hero's dusk lands on it without a seam.
+ */
+import Icon from '@/components/ui/Icon/Icon.astro';
+import { routesFor } from '@/config/routes';
+import { useTranslations } from '@/i18n';
+import { getServices } from '@/lib/content';
+
+const routes = routesFor(Astro.currentLocale);
+const t = useTranslations(Astro.currentLocale);
+const services = await getServices(Astro.currentLocale);
+const pains = t('home.problems.items').flatMap((pick) => {
+  const service = services.find((s) => s.id === pick.service);
+  const problem = service?.problems[pick.n - 1];
+  return service && problem ? [{ href: `${routes.service(service.id)}#p${pick.n}`, question: problem.question, cost: pick.cost }] : [];
+});
+---
+
+<section class="pains dark" id="problems" data-stage="dark" aria-labelledby="problems-title"><div class="wrap pains-grid">
+    <div class="pains-head">
+      <h2 class="h2" id="problems-title">{t('home.problems.title')}</h2>
+      <p class="intro-p">{t('home.problems.intro')}</p>
+      <a class="pains-other" href={routes.requestFor({ service: 'unsure' })}>{t('home.problems.other')} <Icon name="chevron" /></a>
+    </div>
+    <ul class="pains-list">
+      {pains.map((pain) => <li><a href={pain.href}><span><b>{pain.question}</b><span class="cost">{pain.cost}</span></span><Icon name="chevron" /></a></li>)}
+    </ul>
+  </div></section>

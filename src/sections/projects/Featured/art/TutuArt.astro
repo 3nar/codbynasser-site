@@ -1,0 +1,17 @@
+---
+/** TutuBot's illustration: a phone with the bot's first messages. A drawing of the user's path, not a capture. */
+import { useTranslations } from '@/i18n';
+
+const t = useTranslations(Astro.currentLocale);
+const art = t('projects.art.tutubot');
+---
+
+<div class="feat-art" aria-hidden="true">
+          <div class="device"><div class="glass"><div class="scr show on">
+            <div class="chat-top"><i class="av sm" lang="en">{art.initial}</i><p><b>{art.name}</b><span>{art.status}</span></p></div>
+            <div class="msgs">
+              {art.messages.map((msg, i) => <p class={`msg ${msg.from}`} style={`--i:${i}`}>{msg.text}</p>)}
+            </div>
+          </div></div></div>
+          <p class="art-cap">{art.caption}</p>
+        </div>

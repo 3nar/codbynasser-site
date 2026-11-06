@@ -1,0 +1,47 @@
+/* DoneState: the panel after sending. */
+
+/* the form's success panel is .sent: .done is the «posted» badge inside the phone screens */
+.sent {
+  margin-top: 48px;
+  padding: 36px 32px;
+  border-radius: 28px;
+  background: var(--k12);
+}
+.sent[hidden] {
+  display: none;
+}
+.sent svg {
+  width: 44px;
+  height: 44px;
+}
+.sent h2 {
+  font-family: var(--voice);
+  font-weight: 800;
+  font-size: var(--s3);
+  line-height: 1.35;
+  margin-top: 16px;
+  text-wrap: balance;
+}
+.sent h2:focus {
+  outline: none;
+}
+.sent p {
+  color: var(--ink-2);
+  margin-top: 10px;
+  max-width: 46ch;
+}
+.sent-acts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 26px;
+}
+.sent .copied {
+  min-height: 1.6em;
+  margin-top: 12px;
+  font-size: 0.875rem;
+  color: var(--ink-2);
+}
+.sent .alt-send {
+  margin-top: 6px;
+}

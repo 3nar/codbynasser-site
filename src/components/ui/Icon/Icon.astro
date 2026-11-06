@@ -1,0 +1,11 @@
+---
+/** One icon from icons.ts, printed as it is. Icons are decorative (aria-hidden); the text beside them speaks. */
+import { ICONS, type IconName } from './icons';
+
+interface Props {
+  name: IconName;
+}
+const { name } = Astro.props;
+---
+
+<Fragment set:html={ICONS[name]} />

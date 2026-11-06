@@ -1,0 +1,14 @@
+# Generated folders, as in .gitignore
+node_modules/
+dist/
+.astro/
+.wrangler/
+test-results/
+playwright-report/
+package-lock.json
+# written by scripts/fonts.ts
+src/styles/fonts.css
+
+# Astro markup is formatted by hand. Prettier's Astro plugin adds spaces inside inline
+# elements (links, buttons, spans), even with htmlWhitespaceSensitivity: strict, and that moves the layout.
+*.astro

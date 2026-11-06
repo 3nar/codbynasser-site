@@ -1,0 +1,32 @@
+---
+/**
+ * 1 · who: the man, and the self that is about to leave him. On scroll the ghost walks out and the dusk rises
+ * into the dark of the question (hero.ts). On phones and tablets the photo fills the top and fades into black,
+ * with the words in white below it.
+ */
+import ghost from '@/assets/images/ghost.webp';
+import man from '@/assets/images/man.webp';
+import Icon from '@/components/ui/Icon/Icon.astro';
+import Pill from '@/components/ui/Pill/Pill.astro';
+import { routesFor } from '@/config/routes';
+import { useTranslations } from '@/i18n';
+
+const routes = routesFor(Astro.currentLocale);
+
+const t = useTranslations(Astro.currentLocale);
+---
+
+<section class="hero" id="hero" data-stage="light" aria-labelledby="hero-title">
+    <div class="portrait" id="portrait">
+      <div class="ghost-wrap" id="ghostWrap"><img id="ghost" src={ghost.src} width="1599" height="899" alt=""></div>
+      <img class="man" id="man" src={man.src} width="1599" height="899" alt={t('home.hero.photoAlt')} fetchpriority="high">
+    </div>
+    <div class="hero-copy" data-stage="dark" data-only="phone">
+      <p class="sig" data-in>{t('home.hero.signature')}</p>
+      <p class="role" data-in>{t('home.hero.role')}</p>
+      <h1 id="hero-title" data-echo set:html={t('home.hero.titleHtml')} />
+      <p class="lede" data-in>{t('home.hero.lede')}</p>
+      <div class="ctas" data-in data-dock-hide><Pill tone="ink" href={routes.request}>{t('common.requestService')}</Pill><a class="link down" href="#problems">{t('home.hero.start')} <Icon name="down" /></a></div>
+    </div>
+    <div class="dusk" id="dusk"></div>
+  </section>

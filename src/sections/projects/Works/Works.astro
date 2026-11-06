@@ -1,0 +1,23 @@
+---
+/**
+ * The works (projects content): two told at length, then an index in two groups. The page is switched off for
+ * now (no link in the site leads here); TutuBot and the Sberbank project stay out of every other page.
+ */
+import { useTranslations } from '@/i18n';
+import { getProjects } from '@/lib/content';
+import Featured from '../Featured/Featured.astro';
+import ProjectIndex from '../ProjectIndex/ProjectIndex.astro';
+
+const t = useTranslations(Astro.currentLocale);
+const projects = await getProjects(Astro.currentLocale);
+const inGroup = (group: string) => projects.filter((project) => project.group === group);
+---
+
+<section class="works" data-stage="light" aria-label={t('projects.worksLabel')}><div class="wrap">
+    <Featured projects={inGroup('featured')} />
+
+    <ProjectIndex heading={t('projects.groups.ai')} projects={inGroup('ai')} />
+
+    <ProjectIndex heading={t('projects.groups.systems')} projects={inGroup('systems')} />
+
+  </div></section>

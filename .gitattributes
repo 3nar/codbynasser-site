@@ -1,0 +1,10 @@
+# LF everywhere, whatever the machine's git settings, so a file reads the same on every machine
+* text=auto eol=lf
+
+*.png binary
+*.webp binary
+*.jpg binary
+*.ico binary
+*.woff2 binary
+*.docx binary
+*.svg text

@@ -1,0 +1,33 @@
+---
+/**
+ * A project told at length: badge, title, kind, summary, tools and «اطلب مشروعاً مشابهاً». The default slot is
+ * its illustration; `feature.flip` puts the illustration on the other side.
+ */
+import ArrowLink from '@/components/ui/ArrowLink/ArrowLink.astro';
+import { routesFor } from '@/config/routes';
+import { useTranslations } from '@/i18n';
+import type { Project } from '@/lib/content';
+import ToolList from '../ToolList/ToolList.astro';
+
+const routes = routesFor(Astro.currentLocale);
+
+interface Props {
+  project: Project;
+}
+const { project } = Astro.props;
+if (!project.feature) throw new Error(`${project.id} is featured but has no "feature" block`);
+const { badge, live, flip } = project.feature;
+const t = useTranslations(Astro.currentLocale);
+---
+
+<article class={flip ? 'feat flip' : 'feat'} id={project.id} aria-labelledby={`h-${project.id}`}>
+        <div>
+          <span class={live ? 'badge live' : 'badge'}>{badge}</span>
+          <h3 id={`h-${project.id}`}>{project.title}</h3>
+          <p class="kind">{project.kind}</p>
+          <p class="sum-p" set:html={project.summary} />
+          <ToolList tools={project.tools} />
+          <ArrowLink class="link" href={routes.requestFor({ project: project.id })}>{t('projects.similar')}</ArrowLink>
+        </div>
+        <slot />
+      </article>

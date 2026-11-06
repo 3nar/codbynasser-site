@@ -1,0 +1,20 @@
+---
+/**
+ * «المهارات التقنية»: the tools, grouped by field (skills content). Tool names are Latin and read left to right;
+ * a skill written in Arabic keeps the page's direction.
+ */
+import { useTranslations } from '@/i18n';
+import { getSkills } from '@/lib/content';
+
+const t = useTranslations(Astro.currentLocale);
+const groups = await getSkills(Astro.currentLocale);
+const isArabic = (text: string) => /[؀-ۿ]/.test(text);
+---
+
+<section class="skills-sec" id="skills" data-stage="light" aria-labelledby="skills-title"><div class="wrap">
+    <h2 class="h2" id="skills-title">{t('about.skills.title')}</h2>
+    <p class="intro-p">{t('about.skills.intro')}</p>
+    <div class="skills">
+      {groups.map((group) => <div><h3>{group.title}</h3><ul>{group.items.map((skill) => (isArabic(skill) ? <li>{skill}</li> : <li dir="ltr">{skill}</li>))}</ul></div>)}
+    </div>
+  </div></section>

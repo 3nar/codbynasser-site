@@ -1,0 +1,156 @@
+---
+/**
+ * One field's drawing in «المجالات التي أحتاجها»: the craft itself, small, in the page's greys with one ink
+ * accent. Every drawing shares one 320×200 canvas and one stroke, so the tiles scale them alike. The drawings
+ * that carry writing (the page, the chat) turn with the language; code and the timeline read left to right
+ * everywhere, as they do in their own tools. A field without a drawing here shows its name alone.
+ */
+interface Props {
+  field: string;
+}
+const { field } = Astro.props;
+
+// the network: three layers, every node joined to each node of the next, and two paths lit to one answer
+const layers = [
+  { x: 72, ys: [56, 100, 144] },
+  { x: 160, ys: [36, 78, 122, 164] },
+  { x: 248, ys: [78, 122] },
+];
+const edges = layers.slice(0, -1).flatMap((layer, i) =>
+  layer.ys.flatMap((y1) => layers[i + 1].ys.map((y2) => ({ x1: layer.x, y1, x2: layers[i + 1].x, y2 }))),
+);
+const lit = [
+  [72, 56, 160, 78],
+  [160, 78, 248, 122],
+  [72, 144, 160, 122],
+  [160, 122, 248, 122],
+];
+const litNodes = new Set(['72,56', '160,78', '72,144', '160,122']);
+
+const flows = new Set(['content', 'accounts']);
+const drawn = new Set(['development', 'ai-data', 'ui-ux', 'graphic', 'video', 'content', 'accounts']);
+---
+
+{
+  drawn.has(field) && (
+    <svg
+      class:list={['fig', flows.has(field) && 'fig-flow']}
+      viewBox="0 0 320 200"
+      preserveAspectRatio="xMidYMid meet"
+      aria-hidden="true"
+      focusable="false"
+    >
+      {field === 'development' && (
+        <g>
+          <rect class="f-panel" x="24" y="16" width="272" height="168" rx="14" />
+          <circle class="f-bar" cx="46" cy="37" r="4.5" />
+          <circle class="f-bar" cx="62" cy="37" r="4.5" />
+          <circle class="f-bar" cx="78" cy="37" r="4.5" />
+          <rect class="f-ink" x="46" y="62" width="40" height="8" rx="4" />
+          <rect class="f-bar" x="92" y="62" width="96" height="8" rx="4" />
+          <rect class="f-mid" x="64" y="80" width="34" height="8" rx="4" />
+          <rect class="f-bar" x="104" y="80" width="122" height="8" rx="4" />
+          <rect class="f-bar" x="82" y="98" width="84" height="8" rx="4" />
+          <rect class="f-soft" x="172" y="98" width="54" height="8" rx="4" />
+          <rect class="f-bar" x="82" y="116" width="124" height="8" rx="4" />
+          <rect class="f-ink f-caret" x="212" y="112" width="2.5" height="16" rx="1.25" />
+          <rect class="f-mid" x="64" y="134" width="28" height="8" rx="4" />
+          <rect class="f-ink" x="46" y="152" width="20" height="8" rx="4" />
+        </g>
+      )}
+      {field === 'ai-data' && (
+        <g>
+          {edges.map((e) => (
+            <line class="f-line" {...e} />
+          ))}
+          {lit.map(([x1, y1, x2, y2]) => (
+            <line class="f-lit" x1={x1} y1={y1} x2={x2} y2={y2} />
+          ))}
+          {layers.flatMap((layer) =>
+            layer.ys.map((y) => (
+              <circle class={litNodes.has(`${layer.x},${y}`) ? 'f-node is-lit' : 'f-node'} cx={layer.x} cy={y} r="9" />
+            )),
+          )}
+          <circle class="f-ink" cx="248" cy="122" r="11" />
+        </g>
+      )}
+      {field === 'ui-ux' && (
+        <g>
+          <rect class="f-panel" x="60" y="14" width="200" height="172" rx="14" />
+          <rect class="f-soft" x="76" y="30" width="168" height="66" rx="8" />
+          <circle class="f-bar" cx="108" cy="56" r="10" />
+          <path class="f-bar" d="M76 88 L118 66 L146 82 L176 60 L244 92 L244 96 L76 96 Z" />
+          <rect class="f-bar" x="106" y="112" width="108" height="9" rx="4.5" />
+          <rect class="f-soft" x="94" y="129" width="132" height="7" rx="3.5" />
+          <rect class="f-ink" x="124" y="148" width="72" height="22" rx="11" />
+          <circle class="f-ring" cx="186" cy="164" r="14" />
+          <path
+            class="f-cursor"
+            d="M186 164 L186 186 L191.5 180.5 L195.6 189.6 L199 188.1 L195 179.2 L202 179.2 Z"
+          />
+        </g>
+      )}
+      {field === 'graphic' && (
+        <g>
+          <circle class="f-soft" cx="214" cy="80" r="52" />
+          <rect class="f-bar" x="70" y="58" width="76" height="76" rx="10" />
+          <line class="f-handle" x1="44" y1="150" x2="92" y2="36" />
+          <line class="f-handle" x1="276" y1="62" x2="200" y2="186" />
+          <path class="f-pen" d="M44 150 C 92 36, 200 186, 276 62" />
+          <circle class="f-ink" cx="92" cy="36" r="4.5" />
+          <circle class="f-ink" cx="200" cy="186" r="4.5" />
+          <rect class="f-anchor" x="38" y="144" width="12" height="12" rx="2" />
+          <rect class="f-anchor" x="270" y="56" width="12" height="12" rx="2" />
+        </g>
+      )}
+      {field === 'video' && (
+        <g>
+          <rect class="f-ink" x="88" y="10" width="144" height="88" rx="10" />
+          <path class="f-play" d="M151 40 L151 68 L174 54 Z" />
+          <rect class="f-bar" x="24" y="112" width="96" height="16" rx="5" />
+          <rect class="f-mid" x="124" y="112" width="72" height="16" rx="5" />
+          <rect class="f-bar" x="200" y="112" width="96" height="16" rx="5" />
+          <rect class="f-soft" x="48" y="134" width="128" height="16" rx="5" />
+          <rect class="f-bar" x="180" y="134" width="92" height="16" rx="5" />
+          <line class="f-track" x1="24" y1="170" x2="296" y2="170" />
+          <path class="f-ink" d="M60 163 L67 170 L60 177 L53 170 Z" />
+          <path class="f-ink" d="M132 163 L139 170 L132 177 L125 170 Z" />
+          <path class="f-ink" d="M240 163 L247 170 L240 177 L233 170 Z" />
+          <line class="f-head" x1="176" y1="106" x2="176" y2="188" />
+          <rect class="f-ink" x="170" y="102" width="12" height="9" rx="3" />
+        </g>
+      )}
+      {field === 'content' && (
+        <g>
+          <rect class="f-panel" x="64" y="12" width="192" height="176" rx="12" />
+          <rect class="f-ink" x="132" y="32" width="100" height="11" rx="5.5" />
+          <rect class="f-bar" x="88" y="58" width="144" height="7" rx="3.5" />
+          <rect class="f-bar" x="88" y="72" width="144" height="7" rx="3.5" />
+          <rect class="f-bar" x="106" y="86" width="126" height="7" rx="3.5" />
+          <rect class="f-bar" x="88" y="100" width="144" height="7" rx="3.5" />
+          <rect class="f-bar" x="146" y="114" width="86" height="7" rx="3.5" />
+          <rect class="f-bar" x="88" y="138" width="144" height="7" rx="3.5" />
+          <rect class="f-bar" x="122" y="152" width="110" height="7" rx="3.5" />
+          <rect class="f-ink f-caret" x="114" y="146" width="2.5" height="19" rx="1.25" />
+        </g>
+      )}
+      {field === 'accounts' && (
+        <g>
+          <rect class="f-panel" x="32" y="18" width="168" height="44" rx="22" />
+          <rect class="f-bar" x="70" y="31" width="110" height="7" rx="3.5" />
+          <rect class="f-soft" x="108" y="44" width="72" height="7" rx="3.5" />
+          <rect class="f-ink" x="124" y="76" width="168" height="44" rx="22" />
+          <rect class="f-on-ink" x="148" y="89" width="124" height="7" rx="3.5" />
+          <rect class="f-on-ink" x="184" y="102" width="88" height="7" rx="3.5" />
+          <rect class="f-panel" x="32" y="134" width="120" height="44" rx="22" />
+          <rect class="f-bar" x="56" y="153" width="76" height="7" rx="3.5" />
+          <circle class="f-panel" cx="152" cy="178" r="15" />
+          <path
+            class="f-ink"
+            d="M152 186 C 141 178, 143 170, 148 170 C 150 170, 151.4 171.3, 152 172.8 C 152.6 171.3, 154 170, 156 170 C 161 170, 163 178, 152 186 Z"
+          />
+        </g>
+      )}
+    </svg>
+  )
+}

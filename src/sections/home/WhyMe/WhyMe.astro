@@ -1,0 +1,22 @@
+---
+/**
+ * 5 · why me: him, at his desk. On desktop the heading sits in the white above the desk, the photo stops at the
+ * desk, and the three points come right below. The photo is small (43 KB), so it loads with the page at low
+ * priority and is ready before the reader reaches it.
+ */
+import desk from '@/assets/images/desk.webp';
+import { useTranslations } from '@/i18n';
+
+const t = useTranslations(Astro.currentLocale);
+---
+
+<section class="me" id="why" data-stage="light" aria-labelledby="why-title">
+    <div class="wrap">
+      <h2 class="h2" id="why-title">{t('home.why.title')}</h2>
+      <p class="intro-p">{t('home.why.intro')}</p>
+    </div>
+    <figure class="desk" id="desk"><img src={desk.src} width="1672" height="751" alt={t('home.why.deskAlt')} fetchpriority="low" decoding="async"></figure>
+    <div class="wrap me-points">
+      {t('home.why.points').map((point) => <div><b>{point.title}</b><p>{point.text}</p></div>)}
+    </div>
+  </section>

@@ -1,0 +1,8 @@
+{
+  "switchLabel": "Services",
+  "problemsLabel": "Problems and their fixes",
+  "includes": "Includes",
+  "ask": "Request this fix",
+  "next": "Next: {name}",
+  "phoneCaption": "Illustration:"
+}

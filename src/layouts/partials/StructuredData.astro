@@ -1,0 +1,62 @@
+---
+/**
+ * The page described for search engines as JSON-LD (lib/seo/structured-data.ts), in the page's language: the brand,
+ * Nasser, the site, the page and its breadcrumb, and on a service page the solutions it offers. Head.astro renders it
+ * on the pages search engines may list (lib/seo/pages.ts).
+ */
+import { routesFor } from '@/config/routes';
+import { links, SITE } from '@/config/site';
+import { useTranslations } from '@/i18n';
+import { LOCALE_ORDER, toLocale } from '@/i18n/config';
+import { getServices } from '@/lib/content';
+import type { SearchPage } from '@/lib/seo/pages';
+import { structuredData } from '@/lib/seo/structured-data';
+
+interface Props {
+  page: SearchPage;
+  title: string;
+  description: string;
+  /** the canonical address */
+  url: string;
+}
+const { page, title, description, url } = Astro.props;
+const locale = toLocale(Astro.currentLocale);
+const t = useTranslations(locale);
+const routes = routesFor(locale);
+const at = (path: string) => new URL(path, Astro.site).href;
+
+const service = page.service ? (await getServices(locale)).find((s) => s.id === page.service) : undefined;
+const home = { name: t('common.home'), url: at(routes.home) };
+const name = service?.name ?? (page.label ? (t(page.label) as string) : title);
+
+const data = structuredData(
+  {
+    origin: at('/'),
+    locale,
+    locales: LOCALE_ORDER,
+    brand: t('common.brandName'),
+    // the handle, the same on every account
+    alternateNames: [SITE.contact.instagram],
+    logo: { url: at('/icon-512.png'), size: 512 },
+    email: SITE.contact.email,
+    sameAs: [links.telegram(), links.instagram()],
+    person: { name: t('home.hero.signature'), jobTitle: t('home.hero.role'), url: at(routes.about) },
+  },
+  {
+    kind: page.kind,
+    url,
+    title,
+    description,
+    breadcrumbs: page.kind === 'home' ? [home] : [home, { name, url }],
+    service: service && {
+      name: service.name,
+      description: service.hero.say,
+      offers: service.problems.map((problem) => problem.name),
+    },
+  },
+);
+// "<" is written as <, so no text inside can close the script element early
+const json = JSON.stringify(data).replace(/</g, '\\u003c');
+---
+
+<script is:inline type="application/ld+json" set:html={json} />

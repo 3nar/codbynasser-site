@@ -1,0 +1,130 @@
+{
+  "meta": {
+    "title": "Nasser, AI engineer and software engineer | cod by nasser",
+    "description": "I’m Nasser, AI engineer and software engineer. I adapted large language models in a project with Sberbank and built a Telegram platform with real users."
+  },
+  "hero": {
+    "title": "I’m Nasser.",
+    "lead": "AI engineer and software engineer.",
+    "say": "I build smart systems with my own hands, and run them myself after launch."
+  },
+  "manifesto": {
+    "quote": "“Alas for those that never sing, but die with all their music in them!”",
+    "quoteBy": "Oliver Wendell Holmes",
+    "question": "What is the richest land in the world?",
+    "guesses": ["One said: the oil lands of the Gulf.", "Another said: the diamond mines of Africa."],
+    "answer": "The answer was: the graveyard.",
+    "why": "That is where millions went, carrying great ideas, dreams and talents that never saw the light of day. No one ever benefited from them.",
+    "source": "The story comes from Todd Henry’s book “Die Empty”.",
+    "title": "Don’t bury your idea with you.",
+    "lines": [
+      "Don’t put it off until it’s too late. Bring out your best, and leave a mark worth remembering.",
+      "Every idea starts as a ghost only its owner can see. Put it off, and it ends up there too.",
+      "Code is what catches it and makes it work.",
+      "Tell me in your own words. I turn them into a system that works, and I stay with it after launch."
+    ],
+    "name": "That’s why the name is one letter short: cod isn’t complete without your idea."
+  },
+  "story": {
+    "title": "How I work",
+    "lead": "I build smart systems that understand your work, not generic tools that understand everything except your business.",
+    "points": [
+      {
+        "title": "My field",
+        "text": "Artificial intelligence: machine learning and deep learning, and customising large language models so they work on their owner’s data."
+      },
+      {
+        "title": "I stay after launch",
+        "text": "I don’t hand over a system and walk away. I run it myself with people who actually use it, and improve it based on what I see."
+      },
+      {
+        "title": "For business owners",
+        "text": "I put all of this at their service: from managing social media accounts and creating content to systems that work for them."
+      }
+    ]
+  },
+  "doesTitle": "What I do",
+  "skills": {
+    "title": "Technical skills",
+    "intro": "The tools I work with, grouped by field."
+  },
+  "ways": {
+    "title": "Where to next?",
+    "project": "Have a project to build?",
+    "join": "Want to work with me?"
+  },
+  "idea": {
+    "title": "Your idea, from the first word to a working system.",
+    "intro": "You don’t need to know the solution. You only need to know what’s giving you trouble, and I’ll walk the rest with you, one step at a time.",
+    "steps": [
+      {
+        "n": "1",
+        "title": "I listen",
+        "text": "You tell me your idea or problem in your own words. No technical terms needed."
+      },
+      {
+        "n": "2",
+        "title": "I write it down",
+        "text": "I write the idea down and keep it exactly as you said it, so nothing gets lost."
+      },
+      {
+        "n": "3",
+        "title": "I ask",
+        "text": "The hard questions before any line of code: who is this for? Why now? And what happens if it isn’t built?"
+      },
+      {
+        "n": "4",
+        "title": "I study",
+        "text": "A simple feasibility check and a look at the market and competitors, so you know where the value is, and where the profit is."
+      },
+      {
+        "n": "5",
+        "title": "I build the core",
+        "text": "I start with the part that actually solves the problem, before any extras."
+      },
+      {
+        "n": "6",
+        "title": "I measure and improve",
+        "text": "Numbers that show whether it works, and improvement that continues after delivery."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Before you request",
+    "intro": "What people ask most before any project starts.",
+    "items": [
+      {
+        "q": "How much will my project cost?",
+        "a": "The price is set once I understand your project, and I send it to you in writing, with what it includes and what it doesn’t. Projects have a fixed price for each stage; running and managing them is a monthly subscription."
+      },
+      {
+        "q": "How long does it take?",
+        "a": "It depends on the size of the work. The timeline is written in the offer before we start, and at every stage you know what’s done and what’s left."
+      },
+      {
+        "q": "Who owns the system after delivery?",
+        "a": "That is written in the agreement before we start: what you own, who runs it, and what running it costs, if anything."
+      },
+      {
+        "q": "Do you work with projects outside Iraq?",
+        "a": "Yes, remotely, in Arabic, English and Russian."
+      },
+      {
+        "q": "What happens after launch?",
+        "a": "I stay with you: I run what I built if you want, maintain it and develop it, so you’re never left alone with a tool you don’t understand."
+      },
+      {
+        "q": "Is my data safe?",
+        "a": "I only ask for the data the work needs, and before you send it we agree on who sees it and where it’s kept."
+      },
+      {
+        "q": "Do you guarantee a number of followers or sales?",
+        "a": "No. I guarantee the work, the plan and an honest report. I build a real audience that cares about your work, and I don’t buy followers."
+      },
+      {
+        "q": "How do we start?",
+        "a": "Write what’s troubling you in one message from the request page, or on WhatsApp. I read it myself, and reply."
+      }
+    ]
+  }
+}

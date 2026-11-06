@@ -1,0 +1,30 @@
+---
+/**
+ * The site's languages: the current one is marked, the others lead to the same page in that language.
+ * language-menu.ts carries the query and the place on the page.
+ *   menu  — the bar's drop-down (#langs), with a tick on the current language
+ *   row   — the phone sheet's footer
+ *   legal — the footer's last line
+ */
+import type { HTMLAttributes } from 'astro/types';
+import Icon from '@/components/ui/Icon/Icon.astro';
+import { pathIn } from '@/config/routes';
+import { LOCALE_ORDER, LOCALES, toLocale } from '@/i18n/config';
+import { useTranslations } from '@/i18n';
+
+interface Props {
+  variant: 'menu' | 'row' | 'legal';
+}
+const { variant } = Astro.props;
+const t = useTranslations(Astro.currentLocale);
+const current = toLocale(Astro.currentLocale);
+const wrappers: Record<Props['variant'], HTMLAttributes<'div'>> = {
+  menu: { class: 'langs', id: 'langs' },
+  row: { class: 'langs-row' },
+  legal: { class: 'legal-langs', role: 'group', 'aria-label': t('nav.language.group') },
+};
+const wrapper = wrappers[variant];
+const others = LOCALE_ORDER.filter((code) => code !== current);
+---
+
+<div {...wrapper}><span class="lang" aria-current="true">{LOCALES[current].label}{variant === 'menu' && <> <Icon name="tick" /></>}</span>{others.map((code) => <a class="lang" href={pathIn(code, Astro.url.pathname, current)} hreflang={code} lang={code}>{LOCALES[code].label}</a>)}</div>

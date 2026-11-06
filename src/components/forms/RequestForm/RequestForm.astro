@@ -1,0 +1,58 @@
+---
+/**
+ * The short form beside the message it writes, shared by «اطلب خدمة» and «اعمل معي». The page gives the
+ * heading (slot `head`) and its own questions (default slot); the reply channel, the folded preview, the send
+ * bar, the sent state and the phone preview are the same on both. request-form.ts reads data-form to know the kind.
+ */
+import ScriptData from '@/components/ui/ScriptData/ScriptData.astro';
+import { useTranslations } from '@/i18n';
+import DoneState from '../DoneState/DoneState.astro';
+import ErrorSummary from '../ErrorSummary/ErrorSummary.astro';
+import MessagePreview from '../MessagePreview/MessagePreview.astro';
+import MobilePreview from '../MessagePreview/MobilePreview.astro';
+import ReplyFields from '../ReplyFields/ReplyFields.astro';
+import SendBar from '../SendBar/SendBar.astro';
+import type { FormTexts } from './request-form';
+
+interface Props {
+  id: string;
+  labelledBy: string;
+  kind: 'service' | 'join';
+}
+const { id, labelledBy, kind } = Astro.props;
+const t = useTranslations(Astro.currentLocale);
+// what the script writes: the message, the checks' words, the send buttons and the sent state
+const texts: FormTexts = {
+  message: {
+    ...t('forms.message'),
+    channels: t('forms.channels'),
+  },
+  errors: t('forms.errors'),
+  send: { main: t('forms.send.main'), alt: t('forms.send.alt') },
+  done: {
+    ready: t('forms.done.ready'),
+    text: t('forms.done.text'),
+    open: t('forms.done.open'),
+    copied: t('forms.done.copied'),
+    copyFailed: t('forms.done.copyFailed'),
+  },
+};
+---
+
+<section class="req" id={id} data-stage="light" data-dock-hide aria-labelledby={labelledBy}><div class="wrap req-grid">
+    <div>
+      <header class="req-head">
+        <slot name="head" />
+      </header>
+      <form class="form" data-form={kind} novalidate>
+        <ErrorSummary />
+        <slot />
+        <ReplyFields />
+        <MobilePreview />
+        <SendBar />
+      </form>
+      <DoneState />
+      <ScriptData name="form" value={texts} />
+    </div>
+      <MessagePreview />
+  </div></section>

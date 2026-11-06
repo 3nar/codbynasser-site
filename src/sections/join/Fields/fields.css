@@ -1,0 +1,247 @@
+/* Fields (join): the heading and its line, then the seven fields as one mosaic that fills the rest of the screen.
+   Each tile holds a drawing of the craft over its name. The large tile leads, dark like the editor it shows; two
+   wide tiles close the first and last rows with the name beside the drawing; the small ones fill between. The
+   section is a full screen of its own, and its edges keep the hero above and the grey form below apart from it. */
+
+.fields-sec {
+  --fields-top: clamp(88px, 7.2vw, 120px);
+  display: grid;
+  min-height: 100svh;
+  padding-block: var(--fields-top) clamp(56px, 5vw, 88px);
+  background: var(--k12);
+}
+/* the menu's link lands with the section's top at the screen's top: nothing of the hero above it */
+#fields-title {
+  scroll-margin-top: calc(var(--fields-top) - 64px);
+}
+.fields-mosaic {
+  display: grid;
+  /* the tiles take exactly what the heading leaves: their drawings shrink to it rather than stretch the screen */
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: clamp(28px, 2.6vw, 40px);
+}
+.fields-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: 12px 64px;
+}
+/* the heading keeps the head's top, whatever the line beside it runs to, so the menu's link lands on it exactly */
+.fields-head .h2 {
+  align-self: start;
+}
+.fields-head .intro-p {
+  margin: 0;
+  max-width: 36ch;
+}
+
+/* ── the mosaic: four columns, three rows that share whatever height the screen leaves ── */
+.fields-tiles {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-rows: minmax(150px, 1fr);
+  grid-auto-flow: dense;
+  gap: 14px;
+}
+.fields-tiles li {
+  /* the drawing's greys, set per tile so the dark one can turn them */
+  --f-panel: var(--k12);
+  --f-edge: var(--k10);
+  --f-soft: var(--k10);
+  --f-bar: var(--k9);
+  --f-mid: var(--k7);
+  --f-ink: var(--ink);
+  --f-paper: var(--k12);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-height: 0;
+  padding: clamp(18px, 1.7vw, 26px);
+  border-radius: 26px;
+  background: var(--k11);
+}
+.fields-tiles span {
+  font-family: var(--voice);
+  font-weight: 800;
+  font-size: clamp(1rem, 1.3vw, 1.1875rem);
+  line-height: 1.35;
+  text-wrap: balance;
+}
+/* the drawing fills the room the name leaves, and asks for none of its own: the screen sets the tile, not the
+   drawing */
+.fig-box {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+}
+.fig-box .fig {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* the lead tile: two columns and two rows, in the dark of a code editor */
+.fields-tiles [data-size='big'] {
+  --f-panel: var(--k2);
+  --f-edge: var(--k3);
+  --f-soft: var(--k3);
+  --f-bar: var(--k4);
+  --f-mid: var(--k5);
+  --f-ink: var(--snow);
+  grid-column: span 2;
+  grid-row: span 2;
+  background: var(--k1);
+  color: var(--snow);
+}
+.fields-tiles [data-size='big'] span {
+  font-size: clamp(1.375rem, 2.1vw, 1.875rem);
+}
+/* a wide tile sets the name beside the drawing, at the side the page starts from */
+.fields-tiles [data-size='wide'] {
+  display: grid;
+  grid-column: span 2;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  grid-template-areas: 'name fig';
+  align-items: end;
+  gap: 20px;
+}
+.fields-tiles [data-size='wide'] span {
+  grid-area: name;
+  font-size: clamp(1.0625rem, 1.45vw, 1.3125rem);
+}
+.fields-tiles [data-size='wide'] .fig-box {
+  grid-area: fig;
+  align-self: stretch;
+}
+
+/* ── the drawings: the tile's greys, one ink accent, one stroke that keeps its weight at every size ── */
+.fig * {
+  vector-effect: non-scaling-stroke;
+}
+.f-panel {
+  fill: var(--f-panel);
+  stroke: var(--f-edge);
+  stroke-width: 1;
+}
+.f-soft {
+  fill: var(--f-soft);
+}
+.f-bar {
+  fill: var(--f-bar);
+}
+.f-mid {
+  fill: var(--f-mid);
+}
+.f-ink {
+  fill: var(--f-ink);
+}
+.f-on-ink {
+  fill: var(--k4);
+}
+.f-line {
+  stroke: var(--f-bar);
+  stroke-width: 1;
+}
+.f-lit,
+.f-pen,
+.f-head {
+  fill: none;
+  stroke: var(--f-ink);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+.f-node {
+  fill: var(--f-paper);
+  stroke: var(--f-mid);
+  stroke-width: 1.5;
+}
+.f-node.is-lit {
+  stroke: var(--f-ink);
+  stroke-width: 2;
+}
+.f-handle {
+  stroke: var(--k6);
+  stroke-width: 1;
+}
+.f-anchor {
+  fill: var(--f-paper);
+  stroke: var(--f-ink);
+  stroke-width: 1.5;
+}
+.f-track {
+  stroke: var(--f-bar);
+  stroke-width: 1.5;
+}
+.f-play {
+  fill: var(--f-paper);
+  stroke: var(--f-paper);
+  stroke-width: 4;
+  stroke-linejoin: round;
+}
+.f-ring {
+  fill: none;
+  stroke: var(--f-ink);
+  stroke-width: 1.5;
+  opacity: 0.25;
+}
+.f-cursor {
+  fill: var(--f-ink);
+  stroke: var(--f-paper);
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+}
+/* the editor's and the page's caret keep time, as a caret does, while motion plays */
+.motion .f-caret {
+  animation: fields-caret 1.1s steps(1, end) infinite;
+}
+@keyframes fields-caret {
+  50% {
+    opacity: 0;
+  }
+}
+/* the page and the chat are writing: they turn with the language */
+:root[dir='ltr'] .fig-flow {
+  transform: scaleX(-1);
+}
+
+/* ── phone and tablet: two columns, the lead tile a full-width band, the rest in pairs ── */
+@media (max-width: 1023px) {
+  .fields-tiles {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: minmax(136px, 1fr);
+    gap: 10px;
+  }
+  .fields-tiles li {
+    gap: 10px;
+    padding: 16px;
+    border-radius: 20px;
+  }
+  .fields-tiles span,
+  .fields-tiles [data-size='wide'] span {
+    font-size: 0.9375rem;
+  }
+  .fields-tiles [data-size='big'] {
+    grid-row: auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-areas: 'name fig';
+    align-items: end;
+    gap: 16px;
+  }
+  .fields-tiles [data-size='big'] span {
+    grid-area: name;
+    font-size: 1.1875rem;
+  }
+  .fields-tiles [data-size='big'] .fig-box {
+    grid-area: fig;
+    align-self: stretch;
+  }
+  .fields-tiles [data-size='wide'] {
+    grid-column: auto;
+    display: flex;
+    gap: 10px;
+  }
+}

@@ -1,0 +1,16 @@
+---
+/**
+ * The aura: soft light with grain, gathered into a named shape. aura.ts places its three blobs from the shape
+ * (SHAPES: content, ai, software, gather, scatter, works). Extra classes pick the surface: light, dots, grid.
+ */
+import type { ShapeName } from './aura';
+
+interface Props {
+  shape: ShapeName;
+  class?: string;
+  id?: string;
+}
+const { shape, class: surface, id } = Astro.props;
+---
+
+<div class={surface ? `aura ${surface}` : 'aura'} id={id} data-shape={shape}><div class="blobs" aria-hidden="true"><i class="blob"></i><i class="blob"></i><i class="blob"></i></div></div>

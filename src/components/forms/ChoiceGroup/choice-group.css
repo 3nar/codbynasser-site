@@ -1,0 +1,46 @@
+/* ChoiceGroup: radio choices drawn as chips. */
+
+.choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.choice {
+  position: relative;
+}
+.choice input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  margin: 0;
+  cursor: pointer;
+}
+.choice span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 46px;
+  padding-inline: 18px;
+  border-radius: 999px;
+  background: var(--k12);
+  box-shadow: inset 0 0 0 1px var(--k9);
+  font-size: 0.9375rem;
+  transition:
+    background-color 0.25s var(--ease),
+    color 0.25s var(--ease),
+    box-shadow 0.25s var(--ease);
+}
+.choice:hover span {
+  box-shadow: inset 0 0 0 1px var(--k7);
+}
+.choice input:checked + span {
+  background: var(--ink);
+  color: var(--k12);
+  box-shadow: none;
+}
+.choice input:focus-visible + span {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+.field.bad .choice span {
+  box-shadow: inset 0 0 0 1px var(--red);
+}

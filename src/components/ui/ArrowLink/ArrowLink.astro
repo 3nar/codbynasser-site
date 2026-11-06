@@ -1,0 +1,13 @@
+---
+/**
+ * A text link that ends with the arrow: «اطلب هذا الحل ‹», «التالي: … ‹», the door questions, and the like.
+ * The class names which kind of link it is (link, link ask, next, …); other attributes pass through.
+ */
+import type { HTMLAttributes } from 'astro/types';
+import Icon from '../Icon/Icon.astro';
+
+type Props = HTMLAttributes<'a'>;
+const attrs = Astro.props;
+---
+
+<a {...attrs}><slot /> <Icon name="chevron" /></a>

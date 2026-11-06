@@ -1,0 +1,88 @@
+/* ProjectIndex: the index rows and their small auras. */
+
+.index {
+  margin-top: 32px;
+  border-top: 1px solid var(--k10);
+}
+.proj {
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr) minmax(0, 1.25fr);
+  gap: 20px 40px;
+  align-items: start;
+  padding-block: 36px;
+  border-bottom: 1px solid var(--k10);
+  scroll-margin-top: 90px;
+}
+.proj h3 {
+  font-family: var(--voice);
+  font-weight: 800;
+  font-size: 1.5rem;
+  line-height: 1.35;
+}
+.proj p {
+  color: var(--ink-2);
+}
+.proj .chips li {
+  font-size: 0.8125rem;
+  padding: 4px 12px;
+}
+/* each work gets its own small aura, so the index has faces without invented screenshots */
+.mini {
+  position: relative;
+  width: 112px;
+  aspect-ratio: 1;
+  border-radius: 26px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at var(--a, 30% 35%), rgba(245, 245, 247, 0.95), rgba(245, 245, 247, 0) 42%),
+    radial-gradient(circle at var(--b, 72% 70%), rgba(245, 245, 247, 0.75), rgba(245, 245, 247, 0) 36%),
+    radial-gradient(circle at var(--c, 60% 20%), rgba(245, 245, 247, 0.5), rgba(245, 245, 247, 0) 28%), var(--k0);
+}
+.mini.light {
+  background:
+    radial-gradient(circle at var(--a, 30% 35%), rgba(29, 29, 31, 0.9), rgba(29, 29, 31, 0) 42%),
+    radial-gradient(circle at var(--b, 72% 70%), rgba(29, 29, 31, 0.7), rgba(29, 29, 31, 0) 36%),
+    radial-gradient(circle at var(--c, 60% 20%), rgba(29, 29, 31, 0.45), rgba(29, 29, 31, 0) 28%), var(--k10);
+}
+.mini::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.55;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0' intercept='1'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.mini.light::before {
+  mix-blend-mode: multiply;
+  opacity: 0.2;
+}
+/* dark covers carry the AI grid, light covers the halftone: the same two textures as the big auras */
+.mini::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 14px 14px;
+}
+.mini.light::after {
+  background: radial-gradient(circle, rgba(245, 245, 247, 0.95) 0.8px, transparent 1.4px) 0 0 / 4px 4px;
+  mix-blend-mode: screen;
+  opacity: 0.65;
+}
+
+@media (max-width: 1023px) {
+  .proj {
+    grid-template-columns: 72px minmax(0, 1fr);
+    gap: 14px 20px;
+  }
+  .proj .mini {
+    width: 72px;
+    border-radius: 18px;
+  }
+  .proj > div:last-child {
+    grid-column: 1 / -1;
+  }
+}

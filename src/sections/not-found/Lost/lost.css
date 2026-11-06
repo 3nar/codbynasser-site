@@ -1,0 +1,33 @@
+/* Lost: the page that is not there. */
+
+/* ── not found ── */
+.lost {
+  position: relative;
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  overflow: hidden;
+}
+.lost .wrap {
+  position: relative;
+  z-index: 1;
+}
+.lost h1 {
+  font-family: var(--whisper);
+  font-weight: 300;
+  font-size: clamp(2.75rem, 6vw, 5.5rem);
+  line-height: 1.3;
+}
+.lost p {
+  color: var(--snow-2);
+  margin: 18px auto 0;
+  max-width: 40ch;
+}
+.lost .ctas {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}

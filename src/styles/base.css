@@ -1,0 +1,120 @@
+/* Base: the reset, the page, links and buttons, focus, the page width (.wrap), the dark stage,
+   the skip link, and the shared pieces of type and layout (.stage, .h2, .intro-p). */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+[hidden] {
+  display: none !important;
+} /* hidden always wins over a component's own display */
+html {
+  scroll-padding-top: 64px;
+  scrollbar-color: var(--k6) transparent;
+}
+body {
+  font-family: var(--read);
+  font-size: var(--s0);
+  line-height: 1.75;
+  color: var(--ink);
+  background: var(--k12);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+::selection {
+  background: var(--ink);
+  color: var(--snow);
+}
+.dark ::selection {
+  background: var(--snow);
+  color: var(--ink);
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 4px;
+  border-radius: 10px;
+}
+.dark :focus-visible,
+.nav.on-dark :focus-visible {
+  outline-color: var(--snow);
+}
+img {
+  display: block;
+  max-width: 100%;
+}
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+}
+p {
+  text-wrap: pretty;
+}
+.wrap {
+  width: min(100%, 1280px);
+  margin-inline: auto;
+  padding-inline: var(--gut);
+}
+.dark {
+  background: var(--k0);
+  color: var(--snow);
+}
+.skip {
+  position: fixed;
+  top: 8px;
+  inset-inline-start: 8px;
+  z-index: 100;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--snow);
+  transform: translateY(-160%);
+  transition: transform 0.2s var(--ease);
+}
+.skip:focus {
+  transform: none;
+}
+
+.stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+.h2 {
+  font-family: var(--voice);
+  font-weight: 800;
+  font-size: clamp(2.5rem, 4.4vw, 4rem);
+  line-height: 1.2;
+}
+.intro-p {
+  font-size: var(--s1);
+  color: var(--ink-2);
+  margin-top: 18px;
+  max-width: 48ch;
+}
+
+/* the forward arrow points the way the page reads; `scale` composes with the hover nudges' `transform`, so they turn too */
+html[dir='ltr'] svg.fwd {
+  scale: -1 1;
+}
+
+/* a focused link never lands under the phone's request bar */
+@media (max-width: 1023px) {
+  html {
+    scroll-padding-bottom: 96px;
+  }
+}

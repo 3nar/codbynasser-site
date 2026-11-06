@@ -1,0 +1,68 @@
+/* Story: one sentence, three beats, and the fade into white. */
+
+.story {
+  --fade: clamp(80px, 11svh, 140px);
+  position: relative;
+  background: var(--k0);
+  color: var(--snow);
+  padding-block: clamp(120px, 12vw, 190px) calc(clamp(120px, 12vw, 190px) + var(--fade));
+}
+/* the story ends in a short soft fade into the white of the next section, on the same smoothstep as the dark page tops */
+.story::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0;
+  height: var(--fade);
+  pointer-events: none;
+  background: linear-gradient(
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.028) 10%,
+    rgba(255, 255, 255, 0.104) 20%,
+    rgba(255, 255, 255, 0.216) 30%,
+    rgba(255, 255, 255, 0.352) 40%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0.648) 60%,
+    rgba(255, 255, 255, 0.784) 70%,
+    rgba(255, 255, 255, 0.896) 80%,
+    rgba(255, 255, 255, 0.972) 90%,
+    rgb(255, 255, 255)
+  );
+}
+/* one sentence that says it all, then three beats under thin rules, as «why me» reads on the home page */
+.story-lead {
+  font-family: var(--whisper);
+  font-weight: 300;
+  font-size: clamp(1.625rem, 2.9vw, 2.75rem);
+  line-height: 1.5;
+  max-width: 26ch;
+  margin-top: 22px;
+}
+.story-points {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 40px;
+  margin-top: clamp(56px, 6vw, 88px);
+}
+.story-points > div {
+  padding-top: 22px;
+  border-top: 1px solid var(--k3);
+}
+.story-points b {
+  display: block;
+  font-family: var(--voice);
+  font-weight: 800;
+  font-size: var(--s2);
+}
+.story-points p {
+  font-size: 1rem;
+  color: var(--snow-2);
+  margin-top: 8px;
+  max-width: 36ch;
+}
+
+@media (max-width: 1023px) {
+  .story-points {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+  }
+}

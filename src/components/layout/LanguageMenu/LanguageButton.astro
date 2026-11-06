@@ -1,0 +1,11 @@
+---
+/** The bar's language button; it opens the list rendered by LanguageList variant="menu". */
+import Icon from '@/components/ui/Icon/Icon.astro';
+import { useTranslations } from '@/i18n';
+import { LOCALES, toLocale } from '@/i18n/config';
+
+const t = useTranslations(Astro.currentLocale);
+const current = LOCALES[toLocale(Astro.currentLocale)];
+---
+
+<button type="button" class="lang-btn" id="langBtn" aria-expanded="false" aria-controls="langs" aria-label={t('nav.language.button')}><Icon name="globe" />{current.label}</button>

@@ -1,0 +1,43 @@
+---
+/**
+ * «كيف أرد عليك؟»: the reply channel, and the field it needs. The choice also decides how the message is sent:
+ * WhatsApp shows the phone field, email swaps it for the email field (request-form.ts).
+ */
+import { useTranslations } from '@/i18n';
+import ChoiceGroup from '../ChoiceGroup/ChoiceGroup.astro';
+import Field from '../Field/Field.astro';
+
+const t = useTranslations(Astro.currentLocale);
+---
+
+<ChoiceGroup
+  name="via"
+  legend={t('forms.reply.legend')}
+  error={false}
+  options={[
+    { value: 'whatsapp', label: t('forms.reply.whatsapp'), checked: true },
+    { value: 'email', label: t('forms.reply.email') },
+  ]}
+/>
+<Field
+  name="phone"
+  label={t('forms.phone.label')}
+  optional
+  hint={t('forms.phone.hint')}
+  type="tel"
+  inputmode="tel"
+  autocomplete="tel"
+  dir="ltr"
+  placeholder={t('forms.phone.placeholder')}
+/>
+<Field
+  name="email"
+  label={t('forms.email.label')}
+  optional
+  hint={t('forms.email.hint')}
+  hidden
+  type="email"
+  autocomplete="email"
+  dir="ltr"
+  placeholder={t('forms.email.placeholder')}
+/>

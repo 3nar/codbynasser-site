@@ -1,0 +1,15 @@
+---
+/**
+ * One send button that names its channel; the reply choice decides which, and the other channel stays one tap
+ * away. The fine print is true only while nothing is sent to a server: change it if the form gets a backend.
+ */
+import { useTranslations } from '@/i18n';
+
+const t = useTranslations(Astro.currentLocale);
+// WhatsApp until the visitor picks email; request-form.ts renames both buttons when the reply channel changes
+const main = t('forms.send.main', { channel: t('forms.channels.whatsapp') });
+const alt = t('forms.send.alt', { channel: t('forms.channels.email') });
+---
+
+<div class="submit"><button class="pill ink" type="submit" id="sendMain">{main}</button><button class="alt-send" type="button" id="sendAlt">{alt}</button></div>
+        <p class="fine">{t('forms.send.fine')}</p>

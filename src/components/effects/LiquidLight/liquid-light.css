@@ -1,0 +1,25 @@
+/* LiquidLight: the canvas of the flowing light. */
+
+/* the flowing light: a small canvas stretched over the area; the blur turns its pixels into soft edges, and it fades in once drawn */
+.aura.flow canvas {
+  position: absolute;
+  inset: -2%;
+  width: 104%;
+  height: 104%;
+  z-index: 0;
+  filter: blur(6px);
+  opacity: 0;
+  transition: opacity 1.4s var(--ease);
+}
+.aura.flow canvas.on {
+  opacity: 1;
+}
+/* the light is drawn for Arabic, with the words on the right; left-to-right pages mirror it (liquid-light.ts mirrors the pointer) */
+html[dir='ltr'] .aura.flow canvas {
+  transform: scaleX(-1);
+}
+/* the doors on a short phone: no room above the words, so the light sits faint behind them */
+.aura.flow.behind canvas.on,
+.aura.dots.behind::before {
+  opacity: 0.3;
+}

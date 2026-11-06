@@ -1,0 +1,28 @@
+---
+/**
+ * One of the three doors: the service's question, a line, the problems it solves (each a link to its fix on
+ * the service page), and the way in. data-shape names the figure the liquid light takes behind it.
+ */
+import ArrowLink from '@/components/ui/ArrowLink/ArrowLink.astro';
+import Pill from '@/components/ui/Pill/Pill.astro';
+import { routesFor } from '@/config/routes';
+import type { Service } from '@/lib/content';
+
+const routes = routesFor(Astro.currentLocale);
+
+interface Props {
+  service: Service;
+}
+const { service } = Astro.props;
+const href = routes.service(service.id);
+const headingId = `d${service.order}`;
+---
+
+<article class="pillar" id={`door-${service.id}`} data-shape={service.hero.shape} aria-labelledby={headingId}><div>
+      <h3 id={headingId}>{service.door.title}</h3>
+      <p class="say">{service.door.say}</p>
+      <ul class="qs">
+        {service.door.questions.map((q, i) => <li><ArrowLink href={`${href}#p${i + 1}`}>{q}</ArrowLink></li>)}
+      </ul>
+      <Pill tone="ink" href={href}>{service.door.cta}</Pill>
+    </div></article>

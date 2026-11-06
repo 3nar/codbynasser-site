@@ -1,0 +1,64 @@
+/* ServiceSwitch: the switch between the three services. */
+
+.switch {
+  display: inline-flex;
+  gap: 4px;
+  max-width: 100%;
+  margin-bottom: 40px;
+  padding: 4px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+}
+/* over the moving light of a dark page the switch needs its own dark ground, or its words sink into the glow */
+.dark .switch {
+  background: rgba(0, 0, 0, 0.55);
+}
+.switch a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding-inline: 16px;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  white-space: nowrap;
+  color: var(--ink-2);
+  transition:
+    color 0.2s,
+    background-color 0.3s var(--ease);
+}
+.dark .switch a {
+  color: var(--snow);
+}
+.switch a:hover {
+  color: var(--ink);
+}
+.dark .switch a:hover {
+  color: var(--snow);
+}
+.switch a[aria-current='page'],
+.dark .switch a[aria-current='page']:hover {
+  background: var(--k12);
+  color: var(--ink);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+/* the full name where there is room, the short one on a phone */
+.switch .short {
+  display: none;
+}
+
+@media (max-width: 1023px) {
+  .switch a {
+    min-height: 44px;
+    padding-inline: 12px;
+    font-size: 0.8125rem;
+  }
+  .switch .full {
+    display: none;
+  }
+  .switch .short {
+    display: inline;
+  }
+}

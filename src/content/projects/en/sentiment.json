@@ -1,0 +1,14 @@
+{
+  "group": "ai",
+  "order": 3,
+  "title": "Sentiment analysis and text understanding",
+  "shortTitle": "Sentiment analysis of text",
+  "kind": "A neural network that classifies text",
+  "summary": "A neural network that classifies the sentiment of English texts, understands what they mean, and analyses users’ attitudes.",
+  "tools": ["NLP", "Hugging Face Transformers"],
+  "mini": {
+    "a": "50% 50%",
+    "b": "20% 22%",
+    "c": "82% 80%"
+  }
+}

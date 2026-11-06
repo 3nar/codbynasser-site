@@ -1,0 +1,32 @@
+---
+import man from '@/assets/images/man.webp';
+import Spectrum from '@/components/effects/Spectrum/Spectrum.astro';
+import ClosingCta from '@/components/sections/ClosingCta/ClosingCta.astro';
+import { soonSections } from '@/config/navigation';
+import { localePaths } from '@/config/routes';
+import { useTranslations } from '@/i18n';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Doors from '@/sections/home/Doors/Doors.astro';
+import Hero from '@/sections/home/Hero/Hero.astro';
+import Industries from '@/sections/home/Industries/Industries.astro';
+import Problems from '@/sections/home/Problems/Problems.astro';
+import WhyMe from '@/sections/home/WhyMe/WhyMe.astro';
+import Work from '@/sections/home/Work/Work.astro';
+
+export const getStaticPaths = localePaths;
+
+const t = useTranslations(Astro.currentLocale);
+// the work section waits with the projects page while it is «قريباً»
+const workPaused = (soonSections as readonly string[]).includes('projects');
+---
+
+<BaseLayout title={t('home.meta.title')} description={t('home.meta.description')} preloadImage={man.src}>
+  <Hero />
+  <Problems />
+  <Spectrum />
+  <Doors />
+  <Industries />
+  {!workPaused && <Work />}
+  <WhyMe />
+  <ClosingCta />
+</BaseLayout>

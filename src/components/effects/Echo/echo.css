@@ -1,0 +1,22 @@
+/* Echo: the pale double behind a line (echo.ts adds .echo and .shade). */
+
+/* the echo: a pale double of a line that settles into it */
+.echo {
+  position: relative;
+  isolation: isolate;
+}
+.echo .shade {
+  position: absolute;
+  inset: 0;
+  color: var(--k8);
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0;
+}
+.dark .echo .shade {
+  color: var(--k4);
+}
+
+.echo .shade * {
+  color: inherit;
+}

@@ -1,0 +1,51 @@
+/* Pill: the rounded action link, in ink, snow and line. */
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 50px;
+  padding-inline: 26px;
+  border-radius: 999px;
+  font-family: var(--voice);
+  font-weight: 700;
+  font-size: 1.0625rem;
+  transition:
+    transform 0.12s ease-out,
+    background-color 0.3s var(--ease);
+}
+.pill:active {
+  transform: scale(0.97);
+}
+.pill.ink {
+  background: var(--ink);
+  color: var(--k12);
+}
+.pill.ink:hover {
+  background: var(--k4);
+}
+.pill.snow {
+  background: var(--k12);
+  color: var(--ink);
+}
+.pill.snow:hover {
+  background: var(--k9);
+}
+
+.pill.line {
+  box-shadow: inset 0 0 0 1.5px var(--ink);
+  color: var(--ink);
+}
+.pill.line:hover {
+  background: var(--ink);
+  color: var(--k12);
+}
+.dark .pill.line {
+  box-shadow: inset 0 0 0 1.5px rgba(245, 245, 247, 0.55);
+  color: var(--snow);
+}
+.dark .pill.line:hover {
+  background: var(--snow);
+  color: var(--ink);
+}

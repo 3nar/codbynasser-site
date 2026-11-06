@@ -1,0 +1,79 @@
+{
+  "accounts": {
+    "plan": {
+      "title": "This month’s plan",
+      "sub": "Every post has a reason that serves the business",
+      "posts": [
+        { "text": "Who I am and what I offer", "tag": "Intro" },
+        { "text": "Answer to a common question", "tag": "Trust" },
+        { "text": "Past work, before and after", "tag": "Proof" },
+        { "text": "An open slot this week", "tag": "Booking" }
+      ],
+      "aim": { "label": "This month’s goal", "text": "Turn followers into customers." }
+    },
+    "week": {
+      "push": { "title": "Posted on time", "text": "“Offer of the week” post" },
+      "title": "Posting schedule",
+      "sub": "This week",
+      "days": ["S", "S", "M", "T", "W", "T", "F"],
+      "slots": [
+        { "title": "Offer of the week", "time": "Saturday, 7:00 pm", "state": "Posted" },
+        { "title": "Behind-the-scenes story", "time": "Monday, 8:30 pm", "state": "Scheduled" },
+        { "title": "Short video", "time": "Wednesday, 7:00 pm", "state": "Scheduled" },
+        { "title": "Answer to a common question", "time": "Thursday, 9:00 pm", "state": "Scheduled" }
+      ]
+    },
+    "feed": { "initial": "Y", "name": "Your business", "kinds": "Clinic, office, shop, workshop" }
+  },
+  "ai": {
+    "chat": {
+      "initial": "Y",
+      "name": "Your business",
+      "status": "Replies instantly, day and night",
+      "messages": [
+        { "from": "them", "text": "Do you deliver to Basra?" },
+        { "from": "us", "text": "Yes, we deliver to Basra. Shall I place your order?" },
+        { "from": "them", "text": "I’d like to ask about the size first" }
+      ],
+      "handoff": "The chat was handed over to the shop owner"
+    },
+    "chart": {
+      "title": "Weekly sales",
+      "sub": "And the model’s prediction for next week",
+      "from": "Six weeks ago",
+      "to": "Next week",
+      "aim": {
+        "label": "What the numbers say",
+        "text": "Demand rises at the end of the week, so stock up on Thursday."
+      }
+    },
+    "docs": {
+      "title": "Your business’s files",
+      "sub": "It answers from them, not from the internet",
+      "files": ["Price list", "Return policy", "Customer questions"],
+      "question": "Can I return the item?",
+      "answer": "Yes, within seven days, if it’s still in its original condition.",
+      "source": "From: Return policy"
+    }
+  },
+  "software": {
+    "study": {
+      "title": "Studying the idea",
+      "sub": "Before you spend anything",
+      "checks": [
+        "Market: who needs it?",
+        "Competitors: who got there first, and how are you different?",
+        "Cost: how much do you need to start?",
+        "Profit: where does it come from?"
+      ],
+      "aim": { "label": "Result", "text": "Feasible. Start with the core." }
+    },
+    "prototype": { "title": "The prototype", "sub": "See it and try it before it’s built" },
+    "store": {
+      "name": "Your shop",
+      "badge": "New arrivals",
+      "banner": "This season’s collection",
+      "buy": "Add to cart"
+    }
+  }
+}

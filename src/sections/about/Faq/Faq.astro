@@ -1,0 +1,21 @@
+---
+/**
+ * On the about page, before its last step: what a visitor asks before sending a request. Each
+ * answer opens in place (details), so the page keeps working without any script; the answers share one name,
+ * so opening one closes the one before.
+ */
+import Icon from '@/components/ui/Icon/Icon.astro';
+import { useTranslations } from '@/i18n';
+
+const t = useTranslations(Astro.currentLocale);
+---
+
+<section class="faq" id="faq" data-stage="light" aria-labelledby="faq-title"><div class="wrap faq-grid">
+    <div class="faq-head">
+      <h2 class="h2" id="faq-title">{t('about.faq.title')}</h2>
+      <p class="intro-p">{t('about.faq.intro')}</p>
+    </div>
+    <div class="faq-list">
+      {t('about.faq.items').map((item) => <details name="faq"><summary>{item.q} <Icon name="caret" /></summary><p>{item.a}</p></details>)}
+    </div>
+  </div></section>

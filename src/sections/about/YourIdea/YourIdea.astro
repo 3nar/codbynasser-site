@@ -1,0 +1,26 @@
+---
+/**
+ * On the about page, after «كيف أعمل»: the steps from the first word to a working system; each step lights as
+ * the reader reaches it, and stays lit.
+ */
+import Pill from '@/components/ui/Pill/Pill.astro';
+import { routesFor } from '@/config/routes';
+import { useTranslations } from '@/i18n';
+
+const routes = routesFor(Astro.currentLocale);
+
+const t = useTranslations(Astro.currentLocale);
+---
+
+<section class="idea" id="idea" data-stage="light" aria-labelledby="idea-title"><div class="wrap">
+    <div class="idea-grid">
+      <div class="idea-head">
+        <h2 class="h2" id="idea-title">{t('about.idea.title')}</h2>
+        <p class="intro-p">{t('about.idea.intro')}</p>
+        <Pill tone="ink" href={routes.request} data-dock-hide>{t('common.requestService')}</Pill>
+      </div>
+      <ol class="steps" id="steps">
+        {t('about.idea.steps').map((step) => <li><span class="n" aria-hidden="true">{step.n}</span><div><h3>{step.title}</h3><p>{step.text}</p></div></li>)}
+      </ol>
+    </div>
+  </div></section>

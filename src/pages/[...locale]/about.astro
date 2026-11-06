@@ -1,0 +1,28 @@
+---
+import { localePaths } from '@/config/routes';
+import { useTranslations } from '@/i18n';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import AboutHero from '@/sections/about/AboutHero/AboutHero.astro';
+import Faq from '@/sections/about/Faq/Faq.astro';
+import Manifesto from '@/sections/about/Manifesto/Manifesto.astro';
+import Skills from '@/sections/about/Skills/Skills.astro';
+import Story from '@/sections/about/Story/Story.astro';
+import Ways from '@/sections/about/Ways/Ways.astro';
+import WhatIDo from '@/sections/about/WhatIDo/WhatIDo.astro';
+import YourIdea from '@/sections/about/YourIdea/YourIdea.astro';
+
+export const getStaticPaths = localePaths;
+
+const t = useTranslations(Astro.currentLocale);
+---
+
+<BaseLayout title={t('about.meta.title')} description={t('about.meta.description')}>
+  <AboutHero />
+  <Manifesto />
+  <Story />
+  <YourIdea />
+  <WhatIDo />
+  <Skills />
+  <Faq />
+  <Ways />
+</BaseLayout>

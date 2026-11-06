@@ -1,0 +1,108 @@
+/* Problems (home): the heading on one side, six pains as rows on the other, each row a way to its fix. */
+
+.pains {
+  padding-block: clamp(96px, 10vw, 160px);
+}
+/* the same split as «كيف نعمل» and the questions: the heading holds still while the rows pass */
+.pains-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: 64px;
+  align-items: start;
+}
+.pains-head {
+  position: sticky;
+  top: 140px;
+}
+.pains .intro-p {
+  color: var(--snow-2);
+}
+.pains-other {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  margin-top: 28px;
+  color: var(--snow-2);
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  transition: color 0.2s;
+}
+.pains-other:hover {
+  color: var(--snow);
+}
+.pains-list {
+  list-style: none;
+  border-top: 1px solid var(--k2);
+}
+.pains-list li {
+  border-bottom: 1px solid var(--k2);
+}
+.pains-list a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding-block: 26px;
+}
+.pains-list a > span {
+  display: grid;
+  gap: 6px;
+}
+.pains-list b {
+  font-family: var(--voice);
+  font-weight: 800;
+  font-size: var(--s2);
+  line-height: 1.35;
+  color: var(--snow-2);
+  transition: color 0.25s var(--ease);
+}
+.pains-list .cost {
+  font-size: 1rem;
+  color: var(--k6);
+}
+.pains-list svg,
+.pains-other svg {
+  width: 20px;
+  height: 20px;
+  flex: none;
+}
+.pains-list svg {
+  opacity: 0.5;
+  transition:
+    opacity 0.25s var(--ease),
+    transform 0.35s var(--ease);
+}
+/* the row you point at comes forward; the arrow leans the way the page reads */
+.pains-list a:hover b,
+.pains-list a:focus-visible b {
+  color: var(--snow);
+}
+.pains-list a:hover svg,
+.pains-list a:focus-visible svg {
+  opacity: 1;
+  transform: translateX(-4px);
+}
+html[dir='ltr'] .pains-list a:hover svg,
+html[dir='ltr'] .pains-list a:focus-visible svg {
+  transform: translateX(4px);
+}
+
+@media (max-width: 1023px) {
+  .pains-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 36px;
+  }
+  .pains-head {
+    position: static;
+  }
+  .pains-other {
+    margin-top: 16px;
+  }
+  .pains-list a {
+    padding-block: 20px;
+  }
+  .pains-list b {
+    font-size: var(--s1);
+  }
+}

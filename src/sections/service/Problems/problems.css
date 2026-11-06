@@ -1,0 +1,116 @@
+/* Problems: the problems section, one problem at a time on desktop, the goal line. */
+
+/* ── 4. accounts and content: one problem at a time, and a phone that shows the fix ── */
+
+.acc {
+  background: var(--k11);
+  padding-block: clamp(120px, 12vw, 190px) clamp(96px, 9vw, 150px);
+}
+.acc-body {
+  margin-top: clamp(72px, 8vw, 120px);
+}
+.prob {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 48px;
+  align-items: center;
+  padding-block: 56px;
+  border-top: 1px solid var(--k9);
+  transition: opacity 0.45s var(--ease);
+}
+.prob h2 {
+  font-family: var(--voice);
+  font-weight: 800;
+  font-size: clamp(1.75rem, 2.8vw, 2.625rem);
+  line-height: 1.3;
+}
+.prob .why {
+  font-size: var(--s1);
+  color: var(--ink-2);
+  margin-top: 14px;
+  max-width: 40ch;
+}
+/* the client's pain, in the client's own words, opens the paragraph that says why it happens */
+.prob .why b {
+  font-weight: 700;
+  color: var(--ink);
+}
+.prob .fix {
+  font-family: var(--voice);
+  font-weight: 700;
+  font-size: clamp(1.1875rem, 1.6vw, 1.375rem);
+  line-height: 1.6;
+  margin-top: 18px;
+  max-width: 36ch;
+}
+
+/* the first problem follows the page top directly; a rule there would only repeat the edge */
+.acc-body > .prob:first-child {
+  border-top: 0;
+}
+
+.acc-end {
+  text-align: center;
+  margin-top: clamp(96px, 10vw, 160px);
+  overflow: clip;
+}
+.goal-line {
+  font-family: var(--whisper);
+  font-weight: 300;
+  font-size: clamp(1.75rem, 3.6vw, 3.25rem);
+  line-height: 1.35;
+}
+.goal-line span {
+  display: block;
+  color: var(--ink-3);
+}
+
+.acc.page {
+  padding-top: 0;
+}
+.acc.page .acc-body {
+  margin-top: 0;
+}
+
+@media (min-width: 1024px) {
+  .acc-body.dev-ready {
+    display: grid;
+    grid-template-columns: minmax(0, 560px) 276px;
+    justify-content: center;
+    column-gap: clamp(64px, 9vw, 150px);
+  }
+  /* one problem per screen: each is a full screen tall, and only the one holding the middle of the screen is visible,
+     so a problem never shares the screen with the next one */
+  .dev-ready .prob {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 100svh;
+    align-content: center;
+    border-top: 0;
+  }
+
+  .motion .dev-ready.live .prob:not(.on) {
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+      opacity 0.2s var(--ease),
+      transform 0.3s var(--ease);
+  }
+  .motion .dev-ready.live .prob.on {
+    transition:
+      opacity 0.5s var(--ease) 0.1s,
+      transform 0.7s var(--ease) 0.1s;
+  }
+  /* a keyboard user who tabs into a hidden problem still sees it */
+  .motion .dev-ready.live .prob:focus-within {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 1023px) {
+  .prob {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+    padding-block: 48px 0;
+  }
+}

@@ -1,0 +1,183 @@
+/* The phone frame and its chat, shared by the fix phone, the message preview and the TutuBot drawing. */
+
+.device {
+  position: relative;
+  width: 276px;
+  height: 572px;
+  padding: 8px;
+  border-radius: 46px;
+  background: var(--k0);
+  box-shadow:
+    0 40px 80px -30px rgba(0, 0, 0, 0.45),
+    inset 0 0 0 1.5px var(--k3);
+}
+.glass {
+  position: relative;
+  height: 100%;
+  border-radius: 38px;
+  overflow: hidden;
+  background: var(--k12);
+}
+.device::before,
+.scr-wrap::before {
+  content: '';
+  position: absolute;
+  z-index: 3;
+  top: 18px;
+  left: 50%;
+  width: 84px;
+  height: 24px;
+  margin-left: -42px;
+  border-radius: 12px;
+  background: var(--k0);
+}
+.dev-cap {
+  margin-top: 14px;
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--ink-2);
+}
+
+.scr-wrap {
+  position: relative;
+  justify-self: center;
+  width: 276px;
+  height: 470px;
+  padding: 8px 8px 0;
+  border-radius: 46px 46px 0 0;
+  background: var(--k0);
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(#000 76%, transparent);
+  mask-image: linear-gradient(#000 76%, transparent);
+}
+.scr-wrap .scr {
+  border-radius: 38px 38px 0 0;
+  height: 556px;
+}
+.scr {
+  position: relative;
+  width: 260px;
+  padding: 50px 16px 16px;
+  background: var(--k12);
+  color: var(--ink);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  overflow: hidden;
+}
+/* the old screen leaves quickly, the new one arrives a beat later: two screens never sit on top of each other */
+.glass .scr {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: translateY(6px);
+  transition:
+    opacity 0.16s var(--ease),
+    transform 0.2s var(--ease);
+}
+.glass .scr.show {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.4s var(--ease) 0.12s,
+    transform 0.55s var(--ease) 0.12s;
+}
+.scr::before {
+  content: '٩:٤١';
+  position: absolute;
+  top: 16px;
+  inset-inline-start: 26px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+html:not([lang='ar']) .scr::before {
+  content: '9:41';
+}
+.scr-t {
+  font-family: var(--voice);
+  font-weight: 800;
+  font-size: 1.375rem;
+  line-height: 1.2;
+  margin-top: 8px;
+}
+.scr-s {
+  font-size: 0.6875rem;
+  color: var(--ink-3);
+  margin-top: 2px;
+}
+
+.av {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--k12);
+  font-family: var(--voice);
+  font-weight: 800;
+  font-size: 1.375rem;
+  font-style: normal;
+  box-shadow:
+    0 0 0 2px var(--k12),
+    0 0 0 3.5px var(--k8);
+}
+
+.chat-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--k10);
+  margin-top: 6px;
+}
+.av.sm {
+  width: 38px;
+  height: 38px;
+  font-size: 1rem;
+  box-shadow: none;
+}
+.chat-top p {
+  display: grid;
+}
+.chat-top b {
+  font-family: var(--voice);
+  font-weight: 800;
+  font-size: 0.9375rem;
+}
+.chat-top span {
+  font-size: 0.6875rem;
+  color: var(--ink-3);
+}
+.msgs {
+  display: grid;
+  gap: 8px;
+  margin-top: 14px;
+}
+.msg {
+  max-width: 84%;
+  padding: 8px 12px;
+  border-radius: 16px;
+  font-size: 0.78125rem;
+  line-height: 1.5;
+  transition:
+    opacity 0.4s var(--ease),
+    transform 0.5s var(--ease);
+}
+.msg.them {
+  justify-self: start;
+  background: var(--k10);
+  border-start-start-radius: 4px;
+}
+.msg.us {
+  justify-self: end;
+  background: var(--ink);
+  color: var(--k12);
+  border-start-end-radius: 4px;
+}
+.msg em {
+  display: block;
+  margin-top: 4px;
+  font-style: normal;
+  font-size: 0.65625rem;
+  color: var(--snow-2);
+}

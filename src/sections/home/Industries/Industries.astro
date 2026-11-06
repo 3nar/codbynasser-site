@@ -1,0 +1,21 @@
+---
+/**
+ * 4 · industries: the divisions told in the words of a few fields, each with what gets built there. No results
+ * are claimed: a field shows what fits it, and the request form takes it from there.
+ */
+import Pill from '@/components/ui/Pill/Pill.astro';
+import { routesFor } from '@/config/routes';
+import { useTranslations } from '@/i18n';
+
+const routes = routesFor(Astro.currentLocale);
+const t = useTranslations(Astro.currentLocale);
+---
+
+<section class="fields" id="industries" data-stage="light" aria-labelledby="industries-title"><div class="wrap">
+    <h2 class="h2" id="industries-title">{t('home.industries.title')}</h2>
+    <p class="intro-p">{t('home.industries.intro')}</p>
+    <ul class="fields-grid">
+      {t('home.industries.items').map((item) => <li><h3>{item.name}</h3><p>{item.text}</p></li>)}
+    </ul>
+    <Pill tone="line" href={routes.requestFor({ service: 'unsure' })}>{t('home.industries.cta')}</Pill>
+  </div></section>

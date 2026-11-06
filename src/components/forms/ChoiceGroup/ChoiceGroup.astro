@@ -1,0 +1,27 @@
+---
+/**
+ * A question answered by one choice (a fieldset of radio chips). The default slot sits under the choices
+ * (the request form's «you came from …» note). The error line is filled by request-form.ts when nothing is chosen.
+ */
+import Choice from './Choice.astro';
+
+export interface ChoiceOption {
+  value: string;
+  label: string;
+  checked?: boolean;
+}
+interface Props {
+  name: string;
+  legend: string;
+  options: ChoiceOption[];
+  /** a question with a default answer needs no error line */
+  error?: boolean;
+}
+const { name, legend, options, error = true } = Astro.props;
+---
+
+<fieldset class="field" id={`f-${name}`} role="radiogroup" aria-required={error ? 'true' : undefined} aria-describedby={error ? `e-${name}` : undefined}><legend>{legend}</legend>
+          <div class="choices">{options.map((option) => <Choice name={name} {...option} />)}</div>
+          <slot />
+          {error && <p class="err" id={`e-${name}`} aria-live="polite"></p>}
+        </fieldset>

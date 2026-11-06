@@ -1,0 +1,12 @@
+# Who may read the site.
+# Search engines, AI answer engines, and the AI agents that fetch a page for a person may all read it: the site is
+# here to be found, and AI answers are one of the ways clients look for an AI engineer.
+User-agent: *
+Allow: /
+
+# ByteDance's crawler: crawls hard, has been reported ignoring these rules, and serves none of the site's markets.
+# Cloudflare is to block it as well; this line states the intent.
+User-agent: Bytespider
+Disallow: /
+
+Sitemap: https://codbynasser.com/sitemap.xml

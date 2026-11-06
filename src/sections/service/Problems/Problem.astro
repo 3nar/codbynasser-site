@@ -1,0 +1,35 @@
+---
+/**
+ * One fix: its name as the services menu writes it, the client's pain and why it happens, the fix, what it
+ * includes, and a link that opens the request form with this service and this fix chosen. The figure holds the
+ * fix as the phone shows it; the sticky phone (FixPhone) copies it in as the reader arrives.
+ */
+import ArrowLink from '@/components/ui/ArrowLink/ArrowLink.astro';
+import CheckList from '@/components/ui/CheckList/CheckList.astro';
+import { routesFor, type ServiceId } from '@/config/routes';
+import { useTranslations } from '@/i18n';
+import type { Service } from '@/lib/content';
+import FixScreen from '../FixPhone/screens/FixScreen.astro';
+
+const routes = routesFor(Astro.currentLocale);
+
+interface Props {
+  /** 1-based: the problem's place on the page (#p1, #p2 …) */
+  n: number;
+  service: ServiceId;
+  problem: Service['problems'][number];
+}
+const { n, service, problem } = Astro.props;
+const t = useTranslations(Astro.currentLocale);
+---
+
+<article class="prob" aria-labelledby={`p${n}`}>
+        <div>
+          <h2 id={`p${n}`}>{problem.name}</h2>
+          <p class="why"><b>{problem.question}</b> {problem.why}</p>
+          <p class="fix">{problem.fix}</p>
+          <CheckList id={`incl-${n}`} items={problem.includes} />
+          <ArrowLink class="link ask" href={routes.requestFor({ service, problem: n })}>{t('service.ask')}</ArrowLink>
+        </div>
+        <figure class="scr-wrap" aria-hidden="true"><FixScreen service={service} screen={problem.screen} name={problem.name} includes={problem.includes} /></figure>
+      </article>

@@ -1,0 +1,32 @@
+---
+/**
+ * The brand's story, in its order: the song never sung, the richest land, then what that asks of the reader and why
+ * the name is one letter short.
+ */
+import { useTranslations } from '@/i18n';
+
+const t = useTranslations(Astro.currentLocale);
+---
+
+<section class="manifesto dark" id="manifesto" data-stage="dark" aria-labelledby="manifesto-title"><div class="wrap">
+    <figure class="manifesto-quote" data-rise>
+      <blockquote>{t('about.manifesto.quote')}</blockquote>
+      <figcaption>{t('about.manifesto.quoteBy')}</figcaption>
+    </figure>
+    <div class="manifesto-tale">
+      <p class="manifesto-big" data-rise>{t('about.manifesto.question')}</p>
+      <div class="manifesto-guesses">
+        {t('about.manifesto.guesses').map((guess) => <p data-rise>{guess}</p>)}
+      </div>
+      <p class="manifesto-big" data-rise>{t('about.manifesto.answer')}</p>
+      <p class="manifesto-why" data-rise>{t('about.manifesto.why')}</p>
+      <p class="manifesto-source">{t('about.manifesto.source')}</p>
+    </div>
+    <div class="manifesto-call">
+      <h2 class="manifesto-big" id="manifesto-title" data-rise>{t('about.manifesto.title')}</h2>
+      <div class="manifesto-lines">
+        {t('about.manifesto.lines').map((line) => <p data-rise>{line}</p>)}
+      </div>
+      <p class="manifesto-name" data-rise>{t('about.manifesto.name')}</p>
+    </div>
+  </div></section>

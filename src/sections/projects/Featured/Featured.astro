@@ -1,0 +1,22 @@
+---
+/** «أبرز المشاريع»: the works told at length, each with its own illustration. */
+import { useTranslations } from '@/i18n';
+import type { Project } from '@/lib/content';
+import SberArt from './art/SberArt.astro';
+import TutuArt from './art/TutuArt.astro';
+import FeatureCard from './FeatureCard.astro';
+
+interface Props {
+  projects: Project[];
+}
+const { projects } = Astro.props;
+const t = useTranslations(Astro.currentLocale);
+/** each featured work's illustration, by its id */
+const art: Record<string, typeof TutuArt> = { tutubot: TutuArt, 'sber-diagrams': SberArt };
+---
+
+<h2 class="sec-h" id="featured">{t('projects.featured')}</h2>
+      {projects.map((project) => {
+        const Art = art[project.id];
+        return <FeatureCard project={project}>{Art && <Art />}</FeatureCard>;
+      })}

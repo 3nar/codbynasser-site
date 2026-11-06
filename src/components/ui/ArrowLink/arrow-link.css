@@ -1,0 +1,54 @@
+/* ArrowLink: text links that end with the arrow (.link, .next on service pages, .ask under a problem). */
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  font-family: var(--voice);
+  font-weight: 700;
+  font-size: 1.0625rem;
+}
+.link svg {
+  width: 15px;
+  height: 15px;
+  flex: none;
+  transition: transform 0.3s var(--ease);
+}
+.link:hover svg {
+  transform: translateX(-3px);
+}
+.link.down:hover svg {
+  transform: translateY(3px);
+}
+
+/* the next service, so a reader never reaches a dead end */
+.next {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  margin-top: clamp(80px, 8vw, 120px);
+  padding-block: 36px;
+  border-top: 1px solid var(--k9);
+  font-family: var(--voice);
+  font-weight: 800;
+  font-size: clamp(1.5rem, 2.6vw, 2.25rem);
+  line-height: 1.3;
+}
+.next svg {
+  width: 28px;
+  height: 28px;
+  flex: none;
+  transition: transform 0.3s var(--ease);
+}
+@media (hover: hover) {
+  .next:hover svg {
+    transform: translateX(-4px);
+  }
+}
+
+/* service pages: each problem can be asked for directly */
+.ask {
+  margin-top: 16px;
+}

@@ -1,0 +1,31 @@
+---
+/**
+ * One drop-down panel of the bar. One grammar in every panel: a heading that has a page is a large link, a
+ * heading that only groups is a grey label; the links under it are small; the last column is the next step.
+ */
+export interface MegaLink {
+  href: string;
+  label: string;
+  /** shown large, like a heading (the next step's main action) */
+  head?: boolean;
+}
+export interface MegaColumn {
+  title: string;
+  /** the heading links to this page when it has one */
+  href?: string;
+  links: MegaLink[];
+  /** the last column: the next step, set apart by a hairline */
+  next?: boolean;
+}
+interface Props {
+  id: string;
+  columns: MegaColumn[];
+}
+const { id, columns } = Astro.props;
+---
+
+<div class="mega-panel" data-panel={id}>
+  {columns.map((col) => (
+    <div class={col.next ? 'mega-next' : undefined}><h2>{col.href ? <a class="head" href={col.href}>{col.title}</a> : col.title}</h2>{col.links.map((link) => <a class={link.head ? 'head' : undefined} href={link.href}>{link.label}</a>)}</div>
+  ))}
+</div>

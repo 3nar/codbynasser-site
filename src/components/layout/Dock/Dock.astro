@@ -1,0 +1,19 @@
+---
+/** The phone's request bar at the foot of the screen; it steps aside while the page's own request buttons show. */
+import Icon from '@/components/ui/Icon/Icon.astro';
+import Pill from '@/components/ui/Pill/Pill.astro';
+import { routesFor, type ServiceId } from '@/config/routes';
+import { links } from '@/config/site';
+import { useTranslations } from '@/i18n';
+
+const routes = routesFor(Astro.currentLocale);
+
+interface Props {
+  /** the service the reader is on, so the request keeps it */
+  service?: ServiceId;
+}
+const { service } = Astro.props;
+const t = useTranslations(Astro.currentLocale);
+---
+
+<div class="dock" id="dock"><Pill tone="snow" href={routes.requestFor({ service })}>{t('common.requestService')}</Pill><a class="wa" href={links.whatsapp()} aria-label={t('common.contact.whatsapp')}><Icon name="whatsapp" /></a></div>

@@ -1,0 +1,39 @@
+/* The design's tokens: the grey ladder, the text colours, the voices, the curves, the type scale. */
+
+/* ── identity: Apple's own grey ladder, from black to white ── */
+:root {
+  --k0: #000000;
+  --k1: #1c1c1e;
+  --k2: #2c2c2e;
+  --k3: #3a3a3c;
+  --k4: #48484a;
+  --k5: #636366;
+  --k6: #8e8e93;
+  --k7: #aeaeb2;
+  --k8: #c7c7cc;
+  --k9: #d2d2d7;
+  --k10: #e8e8ed;
+  --k11: #f5f5f7;
+  --k12: #ffffff;
+  --ink: #1d1d1f; /* text on light */
+  --ink-2: #424245; /* secondary on light */
+  --ink-3: #6e6e73; /* tertiary on light */
+  --snow: #f5f5f7; /* text on dark */
+  --snow-2: #a1a1a6; /* secondary on dark */
+  --whisper: 'Tajawal', 'IBM Plex Sans Arabic', sans-serif; /* the light voice, 300 */
+  --voice: 'Tajawal', 'IBM Plex Sans Arabic', sans-serif; /* the firm voice, 800; 700 for controls */
+  --read: 'IBM Plex Sans Arabic', sans-serif;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --sheet: cubic-bezier(0.32, 0.72, 0, 1);
+  --gut: clamp(20px, 5vw, 80px);
+  --bar: 52px;
+  /* type scale, a perfect fourth from 14 */
+  --s-1: 0.875rem;
+  --s0: 1.0625rem;
+  --s1: 1.1875rem;
+  --s2: 1.5rem;
+  --s3: 2rem;
+}
+:root {
+  --red: #d70015;
+} /* the one state colour: errors, at 5:1 on white */

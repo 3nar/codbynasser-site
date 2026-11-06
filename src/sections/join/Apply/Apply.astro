@@ -1,0 +1,32 @@
+---
+/** «عرّفني بنفسك»: the shared form, asking for the specialty, the name, a link to past work, and a few lines. */
+import ChoiceGroup from '@/components/forms/ChoiceGroup/ChoiceGroup.astro';
+import Field from '@/components/forms/Field/Field.astro';
+import RequestForm from '@/components/forms/RequestForm/RequestForm.astro';
+import { useTranslations } from '@/i18n';
+import { getJoinFields } from '@/lib/content';
+
+const t = useTranslations(Astro.currentLocale);
+const fields = await getJoinFields(Astro.currentLocale);
+---
+
+<RequestForm id="apply" labelledBy="apply-title" kind="join">
+  <Fragment slot="head">
+    <h2 class="h2" id="apply-title">{t('join.apply.title')}</h2>
+    <p class="say">{t('join.apply.say')}</p>
+  </Fragment>
+  <ChoiceGroup name="specialty" legend={t('join.specialty.legend')} options={fields} />
+  <Field name="name" label={t('forms.name.label')} autocomplete="name" placeholder={t('forms.name.placeholder')} />
+  <Field
+    name="portfolio"
+    label={t('join.portfolio.label')}
+    optional
+    hint={t('join.portfolio.hint')}
+    type="url"
+    inputmode="url"
+    autocomplete="url"
+    dir="ltr"
+    placeholder={t('join.portfolio.placeholder')}
+  />
+  <Field name="about" label={t('join.about.label')} multiline placeholder={t('join.about.placeholder')} />
+</RequestForm>

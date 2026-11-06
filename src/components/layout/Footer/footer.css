@@ -1,0 +1,109 @@
+/* Footer: who, the site map, then the fine print with the languages. */
+
+footer {
+  font-size: var(--s-1);
+  color: var(--snow-2);
+}
+/* three layers: who, the whole site in the order of the bar, then the fine print with the language */
+.foot-id {
+  display: flex;
+  align-items: center;
+  gap: 8px 20px;
+  flex-wrap: wrap;
+  padding-block: 40px 28px;
+  border-top: 1px solid var(--k2);
+}
+/* the wordmark and its signature read as one name, in the wordmark's own direction on every page */
+.foot-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  direction: ltr;
+  color: var(--snow);
+}
+.foot-id p {
+  color: var(--snow-2);
+}
+.foot-line {
+  flex-basis: 100%;
+}
+.foot {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 32px;
+  padding-block: 28px 40px;
+  border-top: 1px solid var(--k1);
+}
+.foot h2 {
+  font-family: var(--read);
+  font-weight: 500;
+  font-size: 0.75rem;
+  color: var(--k6);
+  margin-bottom: 12px;
+}
+.foot a,
+.foot .off {
+  display: block;
+  padding-block: 5px;
+}
+.foot a:hover {
+  color: var(--snow);
+}
+/* the contact apps: each name after its icon */
+.foot a.app {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.foot .app svg {
+  width: 18px;
+  height: 18px;
+  flex: none;
+}
+.foot .off {
+  color: var(--k6);
+  text-decoration: underline dotted 1px;
+  text-underline-offset: 6px;
+}
+.legal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px 24px;
+  flex-wrap: wrap;
+  padding-block: 16px 48px;
+  border-top: 1px solid var(--k1);
+  font-size: 0.75rem;
+  color: var(--k6);
+}
+.legal-langs {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.legal-langs .lang[aria-current],
+.legal-langs a.lang:hover {
+  color: var(--snow);
+}
+
+@media (max-width: 1023px) {
+  .foot {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px 24px;
+  }
+  .legal {
+    padding-bottom: calc(96px + env(safe-area-inset-bottom));
+  }
+  /* a thumb needs the full height, even where the words are small */
+  .foot a,
+  .foot .off,
+  .legal-langs .lang {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    padding-block: 0;
+  }
+  .legal-langs .lang {
+    display: inline-flex;
+  }
+}

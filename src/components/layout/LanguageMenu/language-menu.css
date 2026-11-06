@@ -1,0 +1,78 @@
+/* LanguageMenu: the language button and the list it opens. */
+
+.lang-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+  padding-inline: 10px;
+  border-radius: 999px;
+  font-size: 0.8125rem;
+  opacity: 0.82;
+}
+.lang-btn:hover {
+  opacity: 1;
+}
+.lang-btn svg {
+  width: 14px;
+  height: 14px;
+}
+
+.langs {
+  position: absolute;
+  top: 46px;
+  inset-inline-end: 0;
+  min-width: 170px;
+  padding: 6px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--ink);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.14),
+    0 1px 3px rgba(0, 0, 0, 0.08);
+  transform-origin: top left;
+  opacity: 0;
+  transform: translateY(-6px) scale(0.98);
+  visibility: hidden;
+  transition:
+    opacity 0.2s var(--ease),
+    transform 0.25s var(--ease),
+    visibility 0s 0.25s;
+}
+.langs.open {
+  opacity: 1;
+  transform: none;
+  visibility: visible;
+  transition:
+    opacity 0.2s var(--ease),
+    transform 0.25s var(--ease);
+}
+.langs .lang {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  min-height: 40px;
+  padding-inline: 12px;
+  border-radius: 9px;
+  font-size: 0.875rem;
+}
+.langs a.lang:hover {
+  background: var(--k11);
+}
+.langs .lang svg {
+  width: 15px;
+  height: 15px;
+}
+
+html[dir='ltr'] .langs {
+  transform-origin: top right;
+}
+
+@media (max-width: 1023px) {
+  .lang-btn {
+    display: none;
+  }
+}

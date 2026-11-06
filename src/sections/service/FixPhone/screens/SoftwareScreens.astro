@@ -1,0 +1,43 @@
+---
+/**
+ * The phone's screens for the software fixes, by name: study (the idea study), prototype, store (the shop).
+ * The words come from screens.software; the wireframe and product tiles stay here.
+ */
+import Icon from '@/components/ui/Icon/Icon.astro';
+import { useTranslations } from '@/i18n';
+
+interface Props {
+  screen: string;
+}
+const { screen } = Astro.props;
+const t = useTranslations(Astro.currentLocale);
+const study = t('screens.software.study');
+const prototype = t('screens.software.prototype');
+const store = t('screens.software.store');
+---
+
+{screen === 'study' && (
+<div class="scr scr-study">
+          <p class="scr-t">{study.title}</p>
+          <p class="scr-s">{study.sub}</p>
+          <ul class="checks">
+            {study.checks.map((check, i) => <li style={`--i:${i}`}><Icon name="check" /><span>{check}</span></li>)}
+          </ul>
+          <div class="aim"><small>{study.aim.label}</small><p>{study.aim.text}</p></div>
+        </div>
+)}
+{screen === 'prototype' && (
+<div class="scr scr-proto">
+          <p class="scr-t">{prototype.title}</p>
+          <p class="scr-s">{prototype.sub}</p>
+          <div class="wf"><i class="w1" style="--i:0"></i><div class="w2"><i style="--i:1"></i><i style="--i:2"></i></div><i class="w4" style="--i:3"></i><i class="w5" style="--i:4"></i><i class="w3" style="--i:5"></i></div>
+        </div>
+)}
+{screen === 'store' && (
+<div class="scr scr-store">
+          <div class="store-top"><b>{store.name}</b><i aria-hidden="true"></i></div>
+          <div class="banner"><small>{store.badge}</small><p>{store.banner}</p></div>
+          <div class="prods">{[0, 1, 2, 3].map((i) => <i style={`--i:${i}`}><span></span><b></b></i>)}</div>
+          <span class="buy">{store.buy}</span>
+        </div>
+)}

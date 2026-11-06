@@ -1,0 +1,52 @@
+/* FixPhone: the sticky phone beside the problems, its progress and caption. */
+
+/* the phone: a sticky device on desktop, one cropped phone per problem everywhere else */
+.dev-col {
+  display: none;
+}
+
+/* under the phone: one segment per problem, filled as far as the reader has read; the caption names the fix on screen */
+.dev-prog {
+  display: flex;
+  gap: 6px;
+  margin-top: 20px;
+  padding-inline: 22px;
+}
+.dev-prog i {
+  flex: 1;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--k9);
+  overflow: hidden;
+}
+.dev-prog b {
+  display: block;
+  height: 100%;
+  background: var(--ink);
+  transform: scaleX(0);
+  transform-origin: right;
+}
+html[dir='ltr'] .dev-prog b {
+  transform-origin: left;
+}
+.dev-prog + .dev-cap {
+  margin-top: 10px;
+}
+
+@media (min-width: 1024px) {
+  .dev-ready .scr-wrap {
+    display: none;
+  }
+  /* the phone starts where it will rest: as far below the section's top as it later sits below the screen's top,
+     so it never hugs the edge and stands level with the first problem from the start, and with the last one at the end */
+  .dev-ready .dev-col {
+    --rest: max(72px, calc(50svh - 300px));
+    display: block;
+    grid-column: 2;
+    grid-row: 1 / span 3;
+    align-self: start;
+    position: sticky;
+    top: var(--rest);
+    margin-block: var(--rest);
+  }
+}

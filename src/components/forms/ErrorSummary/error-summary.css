@@ -1,0 +1,33 @@
+/* ErrorSummary: the fields to fix, above the form. */
+
+.sum {
+  padding: 16px 20px;
+  border-radius: 14px;
+  background: var(--k12);
+  box-shadow: inset 0 0 0 1.5px var(--red);
+}
+/* focused on a failed send, it glows the way a field does, with no second ring */
+.sum:focus {
+  outline: none;
+  box-shadow:
+    inset 0 0 0 2px var(--red),
+    0 0 0 5px rgba(215, 0, 21, 0.12);
+}
+.sum[hidden] {
+  display: none;
+}
+.sum h2 {
+  font-family: var(--voice);
+  font-weight: 700;
+  font-size: 1.0625rem;
+  color: var(--red);
+}
+.sum ul {
+  list-style: none;
+  margin-top: 6px;
+}
+.sum a {
+  font-size: 0.9375rem;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}

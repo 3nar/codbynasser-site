@@ -1,0 +1,16 @@
+---
+/**
+ * The liquid light: soft dark shapes that merge and part, drawn small on a canvas and blurred up by liquid-light.ts
+ * (the `liquid` engine). Used behind the three doors and on «اعمل معي». Other attributes pass through.
+ */
+import type { HTMLAttributes } from 'astro/types';
+
+interface Props extends HTMLAttributes<'div'> {
+  /** the surface classes before `flow`: light, dots */
+  surface: string;
+}
+// `slot` names where a parent places it; it is not an attribute of the element
+const { surface, slot, ...attrs } = Astro.props;
+---
+
+<div class={`aura ${surface} flow`} {...attrs}><canvas></canvas></div>

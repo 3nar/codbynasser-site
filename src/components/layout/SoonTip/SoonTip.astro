@@ -1,0 +1,16 @@
+---
+/**
+ * A section that keeps its final place in the bar while its page is being prepared: switched off, with a note
+ * on hover, focus or tap (behaviour in soon-tip.ts).
+ */
+import type { soonSections } from '@/config/navigation';
+import { useTranslations } from '@/i18n';
+
+interface Props {
+  id: (typeof soonSections)[number];
+}
+const { id } = Astro.props;
+const t = useTranslations(Astro.currentLocale);
+---
+
+<span class="soon-item"><button type="button" class="soon" aria-disabled="true" aria-describedby={`tip-${id}`}>{t(`nav.soon.${id}.label`)}</button><span class="tip" role="tooltip" id={`tip-${id}`}>{t(`nav.soon.${id}.note`)}</span></span>

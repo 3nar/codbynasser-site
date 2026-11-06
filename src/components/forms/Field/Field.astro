@@ -1,0 +1,27 @@
+---
+/**
+ * A labelled text field: an input, or a textarea when `multiline`. The hint and the error line are tied to it
+ * with aria-describedby; request-form.ts writes the error. Other attributes (type, autocomplete, dir, placeholder …)
+ * go to the control.
+ */
+import type { HTMLAttributes } from 'astro/types';
+import { useTranslations } from '@/i18n';
+
+interface Props extends Omit<HTMLAttributes<'input'>, 'name' | 'hidden'> {
+  name: string;
+  label: string;
+  hint?: string;
+  optional?: boolean;
+  /** starts hidden (the email field until «البريد» is chosen) */
+  hidden?: boolean;
+  multiline?: boolean;
+}
+const { name, label, hint, optional = false, hidden, multiline = false, ...control } = Astro.props;
+const describedBy = hint ? `h-${name} e-${name}` : `e-${name}`;
+const t = useTranslations(Astro.currentLocale);
+---
+
+<div class="field" id={`f-${name}`} hidden={hidden}><label for={name}>{label} {optional && <span class="opt">{t('forms.optional')}</span>}</label>
+          {multiline ? <textarea class="input" id={name} name={name} placeholder={control.placeholder} aria-describedby={describedBy} aria-required={optional ? undefined : 'true'}></textarea> : <input class="input" id={name} name={name} {...control} aria-describedby={describedBy} aria-required={optional ? undefined : 'true'}>}
+          {hint && <p class="hint" id={`h-${name}`}>{hint}</p>}<p class="err" id={`e-${name}`} aria-live="polite"></p>
+        </div>

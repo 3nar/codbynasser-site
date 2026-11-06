@@ -1,0 +1,13 @@
+{
+  "group": "featured",
+  "order": 1,
+  "title": "TutuBot",
+  "shortTitle": "TutuBot",
+  "kind": "A social dating platform on Telegram",
+  "summary": "I built this platform and run it myself for users in Iraq and the Gulf: profiles, matching between users, account management and safe communication.",
+  "tools": ["Python", "aiogram", "Telegram Bot API"],
+  "feature": {
+    "badge": "Live now, with real users",
+    "live": true
+  }
+}

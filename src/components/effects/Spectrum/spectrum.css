@@ -1,0 +1,25 @@
+/* Spectrum: the grey bands from black to light, and back before the close. */
+
+/* ── the spectrum: black walks to light, one step of grey at a time ── */
+.spectrum {
+  position: relative;
+}
+.spectrum i {
+  display: block;
+  height: 6vh;
+  min-height: 36px;
+  transform-origin: right;
+}
+
+.spectrum.rev i {
+  height: 4.5vh;
+  min-height: 26px;
+  transform-origin: left;
+}
+/* the bands unroll in the reading direction */
+html[dir='ltr'] .spectrum i {
+  transform-origin: left;
+}
+html[dir='ltr'] .spectrum.rev i {
+  transform-origin: right;
+}

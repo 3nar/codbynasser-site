@@ -1,0 +1,14 @@
+---
+/** «كيف أعمل»: one sentence that says it all, then three short beats, the way «why me» reads on the home page. */
+import { useTranslations } from '@/i18n';
+
+const t = useTranslations(Astro.currentLocale);
+---
+
+<section class="story dark" data-stage="dark" aria-labelledby="story-title"><div class="wrap">
+    <h2 class="h2" id="story-title">{t('about.story.title')}</h2>
+    <p class="story-lead">{t('about.story.lead')}</p>
+    <div class="story-points">
+      {t('about.story.points').map((point) => <div><b>{point.title}</b><p>{point.text}</p></div>)}
+    </div>
+  </div></section>

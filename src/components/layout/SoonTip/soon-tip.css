@@ -1,0 +1,54 @@
+/* SoonTip: a section switched off in the bar, with its «قريباً» note. */
+
+/* a page still being prepared: faded, with a dotted line under it, and a note that says so on hover, focus or tap */
+.soon-item {
+  position: relative;
+  display: flex;
+}
+.menu .soon,
+.menu .soon:hover {
+  opacity: 0.6;
+  cursor: default;
+  text-decoration: underline dotted 1px;
+  text-underline-offset: 7px;
+}
+.tip {
+  position: absolute;
+  top: calc(100% - 8px);
+  left: 50%;
+  z-index: 3;
+  white-space: nowrap;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: var(--ink);
+  color: var(--snow);
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  box-shadow: 0 10px 24px -10px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, -4px);
+  transition:
+    opacity 0.15s var(--ease),
+    transform 0.25s var(--ease),
+    visibility 0s 0.25s;
+}
+.soon-item:hover .tip,
+.soon-item:focus-within .tip,
+.soon-item.tip-on .tip {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+  transition:
+    opacity 0.2s var(--ease) 0.1s,
+    transform 0.3s var(--ease) 0.1s,
+    visibility 0s;
+}
+.soon-item.tip-off .tip {
+  opacity: 0;
+  visibility: hidden;
+}
+.nav.on-dark .tip {
+  background: var(--snow);
+  color: var(--ink);
+}

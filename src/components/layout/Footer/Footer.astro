@@ -1,0 +1,43 @@
+---
+/**
+ * The footer in three layers: who, the whole site in the order of the bar (the pages in preparation listed as
+ * «قريباً»), then the fine print with the languages.
+ */
+import Icon from '@/components/ui/Icon/Icon.astro';
+import type { IconName } from '@/components/ui/Icon/icons';
+import Logo from '@/components/ui/Logo/Logo.astro';
+import { aboutLinks, contactLinks, soonSections } from '@/config/navigation';
+import { routesFor } from '@/config/routes';
+import { useTranslations } from '@/i18n';
+import { getServices } from '@/lib/content';
+import LanguageList from '../LanguageMenu/LanguageList.astro';
+
+const routes = routesFor(Astro.currentLocale);
+
+const t = useTranslations(Astro.currentLocale);
+const services = await getServices(Astro.currentLocale);
+
+const map: { title: string; links?: { href: string; label: string; icon?: IconName }[]; soon?: string[] }[] = [
+  {
+    title: t('nav.services'),
+    links: [
+      ...services.map((s) => ({ href: routes.service(s.id), label: s.name })),
+      { href: routes.request, label: t('common.requestService') },
+      { href: routes.requestFor({ service: 'unsure' }), label: t('common.requestConsult') },
+    ],
+  },
+  { title: t('common.soon'), soon: soonSections.map((id) => t(`nav.soon.${id}.label`)) },
+  { title: t('nav.about'), links: aboutLinks(routes).map((link) => ({ href: link.href, label: t(link.label) as string })) },
+  { title: t('common.contact.title'), links: contactLinks.map((link) => ({ href: link.href, label: t(link.label) as string, icon: link.icon })) },
+];
+---
+
+<footer class="dark" data-stage="dark"><div class="wrap">
+  <div class="foot-id"><div class="foot-name"><Logo /><span lang="en" dir="ltr">{t('common.brandBy')}</span></div><p>{t('common.ownerLine')}</p><p class="foot-line">{t('common.brandLine')}</p></div>
+  <nav class="foot" aria-label={t('footer.siteMap')}>
+    {map.map((col) => (
+      <div><h2>{col.title}</h2>{col.links?.map((link) => <a class={link.icon ? 'app' : undefined} href={link.href}>{link.icon && <Icon name={link.icon} />}{link.label}</a>)}{col.soon?.map((label) => <span class="off">{label}</span>)}</div>
+    ))}
+  </nav>
+  <div class="legal"><span>{t('footer.rights')}</span><LanguageList variant="legal" /></div>
+</div></footer>

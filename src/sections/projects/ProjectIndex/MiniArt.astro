@@ -1,0 +1,9 @@
+---
+/** The small aura at the start of an index row: three points of light placed by --a, --b and --c. */
+import type { Project } from '@/lib/content';
+
+type Props = NonNullable<Project['mini']>;
+const { light, a, b, c } = Astro.props;
+---
+
+<i class={light ? 'mini light' : 'mini'} style={`--a:${a};--b:${b};--c:${c}`} aria-hidden="true"></i>

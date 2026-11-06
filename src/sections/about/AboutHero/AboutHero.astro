@@ -1,0 +1,25 @@
+---
+/**
+ * The same top as the home page: the man and his ghost. As it scrolls away the ghost walks out, the words lift
+ * away, and the dark of the story rises over it (the dusk, #aboutDusk). On phones and tablets the photo is as on
+ * the home page: tall, filling the top and fading into black, with the words in white below.
+ */
+import ghost from '@/assets/images/ghost.webp';
+import man from '@/assets/images/man.webp';
+import { useTranslations } from '@/i18n';
+
+const t = useTranslations(Astro.currentLocale);
+---
+
+<section class="about-hero" id="top" data-stage="light" data-dusk aria-labelledby="page-title">
+    <div class="portrait" aria-hidden="true">
+      <div class="ghost-wrap"><img src={ghost.src} width="1599" height="899" alt=""></div>
+      <img class="man" src={man.src} width="1599" height="899" alt="">
+    </div>
+    <div class="copy" data-stage="dark" data-only="phone">
+      <h1 id="page-title" data-echo>{t('about.hero.title')}</h1>
+      <p class="lead">{t('about.hero.lead')}</p>
+      <p class="say">{t('about.hero.say')}</p>
+    </div>
+    <div class="dusk" id="aboutDusk"></div>
+  </section>

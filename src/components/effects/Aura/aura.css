@@ -1,0 +1,92 @@
+/* Aura: soft light with grain, gathered into a shape; the grid and halftone surfaces. */
+
+/* ── the aura: soft light with grain, gathered into a shape. Dark: light on black. Light: ink on grey ── */
+/* the aura carries its section's colour, so the grain has something to blend into */
+.aura {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background: var(--k0);
+  --rgb: 245, 245, 247;
+}
+.aura.light {
+  background: var(--k11);
+  --rgb: 29, 29, 31;
+}
+.aura .blobs {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.blob {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 46vmax;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(var(--rgb), 0.95), rgba(var(--rgb), 0.55) 48%, rgba(var(--rgb), 0));
+  filter: blur(30px);
+  transform: translate(calc(-50% + var(--x, 0vw)), calc(-50% + var(--y, 0vh))) rotate(var(--r, 0deg))
+    scale(var(--sx, 1), var(--sy, 1));
+}
+/* a layer of its own only while the light moves (.moving, set by the scene that moves it: closing-cta.ts,
+   page-hero.ts). At rest a blurred blob draws once, and a permanent layer for each would only hold memory */
+.aura.moving .blobs,
+.aura.moving .blob {
+  will-change: transform, opacity;
+}
+/* grain: an opaque grey noise, laid over in overlay on dark and multiply on light */
+.aura::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  opacity: 0.5;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0' intercept='1'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px;
+}
+.aura.light::after {
+  mix-blend-mode: multiply;
+  opacity: 0.16;
+}
+/* a fine grid for the AI scenes, fading out at the edges */
+.aura.grid::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 64px 64px;
+  background-position: center;
+  -webkit-mask-image: radial-gradient(ellipse at 50% 50%, #000 25%, transparent 72%);
+  mask-image: radial-gradient(ellipse at 50% 50%, #000 25%, transparent 72%);
+}
+/* on a light page the same grid is drawn in ink */
+.aura.light.grid::before {
+  background-image:
+    linear-gradient(rgba(29, 29, 31, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(29, 29, 31, 0.07) 1px, transparent 1px);
+}
+/* a halftone screen that turns the dark shapes into dots, as on printed matter */
+.aura.dots::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: radial-gradient(circle, rgba(245, 245, 247, 0.85) 0.9px, transparent 1.6px) 0 0 / 5px 5px;
+  mix-blend-mode: screen;
+  opacity: 0.55;
+}
+
+@media (max-width: 1023px) {
+  .blob {
+    width: 70vmax;
+    filter: blur(22px);
+  }
+}

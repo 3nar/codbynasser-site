@@ -1,0 +1,55 @@
+/* Faq (home): the questions before a request, each answer opening in place. */
+
+.faq {
+  background: var(--k12);
+  padding-block: clamp(96px, 10vw, 160px);
+}
+.faq-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 64px;
+  align-items: start;
+}
+.faq-list details {
+  border-bottom: 1px solid var(--k10);
+}
+.faq-list details:first-child {
+  border-top: 1px solid var(--k10);
+}
+.faq-list summary {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  min-height: 64px;
+  padding-block: 14px;
+  font-family: var(--voice);
+  font-weight: 700;
+  font-size: var(--s1);
+  cursor: pointer;
+}
+.faq-list summary::-webkit-details-marker {
+  display: none;
+}
+.faq-list summary svg {
+  width: 18px;
+  height: 18px;
+  flex: none;
+  transition: transform 0.3s var(--ease);
+}
+.faq-list details[open] summary svg {
+  transform: rotate(180deg);
+}
+.faq-list p {
+  padding-bottom: 22px;
+  color: var(--ink-2);
+  max-width: 60ch;
+}
+
+@media (max-width: 1023px) {
+  .faq-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+  }
+}

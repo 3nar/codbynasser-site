@@ -1,0 +1,35 @@
+{
+  "meta": {
+    "title": "My AI and software projects | cod by nasser",
+    "description": "Work I built myself in AI and software: the TutuBot platform on Telegram, a project with Sberbank on diagrams from large language models, and more."
+  },
+  "hero": {
+    "title": "Work I built with my own hands.",
+    "say": "First, two projects I’m proud of, then projects in AI and software systems. If you like one of them, request a similar project for your business.",
+    "browse": "Browse the work"
+  },
+  "worksLabel": "Work",
+  "featured": "Featured projects",
+  "groups": { "ai": "AI and neural networks", "systems": "Software systems and products" },
+  "toolsLabel": "Tools",
+  "similar": "Request a similar project",
+  "art": {
+    "tutubot": {
+      "initial": "T",
+      "name": "TutuBot",
+      "status": "Telegram bot",
+      "messages": [
+        { "from": "them", "text": "Hi! Let’s finish your profile first." },
+        { "from": "us", "text": "Done" },
+        { "from": "them", "text": "We found a new match for you." },
+        { "from": "them", "text": "Start the chat safely, whenever you like." }
+      ],
+      "caption": "An illustration of the user’s journey, not a screenshot of the platform."
+    },
+    "sber": {
+      "sentenceHtml": "When a <mark>new order</mark> arrives, <mark>check the stock</mark>, then <mark>send the invoice</mark>.",
+      "steps": ["New order", "Check the stock", "Send the invoice"],
+      "caption": "An illustration of the project’s idea."
+    }
+  }
+}

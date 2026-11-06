@@ -1,0 +1,39 @@
+/* Skills: the tools by field. */
+
+.skills-sec {
+  background: var(--k12);
+  padding-block: clamp(110px, 11vw, 170px);
+  scroll-margin-top: 40px;
+}
+.skills {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 44px 56px;
+  margin-top: 48px;
+  padding-top: 40px;
+  border-top: 1px solid var(--k10);
+}
+.skills h3 {
+  font-family: var(--voice);
+  font-weight: 800;
+  font-size: 1.1875rem;
+  line-height: 1.4;
+}
+.skills ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  margin-top: 10px;
+  font-size: 0.9375rem;
+  color: var(--ink-2);
+}
+
+@media (max-width: 1023px) {
+  .skills {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .skills {
+    gap: 32px;
+  }
+}

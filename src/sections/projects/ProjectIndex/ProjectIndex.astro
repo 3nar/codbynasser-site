@@ -1,0 +1,16 @@
+---
+/** A group of the project index under its heading. */
+import type { Project } from '@/lib/content';
+import ProjectRow from './ProjectRow.astro';
+
+interface Props {
+  heading: string;
+  projects: Project[];
+}
+const { heading, projects } = Astro.props;
+---
+
+<h2 class="sec-h">{heading}</h2>
+    <div class="index">
+      {projects.map((project) => <ProjectRow project={project} />)}
+    </div>

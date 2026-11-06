@@ -1,0 +1,62 @@
+---
+/**
+ * The phone's screens for the brand-and-growth fixes, by name: plan (the month's plan), week (the posting week),
+ * feed (the feed).
+ * The words come from screens.accounts; the drawing (thumbs, which days have posts, the feed's tiles) stays here.
+ */
+import { useTranslations } from '@/i18n';
+
+interface Props {
+  screen: string;
+}
+const { screen } = Astro.props;
+const t = useTranslations(Astro.currentLocale);
+const plan = t('screens.accounts.plan');
+const week = t('screens.accounts.week');
+const feed = t('screens.accounts.feed');
+const thumbs = ['a', 'b', 'c', 'd'];
+/** the days that have a post this week, and today */
+const posting = [true, false, true, false, true, true, false];
+const today = 2;
+---
+
+{screen === 'plan' && (
+<div class="scr scr-plan">
+          <p class="scr-t">{plan.title}</p>
+          <p class="scr-s">{plan.sub}</p>
+          <ol class="plan">
+            {plan.posts.map((post, i) => <li style={`--i:${i}`}><i class={`th ${thumbs[i]}`}></i><span>{post.text}</span><b class={i === plan.posts.length - 1 ? 'hot' : undefined}>{post.tag}</b></li>)}
+          </ol>
+          <div class="aim"><small>{plan.aim.label}</small><p>{plan.aim.text}</p></div>
+        </div>
+)}
+{screen === 'week' && (
+<div class="scr scr-week">
+          <div class="push"><svg viewBox="0 0 26 26"><circle cx="13" cy="13" r="13" fill="#1D1D1F"/><path d="M8 13.4l3.2 3.1L18 9.8" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><p><b>{week.push.title}</b><span>{week.push.text}</span></p></div>
+          <p class="scr-t">{week.title}</p>
+          <p class="scr-s">{week.sub}</p>
+          <ol class="days">
+            {week.days.map((day, i) => <li class={posting[i] ? (i === today ? 'has today' : 'has') : undefined} style={`--i:${i}`}><span>{day}</span><i></i></li>)}
+          </ol>
+          <ul class="slots">
+            {week.slots.map((slot, i) => <li style={`--i:${i}`}><span><b>{slot.title}</b><time>{slot.time}</time></span><em class={i === 0 ? 'done' : undefined}>{slot.state}</em></li>)}
+          </ul>
+        </div>
+)}
+{screen === 'feed' && (
+<div class="scr scr-feed">
+          <div class="prof"><i class="av">{feed.initial}</i><p><b>{feed.name}</b><span>{feed.kinds}</span></p></div>
+          <div class="hls"><i></i><i></i><i></i><i></i></div>
+          <div class="tiles">
+            <i class="t-ink" style="--i:0"><b></b><b></b></i>
+            <i class="t-vid" style="--i:1"><svg viewBox="0 0 22 22"><path d="M7 4.5v13l11-6.5z" fill="currentColor"/></svg></i>
+            <i class="t-soft" style="--i:2"><b></b><b></b></i>
+            <i class="t-line" style="--i:3"><b></b><b></b></i>
+            <i class="t-ink" style="--i:4"><b></b><b></b></i>
+            <i class="t-vid" style="--i:5"><svg viewBox="0 0 22 22"><path d="M7 4.5v13l11-6.5z" fill="currentColor"/></svg></i>
+            <i class="t-soft" style="--i:6"><b></b><b></b></i>
+            <i class="t-line" style="--i:7"><b></b><b></b></i>
+            <i class="t-ink" style="--i:8"><b></b><b></b></i>
+          </div>
+        </div>
+)}

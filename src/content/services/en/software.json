@@ -1,0 +1,83 @@
+{
+  "order": 2,
+  "name": "Software and digital products",
+  "shortName": "Software",
+  "summary": "From an idea to a working product: I study it, plan it and build it step by step.",
+  "meta": {
+    "title": "Websites, online stores and custom software | cod by nasser",
+    "description": "Websites for businesses and professionals, online stores that manage orders and stock, and custom systems. I test your idea first, then build it step by step."
+  },
+  "hero": {
+    "tone": "dark",
+    "shape": "software",
+    "title": "Software and digital products",
+    "say": "From an idea to a working product. I study your idea with you, then build your product, website, online shop or system step by step, and stay with you after launch.",
+    "cta": "Tell me about your project"
+  },
+  "door": {
+    "title": "Software and digital products",
+    "say": "From an idea to a working product.",
+    "questions": ["From idea to product", "Websites", "Online shops", "Custom systems and software"],
+    "cta": "All services in this division"
+  },
+  "problems": [
+    {
+      "question": "Afraid to spend on an idea before you know it will work?",
+      "why": "The big losses start when you build before you ask.",
+      "fix": "I assess your idea and its technical feasibility, analyse what your business and product need, plan the product and its architecture, then build a prototype you can try and a first product you test with real customers.",
+      "includes": [
+        "Idea and technical feasibility assessment",
+        "Business and product requirements analysis",
+        "Product planning and architecture",
+        "Prototype development",
+        "First product development (MVP)"
+      ],
+      "name": "From idea to product",
+      "screen": "study"
+    },
+    {
+      "question": "Your website doesn’t present you as you deserve, or you don’t have one at all?",
+      "why": "A customer looks you up before calling you, and what they find decides for them.",
+      "fix": "I build personal and professional websites, sites for companies and businesses, sites for doctors, lawyers, consultants and professionals, and landing pages and corporate sites, with a dashboard where you manage your own content.",
+      "includes": [
+        "Personal and professional websites",
+        "Company and business websites",
+        "Websites for doctors, lawyers, consultants and professionals",
+        "Landing pages and corporate websites",
+        "Custom dashboards and content management systems"
+      ],
+      "name": "Websites",
+      "screen": "prototype"
+    },
+    {
+      "question": "You sell in messages, and orders get lost between chats?",
+      "why": "A notebook and scattered messages don’t grow with your sales.",
+      "fix": "I build an online shop made to fit your work: product and stock management, an order and payment system, customer management, and links to shipping companies and other services.",
+      "includes": [
+        "Custom online shops",
+        "Product and stock management",
+        "Order and payment systems",
+        "Customer management",
+        "Shipping and links to other services"
+      ],
+      "name": "Online shops",
+      "screen": "store"
+    },
+    {
+      "question": "Your work runs on paper and spreadsheets?",
+      "why": "Spreadsheets, paper and scattered messages don’t grow with your business.",
+      "fix": "I build custom web applications, business management systems, internal platforms for your organisation, CRM and operations systems, and SaaS products, with their back end, APIs and database connections, and stay with you to develop and maintain them.",
+      "includes": [
+        "Custom web applications",
+        "Business management systems",
+        "Internal platforms for organisations",
+        "CRM and operations systems",
+        "SaaS product development",
+        "Back-end systems, APIs and database connections"
+      ],
+      "name": "Custom systems and software"
+    }
+  ],
+  "goal": ["I don’t start with a line of code.", "I start with a question: does your idea deserve to be built?"],
+  "next": "accounts"
+}

@@ -1,0 +1,14 @@
+---
+/** Beside the form (desktop): a phone where the message writes itself as the visitor types (#bubble, request-form.ts). */
+import { useTranslations } from '@/i18n';
+
+const t = useTranslations(Astro.currentLocale);
+---
+
+<aside class="preview" aria-hidden="true">
+        <div class="device"><div class="glass"><div class="scr show on">
+          <div class="chat-top"><i class="av sm">{t('forms.preview.initial')}</i><p><b>{t('forms.preview.name')}</b><span>{t('forms.preview.status')}</span></p></div>
+          <p class="bubble" id="bubble"></p>
+        </div></div></div>
+        <p class="dev-cap">{t('forms.preview.caption')}</p>
+      </aside>

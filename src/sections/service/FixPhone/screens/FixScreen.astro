@@ -1,0 +1,34 @@
+---
+/**
+ * The phone screen for one fix: the drawing its content names (problem.screen), from the service's screens
+ * component; a fix with no drawing of its own shows what it includes, ticked.
+ */
+import Icon from '@/components/ui/Icon/Icon.astro';
+import type { ServiceId } from '@/config/routes';
+import { useTranslations } from '@/i18n';
+import AccountsScreens from './AccountsScreens.astro';
+import AiScreens from './AiScreens.astro';
+import SoftwareScreens from './SoftwareScreens.astro';
+
+interface Props {
+  service: ServiceId;
+  /** the drawing's name, or none */
+  screen?: string;
+  /** the fix's name and what it includes, for a fix with no drawing */
+  name: string;
+  includes: string[];
+}
+const { service, screen, name, includes } = Astro.props;
+const t = useTranslations(Astro.currentLocale);
+const Screens = { accounts: AccountsScreens, ai: AiScreens, software: SoftwareScreens }[service];
+---
+
+{screen ? <Screens screen={screen} /> : (
+<div class="scr scr-study">
+          <p class="scr-t">{name}</p>
+          <p class="scr-s">{t('service.includes')}</p>
+          <ul class="checks">
+            {includes.map((item, i) => <li style={`--i:${i}`}><Icon name="check" /><span>{item}</span></li>)}
+          </ul>
+        </div>
+)}

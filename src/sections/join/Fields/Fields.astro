@@ -1,0 +1,35 @@
+---
+/**
+ * «المجالات التي أحتاجها»: the fields the work needs collaborators in (join-fields content), as one mosaic of
+ * tiles that fills the screen under the heading, each a drawing of the craft over its name (FieldFigure). The
+ * fields are named here, not chosen: the form below offers the same list. The section holds a full screen of its
+ * own, so the menu's link lands on it alone.
+ */
+import { useTranslations } from '@/i18n';
+import { getJoinFields } from '@/lib/content';
+import FieldFigure from './FieldFigure.astro';
+
+const t = useTranslations(Astro.currentLocale);
+const fields = await getJoinFields(Astro.currentLocale);
+// the mosaic's shape on the computer: one large tile, two wide ones closing the first and last rows, the rest small
+const sizes = ['big', 'wide', 'small', 'small', 'small', 'small', 'wide'];
+---
+
+<section class="fields-sec" data-stage="light" aria-labelledby="fields-title"><div class="wrap fields-mosaic">
+    <div class="fields-head">
+      <h2 class="h2" id="fields-title">{t('join.fieldsTitle')}</h2>
+      <p class="intro-p">{t('join.fieldsIntro')}</p>
+    </div>
+    <ul class="fields-tiles">
+      {
+        fields.map((field, i) => (
+          <li data-size={sizes[i] ?? 'small'}>
+            <div class="fig-box">
+              <FieldFigure field={field.value} />
+            </div>
+            <span>{field.label}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </div></section>

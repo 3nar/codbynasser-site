@@ -1,0 +1,28 @@
+---
+/**
+ * A service page's first screen: the problem alone, in the aura, at screen height. A dark hero (software) fades at
+ * its foot into the grey of the section after it.
+ */
+import Aura from '@/components/effects/Aura/Aura.astro';
+import PageHero from '@/components/sections/PageHero/PageHero.astro';
+import Pill from '@/components/ui/Pill/Pill.astro';
+import { routesFor } from '@/config/routes';
+import type { Service } from '@/lib/content';
+import ServiceSwitch from './ServiceSwitch.astro';
+
+const routes = routesFor(Astro.currentLocale);
+
+interface Props {
+  service: Service;
+}
+const { service } = Astro.props;
+const { tone, surface, shape, title, say, cta } = service.hero;
+---
+
+<PageHero tone={tone}>
+  <Aura slot="aura" class={surface} shape={shape} />
+  <ServiceSwitch current={service.id} />
+      <h1 id="page-title" data-echo>{title}</h1>
+      <p class="say">{say}</p>
+      <Pill tone={tone === 'dark' ? 'snow' : 'ink'} href={routes.requestFor({ service: service.id })} data-dock-hide>{cta}</Pill>
+</PageHero>

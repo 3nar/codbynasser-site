@@ -1,0 +1,33 @@
+---
+/**
+ * The problems, one at a time, and a phone that shows each fix. On desktop each problem is a screen tall and
+ * only the one holding the middle shows. Ends with the page's goal line and the way to the next service.
+ */
+import ArrowLink from '@/components/ui/ArrowLink/ArrowLink.astro';
+import { routesFor } from '@/config/routes';
+import { useTranslations } from '@/i18n';
+import { getServices, type Service } from '@/lib/content';
+import FixPhone from '../FixPhone/FixPhone.astro';
+import Problem from './Problem.astro';
+
+const routes = routesFor(Astro.currentLocale);
+
+interface Props {
+  service: Service;
+}
+const { service } = Astro.props;
+const t = useTranslations(Astro.currentLocale);
+const next = (await getServices(Astro.currentLocale)).find((s) => s.id === service.next);
+if (!next) throw new Error(`${service.id}: next service «${service.next}» not found`);
+---
+
+<section class="acc page" data-stage="light" aria-label={t('service.problemsLabel')}><div class="wrap">
+    <div class="acc-body" id="accBody">
+      {service.problems.map((problem, i) => <Problem n={i + 1} service={service.id} problem={problem} />)}
+      <FixPhone names={service.problems.map((problem) => problem.name)} />
+    </div>
+    <div class="acc-end">
+      <p class="goal-line" id="goal" data-echo><span>{service.goal[0]}</span> {service.goal[1]}</p>
+    </div>
+    <ArrowLink class="next" href={routes.service(next.id)}>{t('service.next', { name: next.name })}</ArrowLink>
+  </div></section>

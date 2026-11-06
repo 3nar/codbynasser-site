@@ -1,0 +1,18 @@
+---
+/** «من هنا؟»: where to go from the about page: a project to build, or work together. */
+import ArrowLink from '@/components/ui/ArrowLink/ArrowLink.astro';
+import { routesFor } from '@/config/routes';
+import { useTranslations } from '@/i18n';
+
+const routes = routesFor(Astro.currentLocale);
+
+const t = useTranslations(Astro.currentLocale);
+---
+
+<section class="ways" data-stage="light" aria-labelledby="ways-title"><div class="wrap">
+    <h2 class="h2" id="ways-title">{t('about.ways.title')}</h2>
+    <div class="ways-list">
+      <ArrowLink href={routes.request} data-dock-hide>{t('about.ways.project')}</ArrowLink>
+      <ArrowLink href={routes.join}>{t('about.ways.join')}</ArrowLink>
+    </div>
+  </div></section>

@@ -1,0 +1,12 @@
+---
+/** The tools a project was built with, in Latin script (left to right). Nothing when there are none. */
+import { useTranslations } from '@/i18n';
+
+interface Props {
+  tools: string[];
+}
+const { tools } = Astro.props;
+const t = useTranslations(Astro.currentLocale);
+---
+
+{tools.length > 0 && <ul class="chips" aria-label={t('projects.toolsLabel')}>{tools.map((tool) => <li dir="ltr">{tool}</li>)}</ul>}

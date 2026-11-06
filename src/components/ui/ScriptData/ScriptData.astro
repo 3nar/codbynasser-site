@@ -1,0 +1,16 @@
+---
+/**
+ * Hands data to the browser scripts without changing the page: JSON in a <script type="application/json">, which
+ * draws nothing and takes no part in the layout. The component that owns a behaviour renders its texts this way,
+ * in the page's language, and its script reads them with readScriptData(name) from @/scripts/script-data.
+ */
+interface Props {
+  name: string;
+  value: unknown;
+}
+const { name, value } = Astro.props;
+// "<" is written as <, so no text inside can close the script element early
+const json = JSON.stringify(value).replace(/</g, '\\u003c');
+---
+
+<script is:inline type="application/json" data-script-data={name} set:html={json} />

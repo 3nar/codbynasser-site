@@ -1,0 +1,20 @@
+---
+/**
+ * The switch between the three divisions, at the top of each division's page; the current one is marked. It
+ * names them as the services menu does, and with their short names where a phone has no room for more.
+ */
+import { routesFor, type ServiceId } from '@/config/routes';
+import { useTranslations } from '@/i18n';
+import { getServices } from '@/lib/content';
+
+const routes = routesFor(Astro.currentLocale);
+
+interface Props {
+  current: ServiceId;
+}
+const { current } = Astro.props;
+const t = useTranslations(Astro.currentLocale);
+const services = await getServices(Astro.currentLocale);
+---
+
+<nav class="switch" aria-label={t('service.switchLabel')}>{services.map((s) => <a href={routes.service(s.id)} aria-current={s.id === current ? 'page' : undefined}><span class="full">{s.name}</span><span class="short">{s.shortName}</span></a>)}</nav>

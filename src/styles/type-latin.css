@@ -1,0 +1,204 @@
+/*
+ * Type for English and Russian. The design's sizes were set for Arabic, whose letters sit lower and narrower at
+ * the same font-size; Latin and Cyrillic set at those sizes stand a quarter taller and run long. Here the same three
+ * voices get their own faces and their own scale, in one place, and Arabic is untouched (every rule is scoped to
+ * :root:not([lang='ar'])).
+ *
+ *   whisper — Source Serif 4, light, with optical sizing: the statements read like an editorial, the way Apple sets
+ *             New York beside San Francisco
+ *   voice   — Onest, heavy: headlines and controls; a grotesque drawn for Cyrillic first, so Russian is native, not
+ *             an afterthought
+ *   read    — Onest, regular: the body
+ *
+ * Display sizes come down to about four fifths of the Arabic ones; tracking tightens as size grows and leading
+ * closes in (Apple: negative tracking and tight leading on large type, open leading on body). Russian runs longer
+ * than English, so its largest lines step down once more.
+ */
+:root:not([lang='ar']) {
+  --whisper: 'Source Serif 4', 'Iowan Old Style', Georgia, serif;
+  --voice: 'Onest', system-ui, sans-serif;
+  --read: 'Onest', system-ui, sans-serif;
+}
+:root:not([lang='ar']) body {
+  line-height: 1.6;
+}
+/* headings break into even lines, paragraphs avoid a lone last word */
+:root:not([lang='ar']) :is(h1, h2, h3, .goal-line, .next) {
+  text-wrap: balance;
+}
+:root:not([lang='ar']) p {
+  text-wrap: pretty;
+}
+
+/* ── the whisper: light serif statements ── */
+:root:not([lang='ar']) .hero h1 {
+  font-size: clamp(1.875rem, 3.3vw, 3.125rem);
+  line-height: 1.12;
+  letter-spacing: -0.018em;
+}
+/* the stressed words turn to italic rather than heavy: the serif's own way of raising its voice */
+:root:not([lang='ar']) .hero h1 b {
+  font-weight: 500;
+  font-style: italic;
+}
+:root:not([lang='ar']) .lines p {
+  font-size: clamp(1.375rem, 2.1vw, 1.9375rem);
+  line-height: 1.4;
+  letter-spacing: -0.008em;
+}
+:root:not([lang='ar']) .lines h2 {
+  font-size: clamp(2.375rem, 5.4vw, 5rem);
+  line-height: 1.04;
+  letter-spacing: -0.028em;
+}
+:root:not([lang='ar']) .lines .after {
+  font-size: clamp(1.1875rem, 1.7vw, 1.5625rem);
+  line-height: 1.45;
+}
+:root:not([lang='ar']) .close h2 {
+  font-size: clamp(2.375rem, 5vw, 4.75rem);
+  line-height: 1.06;
+  letter-spacing: -0.026em;
+}
+:root:not([lang='ar']) .about-hero h1 {
+  font-size: clamp(3.5rem, 7.2vw, 6.75rem);
+  line-height: 1.12;
+  letter-spacing: -0.035em;
+}
+:root:not([lang='ar']) .lost h1 {
+  font-size: clamp(2.375rem, 4.8vw, 4.375rem);
+  line-height: 1.06;
+  letter-spacing: -0.026em;
+}
+:root:not([lang='ar']) .story-lead {
+  font-size: clamp(1.5rem, 2.4vw, 2.25rem);
+  line-height: 1.3;
+  letter-spacing: -0.014em;
+}
+:root:not([lang='ar']) .manifesto-quote blockquote {
+  font-size: clamp(1.5rem, 2.4vw, 2.25rem);
+  line-height: 1.3;
+  letter-spacing: -0.014em;
+}
+:root:not([lang='ar']) :is(.manifesto-guesses p, .manifesto-lines p) {
+  font-size: clamp(1.3125rem, 1.9vw, 1.75rem);
+  line-height: 1.4;
+  letter-spacing: -0.008em;
+}
+:root:not([lang='ar']) .goal-line {
+  font-size: clamp(1.625rem, 2.9vw, 2.625rem);
+  line-height: 1.16;
+  letter-spacing: -0.02em;
+}
+:root:not([lang='ar']) .steps .n {
+  font-size: 3.25rem;
+  letter-spacing: -0.02em;
+}
+/* the lines under a heading: light serif at reading size, a little heavier so its hairlines hold up */
+:root:not([lang='ar']) :is(.req-head .say, .page-hero .say, .pillar .say, .me .intro-p) {
+  font-size: clamp(1.1875rem, 1.6vw, 1.4375rem);
+  font-weight: 350;
+  line-height: 1.48;
+}
+/* a serif sets more words per line than Tajawal: the hero's line may use the column's full width */
+:root:not([lang='ar']) .page-hero .say {
+  max-width: 44ch;
+}
+/* Latin and Cyrillic run wider than Arabic: the same line width keeps the words beside him, not over him */
+:root:not([lang='ar']) .me .intro-p {
+  max-width: 26ch;
+}
+
+/* ── the voice: heavy grotesque headlines ── */
+:root:not([lang='ar']) .manifesto-big {
+  font-size: clamp(2.375rem, 5vw, 4.75rem);
+  line-height: 1.06;
+  letter-spacing: -0.026em;
+  text-wrap: balance;
+}
+:root:not([lang='ar']) .page-hero h1 {
+  font-size: clamp(2.25rem, 4.4vw, 3.875rem);
+  line-height: 1.04;
+  letter-spacing: -0.032em;
+}
+:root:not([lang='ar']) .req-head h1 {
+  font-size: clamp(2.25rem, 4vw, 3.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+:root:not([lang='ar']) .h2 {
+  font-size: clamp(2.125rem, 3.6vw, 3.25rem);
+  line-height: 1.06;
+  letter-spacing: -0.028em;
+}
+:root:not([lang='ar']) .pillar h3 {
+  font-size: clamp(2rem, 3.3vw, 3rem);
+  line-height: 1.06;
+  letter-spacing: -0.028em;
+}
+:root:not([lang='ar']) .feat h3 {
+  font-size: clamp(1.75rem, 2.8vw, 2.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.024em;
+}
+:root:not([lang='ar']) .prob h2 {
+  font-size: clamp(1.5rem, 2.3vw, 2.125rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+:root:not([lang='ar']) :is(.next, .sec-h) {
+  font-size: clamp(1.375rem, 2.2vw, 2rem);
+  line-height: 1.16;
+  letter-spacing: -0.02em;
+}
+:root:not([lang='ar']) :is(.does-list b, .sent h2, .steps h3) {
+  font-size: clamp(1.375rem, 2vw, 1.75rem);
+  line-height: 1.2;
+  letter-spacing: -0.016em;
+}
+:root:not([lang='ar']) .ways-list a {
+  font-size: clamp(1.25rem, 1.9vw, 1.625rem);
+  line-height: 1.25;
+  letter-spacing: -0.014em;
+}
+:root:not([lang='ar']) .about-hero .lead {
+  font-size: clamp(1.1875rem, 1.6vw, 1.4375rem);
+  line-height: 1.35;
+}
+:root:not([lang='ar']) .prob .fix {
+  font-size: clamp(1.125rem, 1.45vw, 1.25rem);
+  line-height: 1.5;
+  letter-spacing: -0.006em;
+}
+:root:not([lang='ar']) .fields-tiles span {
+  letter-spacing: -0.01em;
+}
+
+@media (max-width: 1023px) {
+  :root:not([lang='ar']) .steps .n {
+    font-size: 2.625rem;
+  }
+}
+
+/* ── Russian runs a fifth longer than English: its largest lines step down once more ── */
+:root:lang(ru) .lines h2 {
+  font-size: clamp(2.125rem, 4.6vw, 4.25rem);
+}
+:root:lang(ru) .close h2 {
+  font-size: clamp(2.125rem, 4.3vw, 4rem);
+}
+:root:lang(ru) .manifesto-big {
+  font-size: clamp(2.125rem, 4.3vw, 4rem);
+}
+:root:lang(ru) .about-hero h1 {
+  font-size: clamp(3.125rem, 6.4vw, 6rem);
+}
+:root:lang(ru) .page-hero h1 {
+  font-size: clamp(2rem, 3.9vw, 3.375rem);
+}
+:root:lang(ru) .req-head h1 {
+  font-size: clamp(2rem, 3.6vw, 3.125rem);
+}
+:root:lang(ru) :is(.h2, .pillar h3) {
+  font-size: clamp(1.875rem, 3.1vw, 2.75rem);
+}

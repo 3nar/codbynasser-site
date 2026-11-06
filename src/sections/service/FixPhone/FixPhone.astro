@@ -1,0 +1,18 @@
+---
+/**
+ * The sticky phone beside the problems (desktop). It fills with the first fix as soon as it shows, and changes
+ * screen with the problem that holds the middle of the screen; below it, one progress segment per problem and
+ * the name of the fix on show, by the same name the menu gives it. Filled in by fix-phone.ts.
+ */
+import { useTranslations } from '@/i18n';
+
+interface Props {
+  /** each fix's name, in problem order */
+  names: string[];
+}
+const { names } = Astro.props;
+const t = useTranslations(Astro.currentLocale);
+---
+
+<div class="dev-col" aria-hidden="true"><div class="device"><div class="glass" id="glass"></div></div>
+        <div class="dev-prog" id="devProg">{names.map(() => <i><b></b></i>)}</div><p class="dev-cap">{t('service.phoneCaption')} <span id="devName" data-names={names.join('|')}>{names[0]}</span></p></div>

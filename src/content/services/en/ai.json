@@ -1,0 +1,120 @@
+{
+  "order": 1,
+  "name": "AI and data",
+  "shortName": "AI",
+  "summary": "I turn your data into decisions, and build models and smart assistants that work inside your business.",
+  "meta": {
+    "title": "AI solutions, data analytics and chatbots | cod by nasser",
+    "description": "Dashboards from your data, sales forecasts, and AI chatbots that answer customers and automate routine work. Built on your own data, not a generic tool."
+  },
+  "hero": {
+    "tone": "light",
+    "surface": "light grid",
+    "shape": "ai",
+    "title": "AI and data",
+    "say": "Decisions from your numbers, and smart systems that work for you. I analyse your data and build on it models and assistants that work inside your business, on your own data, not on a general tool.",
+    "cta": "Tell me about your data"
+  },
+  "door": {
+    "title": "AI and data",
+    "say": "Decisions from your numbers, and smart systems that work for you.",
+    "questions": [
+      "Data analysis and performance dashboards",
+      "Forecasting and machine learning",
+      "Custom AI models",
+      "Smart assistants and automation",
+      "Image and document analysis",
+      "Optimisation and smart decisions"
+    ],
+    "cta": "All services in this division"
+  },
+  "problems": [
+    {
+      "question": "You have numbers, and don’t know what they mean?",
+      "why": "Sales, customers and costs in scattered spreadsheets, and decisions still made by instinct.",
+      "fix": "I analyse your business and operations data, from sales, revenue and costs to your customers’ behaviour, and build you performance dashboards with your own indicators, so you decide from your numbers, not your instinct.",
+      "includes": [
+        "Business and operations data analysis",
+        "Sales, revenue and cost analysis",
+        "Business performance dashboards and KPIs",
+        "Customer behaviour analysis",
+        "Data-driven decision support"
+      ],
+      "name": "Data analysis and performance dashboards"
+    },
+    {
+      "question": "Want to know what will happen, before it happens?",
+      "why": "Stock runs out or piles up, and fraud and risk show up too late.",
+      "fix": "I build machine learning models on your data that forecast sales and demand, detect anomalies and fraud, and assess and classify risk before it costs you.",
+      "includes": [
+        "Custom machine learning models",
+        "Sales and demand forecasting",
+        "Predictive analytics",
+        "Anomaly and fraud detection",
+        "Risk assessment and classification systems"
+      ],
+      "name": "Forecasting and machine learning",
+      "screen": "chart"
+    },
+    {
+      "question": "You need AI that knows your own business?",
+      "why": "Generic tools answer everything except questions about your business, and you pay for them every month.",
+      "fix": "I develop AI models made to fit your work: I train them on your data, or customise a ready model or a large language model, then measure its performance and improve it. That is how my project with Sberbank replaced a paid subscription.",
+      "includes": [
+        "Custom AI model development",
+        "Training models on your data",
+        "Customising and fine-tuning ready models",
+        "Adapting and improving large language models",
+        "Model evaluation and performance tuning"
+      ],
+      "name": "Custom AI models",
+      "screen": "docs"
+    },
+    {
+      "question": "Your customers ask the same questions, and your team repeats the same work?",
+      "why": "Every question waits for your reply, and every order is copied and moved by hand.",
+      "fix": "I build smart assistants and AI agents that answer your customers and your team from your own data, hand the chat over to you when a person is needed, automate repetitive workflows, and connect to your databases and business systems.",
+      "includes": [
+        "Custom smart chatbots",
+        "AI agents and smart assistants",
+        "RAG systems on your organisation’s own data",
+        "Customer service agents",
+        "An internal knowledge assistant for your team",
+        "Smart workflow automation",
+        "Connecting to databases and business systems"
+      ],
+      "name": "Smart assistants and automation",
+      "screen": "chat"
+    },
+    {
+      "question": "Lots of images and documents, and one pair of eyes to review them?",
+      "why": "Manual review is slow and tiring, and mistakes in it are costly.",
+      "fix": "I build computer vision systems that understand documents and images, verify identity and papers, detect, recognise and track objects, and analyse satellite imagery. In medical images and X-rays, a tool that supports the doctor, not a replacement.",
+      "includes": [
+        "Medical image and X-ray analysis, as a tool that supports the doctor",
+        "Document and image understanding",
+        "Identity and document verification",
+        "Object detection, recognition and tracking",
+        "Satellite image analysis"
+      ],
+      "name": "Image and document analysis"
+    },
+    {
+      "question": "Many daily decisions, and limited resources?",
+      "why": "Routes, schedules and resource allocation are decided by trial and error, and time and money are lost.",
+      "fix": "I build reinforcement learning models and simulation-based systems that try the options before you do, improve routes and resource allocation, and suggest the best decision. They help you decide, and don’t decide for you.",
+      "includes": [
+        "Reinforcement learning model development",
+        "Simulation-based smart systems",
+        "Route and resource optimisation",
+        "Smart decision systems"
+      ],
+      "name": "Optimisation and smart decisions"
+    }
+  ],
+  "goal": [
+    "AI isn’t the goal.",
+    "The goal is a clearer decision, hours that come back to you, and customers who don’t wait."
+  ],
+  "next": "software"
+}

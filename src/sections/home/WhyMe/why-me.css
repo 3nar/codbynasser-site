@@ -1,0 +1,80 @@
+/* WhyMe: the desk photo between the heading and the three points. */
+
+/* ── 5. why me: him, at his desk ── */
+.me {
+  background: var(--k12);
+  padding-top: clamp(96px, 9vw, 140px);
+}
+.me > .wrap:first-child {
+  position: relative;
+  z-index: 1;
+}
+/* the photo's own white sky slides up beside the heading, so he sits next to the question */
+.desk {
+  margin-top: clamp(-260px, -18vw, -40px);
+  overflow: hidden;
+}
+/* left-to-right pages mirror the photo, so the sky beside his head stays under the heading */
+html[dir='ltr'] .desk {
+  transform: scaleX(-1);
+}
+/* the crop keeps air above his head; the settle grows from the top edge, so his head is never cut while it eases in */
+.desk img {
+  width: 100%;
+  height: auto;
+  max-height: 64svh;
+  object-fit: cover;
+  object-position: 50% 20%;
+  transform-origin: 50% 0;
+  -webkit-mask-image: linear-gradient(#000 82%, transparent);
+  mask-image: linear-gradient(#000 82%, transparent);
+}
+.me .intro-p {
+  font-family: var(--whisper);
+  font-weight: 300;
+  font-size: clamp(1.25rem, 1.9vw, 1.625rem);
+  line-height: 1.55;
+  max-width: 30ch;
+}
+.me-points {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 40px;
+  margin-top: clamp(8px, 1vw, 16px);
+  padding-bottom: clamp(24px, 3vw, 48px);
+}
+.me-points > div {
+  padding-top: 22px;
+  border-top: 1px solid var(--k10);
+}
+.me-points b {
+  display: block;
+  font-family: var(--voice);
+  font-weight: 800;
+  font-size: var(--s2);
+}
+.me-points p {
+  font-size: 1rem;
+  color: var(--ink-2);
+  margin-top: 8px;
+  max-width: 36ch;
+}
+
+@media (max-width: 1023px) {
+  .me-points {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .desk {
+    margin-top: 24px;
+  }
+  .desk img {
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    object-position: 50% 40%;
+  }
+
+  .me-points {
+    gap: 28px;
+    margin-top: 24px;
+  }
+}

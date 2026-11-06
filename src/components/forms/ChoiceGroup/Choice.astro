@@ -1,0 +1,12 @@
+---
+/** One radio choice, drawn as a tappable chip. data-label is what the message says for it. */
+interface Props {
+  name: string;
+  value: string;
+  label: string;
+  checked?: boolean;
+}
+const { name, value, label, checked = false } = Astro.props;
+---
+
+<label class="choice"><input type="radio" name={name} value={value} data-label={label} checked={checked}><span>{label}</span></label>

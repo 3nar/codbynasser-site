@@ -1,0 +1,15 @@
+---
+/** «يشمل»: what a fix includes, as a labelled list (not pills, which looked like buttons). */
+import { useTranslations } from '@/i18n';
+
+interface Props {
+  /** unique on the page; ties the list to its label */
+  id: string;
+  items: string[];
+}
+const { id, items } = Astro.props;
+const t = useTranslations(Astro.currentLocale);
+---
+
+<p class="incl-h" id={id}>{t('service.includes')}</p>
+          <ul class="chips" aria-labelledby={id}>{items.map((item) => <li>{item}</li>)}</ul>

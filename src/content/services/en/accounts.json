@@ -1,0 +1,89 @@
+{
+  "order": 3,
+  "name": "Branding and digital growth",
+  "shortName": "Brand and growth",
+  "summary": "An identity people recognise, content people read, and a real audience that buys.",
+  "meta": {
+    "title": "Branding and social media management | cod by nasser",
+    "description": "Visual identity, posts and videos, social media management, and growth with a real audience that buys. No fake followers, no promised numbers."
+  },
+  "hero": {
+    "tone": "light",
+    "surface": "light dots",
+    "shape": "content",
+    "title": "Branding and digital growth",
+    "say": "A brand people know, and an audience that buys. I build your identity, write and design your content, manage your accounts, and bring you a real audience that cares about your work.",
+    "cta": "Tell me about your project"
+  },
+  "door": {
+    "title": "Branding and digital growth",
+    "say": "A brand people know, and an audience that buys.",
+    "questions": [
+      "Brand strategy and visual identity",
+      "Content and creative production",
+      "Social media management",
+      "Audience growth and client acquisition"
+    ],
+    "cta": "All services in this division"
+  },
+  "problems": [
+    {
+      "question": "Your business doesn’t look like itself from one post to the next?",
+      "why": "Without a clear identity, the customer remembers the service and forgets who provided it.",
+      "fix": "I set your brand’s strategy and its place among competitors, then design its logo and identity, its visual system of type and colour, and write a guide that keeps its look and tone in everything you publish.",
+      "includes": [
+        "Brand strategy and positioning",
+        "Logo and identity design",
+        "Visual identity systems",
+        "Type and colour systems",
+        "Brand guide and tone of voice"
+      ],
+      "name": "Brand strategy and visual identity"
+    },
+    {
+      "question": "Your posts fall short of your work?",
+      "why": "A customer sees your post before they see your work.",
+      "fix": "I set your content strategy and plan, write and design your posts, produce motion graphics and promo videos, and all the content your marketing needs.",
+      "includes": [
+        "Content strategy and plan",
+        "Social media copywriting",
+        "Graphic and post design",
+        "Motion graphics and promo videos",
+        "Marketing content production"
+      ],
+      "name": "Content and creative production",
+      "screen": "feed"
+    },
+    {
+      "question": "No time for your account?",
+      "why": "Between work and customers, posting becomes the last thing on your mind, and your account goes quiet for weeks.",
+      "fix": "I manage your personal account or your company’s accounts: a content calendar, posts on time, engagement with your audience, and an analysis of the account’s performance that shows what worked and what didn’t.",
+      "includes": [
+        "Personal account management",
+        "Company and business account management",
+        "Content calendar and publishing",
+        "Audience engagement",
+        "Account performance analysis"
+      ],
+      "name": "Social media management",
+      "screen": "week"
+    },
+    {
+      "question": "You post all the time, and the results don’t move?",
+      "why": "You may be talking to an audience that isn’t yours, or posting without a plan.",
+      "fix": "I study your audience and target the people who actually care about your work, build organic growth, run your social media campaigns, attract serious leads, and improve how many of them turn into orders. A real audience: no fake followers, and no promises of numbers.",
+      "includes": [
+        "Audience research and targeting",
+        "Organic growth strategies",
+        "Social media campaign management",
+        "Attracting serious leads",
+        "Customer acquisition strategies",
+        "Conversion and marketing performance"
+      ],
+      "name": "Audience growth and client acquisition",
+      "screen": "plan"
+    }
+  ],
+  "goal": ["The goal isn’t an account full of followers.", "The goal is a real audience that turns into customers."],
+  "next": "ai"
+}

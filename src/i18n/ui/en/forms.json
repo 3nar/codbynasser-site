@@ -1,0 +1,72 @@
+{
+  "optional": "optional",
+  "summary": "Check the marked fields before sending.",
+  "name": { "label": "Name", "placeholder": "Your full name" },
+  "reply": { "legend": "How should I reply?", "whatsapp": "WhatsApp", "email": "Email" },
+  "channels": { "whatsapp": "WhatsApp", "email": "email" },
+  "phone": {
+    "label": "Phone number",
+    "hint": "I’ll reply to the number you message me from. If it’s a different one, write it with the country code.",
+    "placeholder": "+964 7XX XXX XXXX"
+  },
+  "email": {
+    "label": "Email address",
+    "hint": "I’ll reply to the address you write from, unless you give another.",
+    "placeholder": "name@example.com"
+  },
+  "errors": {
+    "name": "Write your name so I know who I’m talking to.",
+    "service": "Choose the service you need.",
+    "specialty": "Choose your field.",
+    "details": "Write at least one line about your business or idea.",
+    "about": "Write at least one line about yourself.",
+    "phone": "Write a valid number, like +964 770 123 4567.",
+    "email": "Write a valid email address, like name@example.com.",
+    "url": "Write a full link starting with https://"
+  },
+  "preview": {
+    "initial": "N",
+    "name": "Nasser",
+    "status": "Reads your message and replies himself",
+    "caption": "This is your message as I’ll receive it.",
+    "fold": "See your message before sending"
+  },
+  "message": {
+    "service": {
+      "subject": "Service request",
+      "hello": "Hi Nasser, I’m {name}.",
+      "need": "Service: {service}",
+      "context": "{label}: {text}"
+    },
+    "join": {
+      "subject": "Collaboration request",
+      "hello": "Hi Nasser, I’m {name}, and I’d like to work with you.",
+      "specialty": "My field: {specialty}",
+      "portfolio": "My work: {portfolio}"
+    },
+    "reply": "Please reply via {channel}: {contact}",
+    "replyHere": "Please reply to me here.",
+    "gaps": {
+      "name": "your name",
+      "service": "the service",
+      "details": "your idea or problem, in two or three lines",
+      "specialty": "your field",
+      "about": "your experience, and what you love working on"
+    }
+  },
+  "send": {
+    "main": "Send via {channel}",
+    "alt": "or send it via {channel}",
+    "fine": "This site keeps nothing you type: the message is written on your device and goes straight to WhatsApp or your email."
+  },
+  "done": {
+    "title": "Your message is ready",
+    "ready": { "whatsapp": "Your message is ready in WhatsApp", "email": "Your message is ready in your email" },
+    "text": "Press “Send” there so your request reaches me, and I’ll reply via {channel}.",
+    "open": { "whatsapp": "Open the chat again", "email": "Open the email again" },
+    "copy": "Copy the message",
+    "copied": "Message copied. Paste it into a chat or an email to me.",
+    "copyFailed": "I couldn’t copy it automatically. Use the other button to open your message again.",
+    "again": "Send another request"
+  }
+}

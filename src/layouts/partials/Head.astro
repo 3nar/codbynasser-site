@@ -1,0 +1,63 @@
+---
+/**
+ * Everything in <head> but the bundled styles, which Astro adds itself (the fonts among them: styles/fonts.css,
+ * served from this site): the title and description search results show, what search engines may do with the page,
+ * the brand's icons and share image, and on a page search engines may list (lib/seo/pages.ts) its canonical
+ * address, the same page in the other languages, and its structured data.
+ */
+import { pathIn } from '@/config/routes';
+import { SITE } from '@/config/site';
+import { useTranslations } from '@/i18n';
+import { DEFAULT_LOCALE, LOCALES, LOCALE_ORDER, toLocale, type Locale } from '@/i18n/config';
+import { searchPages } from '@/lib/seo/pages';
+import MotionGate from './MotionGate.astro';
+import StructuredData from './StructuredData.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  /** the image the first screen shows, fetched before anything else */
+  preloadImage?: string;
+}
+const { title, description, preloadImage } = Astro.props;
+const locale = toLocale(Astro.currentLocale);
+const t = useTranslations(locale);
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const listed = searchPages(locale).find((page) => page.path === Astro.url.pathname);
+const robots = SITE.searchable && listed ? 'index, follow, max-image-preview:large' : 'noindex';
+const addressIn = (code: Locale) => new URL(pathIn(code, Astro.url.pathname, locale), Astro.site);
+// x-default: the language for a reader whose own is none of these
+const alternates = [
+  ...LOCALE_ORDER.map((code) => ({ code, href: addressIn(code) })),
+  { code: 'x-default', href: addressIn(DEFAULT_LOCALE) },
+];
+---
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{title}</title>
+<meta name="description" content={description}>
+<meta name="robots" content={robots}>
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/icon-192.png" sizes="192x192" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content={t('common.brandName')}>
+<meta property="og:title" content={title}>
+<meta property="og:description" content={description}>
+<meta property="og:url" content={canonical}>
+<meta property="og:locale" content={LOCALES[locale].intl.replace('-', '_')}>
+{LOCALE_ORDER.filter((code) => code !== locale).map((code) => <meta property="og:locale:alternate" content={LOCALES[code].intl.replace('-', '_')}>)}
+<meta property="og:image" content={new URL(`/og/${locale}.jpg`, Astro.site)}>
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content={t('common.brandLine')}>
+<meta name="twitter:card" content="summary_large_image">
+<MotionGate />
+{listed && <link rel="canonical" href={canonical}>}
+{listed && alternates.map((a) => <link rel="alternate" hreflang={a.code} href={a.href}>)}
+{preloadImage && <link rel="preload" as="image" href={preloadImage} fetchpriority="high">}
+{listed && <StructuredData page={listed} title={title} description={description} url={canonical.href} />}

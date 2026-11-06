@@ -1,0 +1,16 @@
+# Security headers for every response. Cloudflare (Pages, or Workers static assets) reads this file and does not
+# serve it; `astro preview` ignores it, so tests/unit/security-headers.test.ts checks it instead.
+#
+# The page's own Content-Security-Policy (scripts, styles, fonts, images) is the <meta> Astro writes into every
+# page with the hashes of its scripts and styles (security.csp in astro.config.mjs). The policy below adds what a
+# <meta> cannot carry; a browser enforces both, so each only narrows what the page may do.
+/*
+  Strict-Transport-Security: max-age=63072000; includeSubDomains
+  Content-Security-Policy: frame-ancestors 'none'; base-uri 'self'; object-src 'none'; form-action 'self'; upgrade-insecure-requests
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), serial=(), hid=(), bluetooth=(), midi=(), magnetometer=(), gyroscope=(), accelerometer=(), display-capture=(), browsing-topics=()
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Resource-Policy: same-origin
+  X-Permitted-Cross-Domain-Policies: none

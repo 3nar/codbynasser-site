@@ -1,0 +1,33 @@
+---
+/**
+ * «ما الذي تحتاجه؟»: the service (from the services content), or «not sure». A request link chooses it already
+ * (?s=ai&p=2, ?project=tutubot); the note under the choices then says what the visitor came from, with a button
+ * to clear it (request-form.ts).
+ */
+import ChoiceGroup from '@/components/forms/ChoiceGroup/ChoiceGroup.astro';
+import type { PrefillData } from '@/components/forms/RequestForm/request-form';
+import Icon from '@/components/ui/Icon/Icon.astro';
+import ScriptData from '@/components/ui/ScriptData/ScriptData.astro';
+import { useTranslations } from '@/i18n';
+import { getProjects, getServices } from '@/lib/content';
+
+const t = useTranslations(Astro.currentLocale);
+const services = await getServices(Astro.currentLocale);
+const projects = await getProjects(Astro.currentLocale);
+const options = [
+  ...services.map((service) => ({ value: service.id, label: service.name })),
+  { value: 'unsure', label: t('request.service.unsure') },
+];
+// what a request link may name (?s=ai&p=2, ?project=tutubot), for the script to fill in
+const prefill: PrefillData = {
+  problems: Object.fromEntries(services.map((s) => [s.id, s.problems.map((p) => p.question)])),
+  projects: Object.fromEntries(projects.map((p) => [p.id, p.shortTitle])),
+  labels: { problem: t('request.context.problem'), project: t('request.context.project') },
+  noteHtml: t('request.context.noteHtml'),
+};
+---
+
+<ChoiceGroup name="service" legend={t('request.service.legend')} options={options}>
+  <div class="ctx" id="ctx" hidden><span id="ctxText"></span><button type="button" id="ctxClear" aria-label={t('request.service.clear')}><Icon name="close" /></button></div>
+</ChoiceGroup>
+<ScriptData name="prefill" value={prefill} />

@@ -1,0 +1,23 @@
+---
+/** The request page: the shared form, with the page's heading, the service, the project, and the name. */
+import Field from '@/components/forms/Field/Field.astro';
+import RequestForm from '@/components/forms/RequestForm/RequestForm.astro';
+import { useTranslations } from '@/i18n';
+import RequestHeader from '../RequestHeader/RequestHeader.astro';
+import ServiceChoice from '../ServiceChoice/ServiceChoice.astro';
+
+const t = useTranslations(Astro.currentLocale);
+---
+
+<RequestForm id="top" labelledBy="page-title" kind="service">
+  <RequestHeader slot="head" />
+  <ServiceChoice />
+  <Field
+    name="details"
+    label={t('request.details.label')}
+    multiline
+    placeholder={t('request.details.placeholder')}
+    hint={t('request.details.hint')}
+  />
+  <Field name="name" label={t('forms.name.label')} autocomplete="name" placeholder={t('forms.name.placeholder')} />
+</RequestForm>

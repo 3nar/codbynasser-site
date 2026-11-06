@@ -1,0 +1,14 @@
+{
+  "group": "systems",
+  "order": 2,
+  "title": "A seat-booking platform for domestic trips",
+  "shortTitle": "Trip seat booking",
+  "kind": "A website",
+  "summary": "A seat-booking website that shows the available trips and lets users choose a seat, manage their booking and cancel it. A safeguard stops the same seat from being booked twice.",
+  "mini": {
+    "light": true,
+    "a": "24% 70%",
+    "b": "50% 70%",
+    "c": "76% 70%"
+  }
+}

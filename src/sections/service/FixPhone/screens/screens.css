@@ -1,0 +1,608 @@
+/* The fixes as the phone shows them, and how each screen's parts arrive. */
+
+/* screen 1: a month's plan, where every post has a reason */
+.plan {
+  list-style: none;
+  margin-top: 14px;
+}
+.plan li {
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  padding-block: 9px;
+  border-bottom: 1px solid var(--k10);
+  transition:
+    opacity 0.4s var(--ease),
+    transform 0.5s var(--ease);
+}
+.plan .th {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+}
+.th.a {
+  background: var(--ink);
+}
+.th.b {
+  background: var(--k8);
+}
+.th.c {
+  background: var(--k5);
+}
+.th.d {
+  background: var(--k10);
+}
+.plan span {
+  font-size: 0.78125rem;
+  line-height: 1.4;
+}
+.plan b {
+  font-weight: 500;
+  font-size: 0.6875rem;
+  padding: 2px 9px;
+  border-radius: 999px;
+  background: var(--k11);
+  color: var(--ink-2);
+  transition:
+    opacity 0.3s var(--ease),
+    transform 0.4s var(--ease);
+}
+.plan b.hot {
+  background: var(--ink);
+  color: var(--k12);
+}
+.aim {
+  margin-top: 16px;
+  padding: 14px;
+  border-radius: 16px;
+  background: var(--ink);
+  color: var(--snow);
+  transition:
+    opacity 0.45s var(--ease),
+    transform 0.55s var(--ease);
+}
+.aim small {
+  display: block;
+  font-size: 0.6875rem;
+  color: var(--snow-2);
+}
+.aim p {
+  font-family: var(--voice);
+  font-weight: 700;
+  font-size: 0.9375rem;
+  margin-top: 2px;
+}
+/* screen 2: the week is scheduled, and posts go out on time */
+.push {
+  position: absolute;
+  z-index: 2;
+  top: 48px;
+  right: 10px;
+  left: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 16px;
+  background: rgba(245, 245, 247, 0.94);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.25);
+  transition:
+    opacity 0.35s var(--ease),
+    transform 0.5s var(--sheet);
+}
+.push svg {
+  width: 26px;
+  height: 26px;
+  flex: none;
+}
+.push p {
+  display: grid;
+  font-size: 0.6875rem;
+  line-height: 1.4;
+  color: var(--ink-2);
+}
+.push b {
+  font-size: 0.75rem;
+  color: var(--ink);
+}
+.scr-week .scr-t {
+  margin-top: 74px;
+}
+.days {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin-top: 14px;
+  text-align: center;
+}
+.days span {
+  display: block;
+  font-size: 0.6875rem;
+  color: var(--ink-3);
+}
+.days i {
+  display: block;
+  width: 26px;
+  height: 26px;
+  margin: 4px auto 0;
+  border-radius: 50%;
+}
+.days .has i {
+  background: var(--k10);
+  transition:
+    opacity 0.3s var(--ease),
+    transform 0.4s var(--ease);
+}
+.days .today i {
+  background: var(--ink);
+}
+.slots {
+  list-style: none;
+  margin-top: 14px;
+}
+.slots li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding-block: 9px;
+  border-bottom: 1px solid var(--k10);
+  transition:
+    opacity 0.4s var(--ease),
+    transform 0.5s var(--ease);
+}
+.slots span {
+  display: grid;
+}
+.slots b {
+  font-weight: 500;
+  font-size: 0.78125rem;
+}
+.slots time {
+  font-size: 0.6875rem;
+  color: var(--ink-3);
+}
+.slots em {
+  font-style: normal;
+  font-size: 0.6875rem;
+  padding: 2px 9px;
+  border-radius: 999px;
+  background: var(--k11);
+  color: var(--ink-2);
+}
+.slots em.done {
+  background: var(--ink);
+  color: var(--k12);
+}
+/* screen 3: a profile whose grid finds one identity */
+.prof {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.prof p {
+  display: grid;
+}
+.prof b {
+  font-family: var(--voice);
+  font-weight: 800;
+  font-size: 1.0625rem;
+}
+.prof span {
+  font-size: 0.6875rem;
+  color: var(--ink-3);
+}
+.hls {
+  display: flex;
+  gap: 12px;
+  margin-top: 14px;
+}
+.hls i {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--k11);
+  box-shadow: inset 0 0 0 1.5px var(--k9);
+}
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin: 16px -16px 0;
+}
+.tiles i {
+  position: relative;
+  aspect-ratio: 1;
+  display: grid;
+  align-content: end;
+  padding: 8px;
+  transition:
+    background-color 0.45s var(--ease),
+    color 0.45s var(--ease),
+    box-shadow 0.45s var(--ease);
+}
+.tiles b {
+  display: block;
+  height: 4px;
+  width: 62%;
+  margin-top: 4px;
+  border-radius: 2px;
+  background: currentColor;
+  transition: opacity 0.35s var(--ease);
+}
+.tiles b + b {
+  width: 40%;
+}
+.tiles svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 22px;
+  height: 22px;
+  margin: -11px 0 0 -11px;
+  transition: opacity 0.35s var(--ease);
+}
+.t-ink {
+  background: var(--ink);
+  color: var(--k12);
+}
+.t-vid {
+  background: var(--k3);
+  color: var(--k12);
+}
+.t-soft {
+  background: var(--k10);
+  color: var(--ink);
+}
+.t-line {
+  background: var(--k12);
+  color: var(--ink);
+  box-shadow: inset 0 0 0 1px var(--k9);
+}
+/* in motion, each screen starts at the problem and moves to the fix when its problem is read */
+.scr.on .plan li,
+.scr.on .slots li {
+  transition-delay: calc(var(--i) * 70ms + 120ms);
+}
+.scr.on .plan b {
+  transition-delay: calc(var(--i) * 70ms + 300ms);
+}
+.scr.on .aim {
+  transition-delay: 0.55s;
+}
+.scr.on .days .has i {
+  transition-delay: calc(var(--i) * 45ms + 80ms);
+}
+.scr.on .push {
+  transition-delay: 0.45s;
+}
+.scr.on .tiles i {
+  transition-delay: calc(var(--i) * 45ms + 100ms);
+}
+.scr.on .tiles b,
+.scr.on .tiles svg {
+  transition-delay: calc(var(--i) * 45ms + 260ms);
+}
+.motion .scr:not(.on) .plan li,
+.motion .scr:not(.on) .slots li {
+  opacity: 0;
+  transform: translateY(10px);
+}
+.motion .scr:not(.on) .plan b {
+  opacity: 0;
+  transform: scale(0.9);
+}
+.motion .scr:not(.on) .aim {
+  opacity: 0;
+  transform: translateY(12px);
+}
+.motion .scr:not(.on) .days .has i {
+  opacity: 0;
+  transform: scale(0.6);
+}
+.motion .scr:not(.on) .push {
+  opacity: 0;
+  transform: translateY(-120%);
+}
+.motion .scr:not(.on) .tiles b,
+.motion .scr:not(.on) .tiles svg {
+  opacity: 0;
+}
+.motion .scr:not(.on) .tiles i {
+  color: transparent;
+  box-shadow: none;
+}
+.motion .scr:not(.on) .tiles i:nth-child(1) {
+  background: var(--k7);
+}
+.motion .scr:not(.on) .tiles i:nth-child(2) {
+  background: var(--k9);
+}
+.motion .scr:not(.on) .tiles i:nth-child(3) {
+  background: var(--k5);
+}
+.motion .scr:not(.on) .tiles i:nth-child(4) {
+  background: var(--k10);
+}
+.motion .scr:not(.on) .tiles i:nth-child(5) {
+  background: var(--k8);
+}
+.motion .scr:not(.on) .tiles i:nth-child(6) {
+  background: var(--k6);
+}
+.motion .scr:not(.on) .tiles i:nth-child(7) {
+  background: var(--k4);
+}
+.motion .scr:not(.on) .tiles i:nth-child(8) {
+  background: var(--k9);
+}
+.motion .scr:not(.on) .tiles i:nth-child(9) {
+  background: var(--k7);
+}
+
+/* screens for the AI page: a conversation, a day of finished tasks, a forecast, and answers from the owner's own files */
+
+.handoff {
+  justify-self: center;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--k11);
+  font-size: 0.6875rem;
+  color: var(--ink-2);
+  transition:
+    opacity 0.4s var(--ease),
+    transform 0.5s var(--ease);
+}
+.bars {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  align-items: end;
+  gap: 7px;
+  height: 150px;
+  margin-top: 22px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--k9);
+}
+.bars i {
+  height: var(--h);
+  border-radius: 6px 6px 2px 2px;
+  background: var(--k8);
+  transform-origin: bottom;
+  transition: transform 0.55s var(--ease);
+}
+.bars i.fore {
+  background: transparent;
+  box-shadow: inset 0 0 0 1.5px var(--ink);
+  background-image: repeating-linear-gradient(-45deg, var(--k10) 0 4px, transparent 4px 8px);
+}
+.bars-cap {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6px;
+  font-size: 0.65625rem;
+  color: var(--ink-3);
+}
+.files {
+  list-style: none;
+  display: grid;
+  gap: 8px;
+  margin-top: 14px;
+}
+.files li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 12px;
+  background: var(--k11);
+  font-size: 0.78125rem;
+  transition:
+    opacity 0.4s var(--ease),
+    transform 0.5s var(--ease);
+}
+.doc {
+  width: 22px;
+  height: 28px;
+  border-radius: 4px;
+  background: var(--k12);
+  box-shadow: inset 0 0 0 1.5px var(--k8);
+  position: relative;
+  flex: none;
+}
+.doc::after {
+  content: '';
+  position: absolute;
+  inset: 9px 5px auto;
+  height: 9px;
+  background: repeating-linear-gradient(var(--k8) 0 1.5px, transparent 1.5px 4px);
+}
+.scr-docs .msgs {
+  margin-top: 16px;
+}
+/* screens for the software page: the idea is weighed, drawn, then built */
+.checks {
+  list-style: none;
+  margin-top: 14px;
+}
+.checks li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-block: 11px;
+  border-bottom: 1px solid var(--k10);
+  font-size: 0.78125rem;
+  transition:
+    opacity 0.4s var(--ease),
+    transform 0.5s var(--ease);
+}
+.checks svg {
+  width: 22px;
+  height: 22px;
+  flex: none;
+}
+.wf {
+  display: grid;
+  gap: 8px;
+  margin-top: 16px;
+}
+.wf i {
+  display: block;
+  border-radius: 10px;
+  transition:
+    background-color 0.5s var(--ease),
+    box-shadow 0.5s var(--ease);
+}
+.wf .w1 {
+  height: 96px;
+  background: var(--ink);
+}
+.wf .w2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.wf .w2 i {
+  height: 64px;
+  background: var(--k10);
+}
+.wf .w3 {
+  height: 40px;
+  border-radius: 999px;
+  background: var(--ink);
+}
+.wf .w4 {
+  height: 16px;
+  width: 70%;
+  background: var(--k9);
+}
+.wf .w5 {
+  height: 16px;
+  width: 46%;
+  background: var(--k10);
+}
+.store-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 6px;
+}
+.store-top b {
+  font-family: var(--voice);
+  font-weight: 800;
+  font-size: 1.125rem;
+}
+.store-top i {
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  box-shadow: inset 0 0 0 1.5px var(--ink);
+}
+.banner {
+  margin-top: 12px;
+  padding: 16px 14px;
+  border-radius: 16px;
+  background: var(--ink);
+  color: var(--snow);
+  transition:
+    opacity 0.45s var(--ease),
+    transform 0.55s var(--ease);
+}
+.banner small {
+  display: block;
+  font-size: 0.6875rem;
+  color: var(--snow-2);
+}
+.banner p {
+  font-family: var(--voice);
+  font-weight: 800;
+  font-size: 1.125rem;
+}
+.prods {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 12px;
+}
+.prods i {
+  display: grid;
+  gap: 6px;
+  transition:
+    opacity 0.4s var(--ease),
+    transform 0.5s var(--ease);
+}
+.prods span {
+  aspect-ratio: 1;
+  border-radius: 12px;
+  background: var(--k10);
+}
+.prods i:nth-child(2) span {
+  background: var(--k8);
+}
+.prods i:nth-child(3) span {
+  background: var(--k9);
+}
+.prods i:nth-child(4) span {
+  background: var(--k11);
+  box-shadow: inset 0 0 0 1px var(--k9);
+}
+.prods b {
+  height: 6px;
+  width: 70%;
+  border-radius: 3px;
+  background: var(--k9);
+}
+.buy {
+  display: block;
+  margin-top: 12px;
+  padding: 10px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--k12);
+  text-align: center;
+  font-size: 0.78125rem;
+  font-weight: 500;
+  transition:
+    opacity 0.4s var(--ease),
+    transform 0.5s var(--ease);
+}
+.scr.on .msg,
+.scr.on .handoff,
+.scr.on .files li,
+.scr.on .checks li,
+.scr.on .prods i {
+  transition-delay: calc(var(--i) * 140ms + 120ms);
+}
+.scr.on .bars i {
+  transition-delay: calc(var(--i) * 60ms + 80ms);
+}
+.scr.on .wf i {
+  transition-delay: calc(var(--i) * 90ms + 120ms);
+}
+.scr.on .banner {
+  transition-delay: 0.1s;
+}
+.scr.on .buy {
+  transition-delay: 0.7s;
+}
+.motion .scr:not(.on) .msg,
+.motion .scr:not(.on) .handoff,
+.motion .scr:not(.on) .files li,
+.motion .scr:not(.on) .checks li,
+.motion .scr:not(.on) .prods i,
+.motion .scr:not(.on) .buy,
+.motion .scr:not(.on) .banner {
+  opacity: 0;
+  transform: translateY(10px);
+}
+.motion .scr:not(.on) .bars i {
+  transform: scaleY(0.18);
+}
+.motion .scr:not(.on) .wf i {
+  background: transparent;
+  box-shadow: inset 0 0 0 1.5px var(--k8);
+}

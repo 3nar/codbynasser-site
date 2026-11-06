@@ -1,0 +1,24 @@
+{
+  "meta": {
+    "title": "Work with me: code, AI, design and content | cod by nasser",
+    "description": "Developer, AI engineer, designer, or video and content creator? Introduce yourself and your work: there may be a place for you in my next project."
+  },
+  "hero": {
+    "title": "I work with collaborators, and you could be one of them.",
+    "say": "I deliver projects myself, and bring in collaborators when a project needs them. If you’re skilled in one of these fields and enjoy careful work, introduce yourself.",
+    "cta": "Apply as a collaborator"
+  },
+  "fieldsTitle": "The fields I need",
+  "fieldsIntro": "Good at one of them? Tell me about yourself in the form.",
+  "apply": {
+    "title": "Introduce yourself",
+    "say": "Tell me your field, share a link to your work and say how to reach you. I review every application myself, and get in touch when I have a project that suits you."
+  },
+  "specialty": { "legend": "Your field" },
+  "portfolio": {
+    "label": "Link to your work",
+    "hint": "A website, Behance, GitHub or any link.",
+    "placeholder": "https://"
+  },
+  "about": { "label": "Introduce yourself", "placeholder": "Your experience, and what you love working on" }
+}

@@ -1,0 +1,29 @@
+/* SendBar: the send button, the other channel, and the fine print. */
+
+.submit {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.submit .pill {
+  min-width: 180px;
+}
+.alt-send {
+  min-height: 44px;
+  font-size: 0.9375rem;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  text-decoration-thickness: 1px;
+  color: var(--ink-2);
+}
+.alt-send:hover {
+  color: var(--ink);
+}
+.fine {
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: var(--ink-3);
+  margin-top: -18px;
+  max-width: 52ch;
+}

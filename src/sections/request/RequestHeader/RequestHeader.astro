@@ -1,0 +1,9 @@
+---
+/** The request page's heading, above the form. */
+import { useTranslations } from '@/i18n';
+
+const t = useTranslations(Astro.currentLocale);
+---
+
+<h1 id="page-title" data-echo>{t('request.title')}</h1>
+        <p class="say">{t('request.say')}</p>

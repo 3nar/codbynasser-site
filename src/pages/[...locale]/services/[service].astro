@@ -1,0 +1,29 @@
+---
+/** /services/accounts/ · /services/ai/ · /services/software/ (and /en/…, /ru/…): one page per service and language. */
+import ClosingCta from '@/components/sections/ClosingCta/ClosingCta.astro';
+import { localePaths } from '@/config/routes';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getServices, type Service } from '@/lib/content';
+import Problems from '@/sections/service/Problems/Problems.astro';
+import ServiceHero from '@/sections/service/ServiceHero/ServiceHero.astro';
+
+export async function getStaticPaths() {
+  const pages = await Promise.all(
+    localePaths().map(async ({ params }) =>
+      (await getServices(params.locale)).map((service) => ({ params: { ...params, service: service.id }, props: { service } })),
+    ),
+  );
+  return pages.flat();
+}
+
+interface Props {
+  service: Service;
+}
+const { service } = Astro.props;
+---
+
+<BaseLayout title={service.meta.title} description={service.meta.description} service={service.id}>
+  <ServiceHero service={service} />
+  <Problems service={service} />
+  <ClosingCta service={service.id} />
+</BaseLayout>

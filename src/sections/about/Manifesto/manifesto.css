@@ -1,0 +1,81 @@
+/* Manifesto: the brand's story on the dark stage, read line by line. The whisper tells it; the voice lands it. */
+
+.manifesto {
+  position: relative;
+  /* a pixel over each neighbour: the hero leaves a pale last row, and two dark stages must never show a seam */
+  margin-block: -1px;
+  background: var(--k0);
+  color: var(--snow);
+  padding-block: clamp(120px, 12vw, 190px) 32px;
+}
+.manifesto-quote blockquote {
+  font-family: var(--whisper);
+  font-weight: 300;
+  font-size: clamp(1.625rem, 2.9vw, 2.75rem);
+  line-height: 1.5;
+  max-width: 28ch;
+  text-wrap: pretty;
+}
+.manifesto-quote figcaption {
+  font-size: var(--s-1);
+  color: var(--snow-2);
+  margin-top: 18px;
+}
+.manifesto-tale,
+.manifesto-call {
+  margin-top: clamp(96px, 11vw, 170px);
+}
+.manifesto-big {
+  font-family: var(--voice);
+  font-weight: 800;
+  font-size: clamp(2.625rem, 6.2vw, 5.75rem);
+  line-height: 1.2;
+}
+.manifesto-guesses {
+  margin-block: clamp(28px, 3vw, 44px);
+}
+.manifesto-guesses p,
+.manifesto-lines p {
+  font-family: var(--whisper);
+  font-weight: 300;
+  font-size: clamp(1.375rem, 2.3vw, 2.125rem);
+  line-height: 1.5;
+}
+.manifesto-guesses p {
+  color: var(--snow-2);
+}
+.manifesto-why {
+  font-size: var(--s1);
+  color: var(--snow-2);
+  max-width: 46ch;
+  margin-top: 24px;
+}
+.manifesto-source {
+  font-size: 0.75rem;
+  color: var(--k6);
+  margin-top: 16px;
+}
+.manifesto-lines {
+  display: grid;
+  gap: 18px;
+  max-width: 34ch;
+  margin-top: clamp(28px, 3vw, 44px);
+}
+.manifesto-name {
+  font-family: var(--voice);
+  font-weight: 800;
+  font-size: var(--s2);
+  max-width: 34ch;
+  margin-top: clamp(48px, 5vw, 72px);
+  padding-top: 22px;
+  border-top: 1px solid var(--k3);
+}
+
+/* on a wide screen the call's four lines read in two rows, in the reading direction */
+@media (min-width: 1024px) {
+  .manifesto-lines {
+    grid-template-columns: repeat(2, minmax(0, 34ch));
+    gap: 32px 72px;
+    max-width: none;
+  }
+}

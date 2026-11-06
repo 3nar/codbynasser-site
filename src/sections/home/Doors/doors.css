@@ -1,0 +1,186 @@
+/* Doors: the three doors, the light behind them and the switch over them. */
+
+/* ── services on the home page: three doors, one at a time; the aura takes a new shape at each ── */
+.pillars {
+  background: var(--k11);
+  isolation: isolate;
+  overflow: clip;
+}
+.pillars-head {
+  padding-top: clamp(110px, 11vw, 170px);
+}
+.pillars-body {
+  position: relative;
+}
+/* the light and the switch each ride a track as tall as the doors, so neither can leave the section */
+.track {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.track-light {
+  z-index: -1;
+}
+/* the light fades in under the heading and out before «why me»: two veils in the section's own grey, no hard edge */
+.pillars-body::before,
+.pillars-body::after {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  z-index: 0;
+  height: 22svh;
+  pointer-events: none;
+}
+.pillars-body::before {
+  top: 0;
+  background: linear-gradient(var(--k11), rgba(245, 245, 247, 0));
+}
+/* …and the grey itself ends in white, so the doors pass into «why me» with no edge */
+.pillars-body::after {
+  bottom: 0;
+  background: linear-gradient(rgba(245, 245, 247, 0), var(--k11) 45%, var(--k12));
+}
+.track-light > .aura {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+}
+.track-nav {
+  z-index: 2;
+}
+.pillar {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  align-content: center;
+  min-height: 100svh;
+  width: min(100%, 1280px);
+  margin-inline: auto;
+  padding: 96px var(--gut) 140px;
+  pointer-events: none;
+}
+.pillar > div {
+  max-width: 540px;
+  pointer-events: auto;
+  transition:
+    opacity 0.6s var(--ease),
+    transform 0.9s var(--ease);
+}
+.motion .pillars-body.live .pillar:not(.on) > div {
+  opacity: 0.2;
+  transform: translateY(24px);
+}
+/* the switch floats over the doors: where you are, and a way to jump */
+.switch.doors {
+  position: sticky;
+  top: calc(100svh - 86px);
+  display: flex;
+  width: max-content;
+  margin: 0 auto;
+  pointer-events: auto;
+  background: rgba(255, 255, 255, 0.7);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+  box-shadow:
+    0 10px 30px -12px rgba(0, 0, 0, 0.25),
+    inset 0 0 0 1px rgba(0, 0, 0, 0.05);
+}
+.pillars-body.live .switch.doors:not(.at) {
+  opacity: 0;
+  transform: translateY(14px) scale(0.97);
+  visibility: hidden;
+  transition:
+    opacity 0.3s var(--ease),
+    transform 0.45s var(--ease),
+    visibility 0s linear 0.45s;
+}
+.pillars-body.live .switch.doors.at {
+  transition:
+    opacity 0.45s var(--ease),
+    transform 0.6s var(--ease),
+    visibility 0s;
+}
+.switch.doors a {
+  position: relative;
+  z-index: 1;
+  color: var(--ink-2);
+  transition: color 0.35s var(--ease);
+}
+.switch.doors a[aria-current='true'] {
+  color: var(--ink);
+}
+.switch .thumb {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  inset-inline-start: 4px;
+  width: 0;
+  border-radius: 999px;
+  background: var(--k12);
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.12),
+    0 4px 12px rgba(0, 0, 0, 0.06);
+  transition:
+    transform 0.45s var(--ease),
+    width 0.45s var(--ease);
+}
+.pillar h3 {
+  font-family: var(--voice);
+  font-weight: 800;
+  font-size: clamp(2.25rem, 4vw, 3.75rem);
+  line-height: 1.25;
+}
+.pillar .say {
+  font-family: var(--whisper);
+  font-weight: 300;
+  font-size: clamp(1.25rem, 1.8vw, 1.625rem);
+  line-height: 1.55;
+  color: var(--ink-2);
+  margin-top: 16px;
+}
+.qs {
+  list-style: none;
+  margin-top: 28px;
+  border-top: 1px solid var(--k9);
+}
+.qs a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  min-height: 56px;
+  border-bottom: 1px solid var(--k9);
+}
+.qs a svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  color: var(--ink-3);
+  transition: transform 0.3s var(--ease);
+}
+.qs a:hover svg {
+  transform: translateX(-3px);
+}
+.pillar .pill {
+  margin-top: 32px;
+}
+
+@media (max-width: 1023px) {
+  .pillar {
+    align-content: end;
+    min-height: 100svh;
+    padding: 96px var(--gut) 12svh;
+  }
+  .track-nav {
+    display: none;
+  }
+  .motion .pillars-body.live .pillar:not(.on) > div {
+    opacity: 0.35;
+  }
+}
+/* on the computer the switch rides on the side of the light, clear of the door's words */
+@media (min-width: 1024px) {
+  .switch.doors {
+    margin-inline: auto max(var(--gut), calc((100vw - 1280px) / 2 + var(--gut)));
+  }
+}

@@ -1,0 +1,13 @@
+/* Logo: the cod wordmark, with a touch target larger than its letters. */
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  min-width: 44px;
+  min-height: 44px;
+  justify-self: start;
+}
+.brand svg {
+  height: 18px;
+  width: auto;
+}

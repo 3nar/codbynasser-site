@@ -1,0 +1,44 @@
+/* Ways: where to go from the about page. */
+
+.ways {
+  background: var(--k11);
+  padding-block: clamp(100px, 10vw, 150px);
+}
+.ways-list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 16px;
+  margin-top: 40px;
+}
+.ways-list a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  min-height: 140px;
+  padding: 32px 36px;
+  border-radius: 28px;
+  background: var(--k12);
+  font-family: var(--voice);
+  font-weight: 800;
+  font-size: clamp(1.375rem, 2.2vw, 1.875rem);
+  line-height: 1.35;
+  transition:
+    background-color 0.3s var(--ease),
+    color 0.3s var(--ease);
+}
+.ways-list a:hover {
+  background: var(--ink);
+  color: var(--k12);
+}
+.ways-list svg {
+  width: 26px;
+  height: 26px;
+  flex: none;
+}
+
+@media (max-width: 1023px) {
+  .ways-list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

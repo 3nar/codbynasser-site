@@ -1,0 +1,12 @@
+---
+/** The cod wordmark, linking home. Used in the header and the footer. */
+import { routesFor } from '@/config/routes';
+import { useTranslations } from '@/i18n';
+import Icon from '../Icon/Icon.astro';
+
+const routes = routesFor(Astro.currentLocale);
+
+const t = useTranslations(Astro.currentLocale);
+---
+
+<a class="brand" href={routes.home} aria-label={t('common.brandHome')}><Icon name="logo" /></a>

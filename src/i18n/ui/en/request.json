@@ -1,0 +1,19 @@
+{
+  "meta": {
+    "title": "Request a service or a consultation | cod by nasser",
+    "description": "Tell me in one message what’s holding your business back, or ask for a consultation if you’re unsure. I reply myself, on WhatsApp or by email."
+  },
+  "title": "Tell me what’s giving you trouble.",
+  "say": "One message is enough, and it commits you to nothing. I read every request myself, and reply the way you choose.",
+  "service": {
+    "legend": "What do you need?",
+    "unsure": "I’m not sure yet and need advice",
+    "clear": "Remove this choice"
+  },
+  "context": { "problem": "This caught my eye", "project": "Similar project", "noteHtml": "<b>{label}:</b> {text}" },
+  "details": {
+    "label": "Tell me about your business or idea",
+    "placeholder": "For example: I run a clothing shop, and customers ask the same questions every day.",
+    "hint": "Two or three lines are enough. No technical terms needed."
+  }
+}

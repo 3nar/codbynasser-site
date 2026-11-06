@@ -1,0 +1,8 @@
+---
+/** The first focusable link: jumps past the header to the page's content. */
+import { useTranslations } from '@/i18n';
+
+const t = useTranslations(Astro.currentLocale);
+---
+
+<a class="skip" href="#main">{t('common.skip')}</a>

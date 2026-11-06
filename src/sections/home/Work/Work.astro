@@ -1,0 +1,33 @@
+---
+/**
+ * 5 · work: the two featured projects from the projects content, as proof beside the offer, each with a way to
+ * ask for something like it; then the way to every project.
+ */
+import ArrowLink from '@/components/ui/ArrowLink/ArrowLink.astro';
+import Pill from '@/components/ui/Pill/Pill.astro';
+import { routesFor } from '@/config/routes';
+import { useTranslations } from '@/i18n';
+import { getProjects } from '@/lib/content';
+
+const routes = routesFor(Astro.currentLocale);
+const t = useTranslations(Astro.currentLocale);
+const featured = (await getProjects(Astro.currentLocale)).filter((p) => p.group === 'featured');
+---
+
+<section class="work" id="work" data-stage="light" aria-labelledby="work-title"><div class="wrap">
+    <h2 class="h2" id="work-title">{t('home.work.title')}</h2>
+    <p class="intro-p">{t('home.work.intro')}</p>
+    <div class="work-grid">
+      {featured.map((project) => (
+        <article class="work-card" aria-labelledby={`work-${project.id}`}>
+          {project.feature && <p class="work-badge">{project.feature.badge}</p>}
+          <h3 id={`work-${project.id}`}>{project.title}</h3>
+          <p class="work-kind">{project.kind}</p>
+          <p class="blurb" set:html={project.summary} />
+          <ul class="tools" dir="ltr">{project.tools.map((tool) => <li>{tool}</li>)}</ul>
+          <ArrowLink class="link" href={routes.requestFor({ project: project.id })}>{t('home.work.similar')}</ArrowLink>
+        </article>
+      ))}
+    </div>
+    <Pill tone="ink" href={routes.projects}>{t('home.work.all')}</Pill>
+  </div></section>

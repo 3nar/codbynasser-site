@@ -1,0 +1,26 @@
+---
+/**
+ * 3 · services: the three divisions as doors, one screen each, from the services content. Behind them the liquid
+ * light stays fixed on screen and takes each door's figure as the reader walks from one to the next; the switch
+ * shows which door is in view.
+ */
+import LiquidLight from '@/components/effects/LiquidLight/LiquidLight.astro';
+import { useTranslations } from '@/i18n';
+import { getServices } from '@/lib/content';
+import Door from './Door.astro';
+
+const t = useTranslations(Astro.currentLocale);
+const services = await getServices(Astro.currentLocale);
+---
+
+<section class="pillars" id="services" data-stage="light" aria-labelledby="services-title">
+    <div class="wrap pillars-head">
+      <h2 class="h2" id="services-title">{t('home.doors.title')}</h2>
+      <p class="intro-p">{t('home.doors.intro')}</p>
+    </div>
+    <div class="pillars-body" id="pillarsBody">
+      <div class="track track-light" aria-hidden="true"><LiquidLight surface="light dots" id="pillarAura" /></div>
+      <div class="track track-nav"><nav class="switch doors" id="doorsNav" aria-label={t('home.doors.switchLabel')}><span class="thumb" aria-hidden="true"></span>{services.map((s, i) => <a href={`#door-${s.id}`} aria-current={i === 0 ? 'true' : undefined}>{s.name}</a>)}</nav></div>
+    {services.map((service) => <Door service={service} />)}
+    </div>
+  </section>

@@ -1,0 +1,24 @@
+---
+/** One row of the project index: the small aura, title and kind, then the summary, tools and the request link. */
+import ArrowLink from '@/components/ui/ArrowLink/ArrowLink.astro';
+import { routesFor } from '@/config/routes';
+import { useTranslations } from '@/i18n';
+import type { Project } from '@/lib/content';
+import ToolList from '../ToolList/ToolList.astro';
+import MiniArt from './MiniArt.astro';
+
+const routes = routesFor(Astro.currentLocale);
+
+interface Props {
+  project: Project;
+}
+const { project } = Astro.props;
+if (!project.mini) throw new Error(`${project.id} is in the index but has no "mini" block`);
+const t = useTranslations(Astro.currentLocale);
+---
+
+<article class="proj" id={project.id} aria-labelledby={`h-${project.id}`}>
+        <MiniArt {...project.mini} />
+        <div><h3 id={`h-${project.id}`}>{project.title}</h3><p class="kind">{project.kind}</p></div>
+        <div><p set:html={project.summary} /><ToolList tools={project.tools} /><ArrowLink class="link" href={routes.requestFor({ project: project.id })}>{t('projects.similar')}</ArrowLink></div>
+      </article>

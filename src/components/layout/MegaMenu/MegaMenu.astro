@@ -1,0 +1,47 @@
+---
+/**
+ * The bar's drop-down layer (#mega) with its two panels. Services: each service and its fixes (from the
+ * services content), then the next step. About: who, working together, and contact. Opened by mega-menu.ts.
+ */
+import { aboutPanel, contactLinks, startLinks } from '@/config/navigation';
+import { routesFor } from '@/config/routes';
+import { useTranslations } from '@/i18n';
+import { getServices } from '@/lib/content';
+import MegaPanel, { type MegaColumn } from './MegaPanel.astro';
+
+const routes = routesFor(Astro.currentLocale);
+
+const t = useTranslations(Astro.currentLocale);
+const services = await getServices(Astro.currentLocale);
+
+const servicesPanel: MegaColumn[] = [
+  ...services.map((service) => ({
+    title: service.name,
+    href: routes.service(service.id),
+    links: service.problems.map((problem, i) => ({ href: `${routes.service(service.id)}#p${i + 1}`, label: problem.name })),
+  })),
+  {
+    title: t('nav.start'),
+    next: true,
+    links: startLinks(routes).map((link, i) => ({ href: link.href, label: t(link.label) as string, head: i === 0 })),
+  },
+];
+
+const about: MegaColumn[] = [
+  ...aboutPanel(routes).map((col) => ({
+    title: t(col.title) as string,
+    href: col.href,
+    links: col.links.map((link) => ({ href: link.href, label: t(link.label) as string })),
+  })),
+  {
+    title: t('common.contact.title'),
+    next: true,
+    links: contactLinks.map((link) => ({ href: link.href, label: t(link.label) as string })),
+  },
+];
+---
+
+<div class="mega" id="mega" inert><div class="wrap">
+  <MegaPanel id="services" columns={servicesPanel} />
+  <MegaPanel id="about" columns={about} />
+</div></div>

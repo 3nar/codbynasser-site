@@ -1,0 +1,14 @@
+---
+/**
+ * Decides motion before the first paint: the intro plays unless the visitor asked for reduced motion.
+ * Inline on purpose: it must run before the styles and the page.
+ */
+---
+
+<script is:inline>
+  (function (d) {
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    d.classList.add('intro');
+    setTimeout(function () { d.classList.remove('intro'); }, 2600);
+  })(document.documentElement);
+</script>

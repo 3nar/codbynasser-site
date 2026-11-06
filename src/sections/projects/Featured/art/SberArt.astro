@@ -1,0 +1,16 @@
+---
+/** The text-to-diagram project's illustration: a sentence whose marked steps become a flow. */
+import { useTranslations } from '@/i18n';
+
+const t = useTranslations(Astro.currentLocale);
+const art = t('projects.art.sber');
+---
+
+<div class="feat-art" aria-hidden="true">
+          <div class="t2m">
+            <div class="para" set:html={art.sentenceHtml} />
+            <span class="down"></span>
+            <div class="flow">{art.steps.map((step, i) => <>{i > 0 && <i></i>}<span class={`node n${i + 1}`}>{step}</span></>)}</div>
+          </div>
+          <p class="art-cap">{art.caption}</p>
+        </div>

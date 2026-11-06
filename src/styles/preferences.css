@@ -1,0 +1,58 @@
+/* The visitor's preferences: reduced motion and reduced transparency. Last, so they win. */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .nav-bar,
+  .mega,
+  .langs,
+  .dock {
+    background: var(--k12) !important;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+  .nav.on-dark .nav-bar,
+  .nav.on-dark .mega,
+  .dock {
+    background: var(--k1) !important;
+  }
+  /* the service switch, the doors' switch on the home page, and the notification on the phone */
+  .switch,
+  .push {
+    background: var(--k12) !important;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+  .dark .switch {
+    background: var(--k1) !important;
+  }
+  .push {
+    background: var(--k11) !important;
+  }
+  .scrim.on {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+  .aura::after,
+  .aura::before {
+    display: none;
+  }
+}
+/* a forced palette removes shadows and fills: real borders and the system's selection colour carry the state */
+@media (forced-colors: active) {
+  .choice span,
+  .pill {
+    border: 1px solid ButtonText;
+  }
+  .choice input:checked + span {
+    background: Highlight;
+    color: HighlightText;
+    forced-color-adjust: none;
+  }
+}

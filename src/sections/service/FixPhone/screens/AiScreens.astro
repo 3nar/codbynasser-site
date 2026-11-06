@@ -1,0 +1,52 @@
+---
+/**
+ * The phone's screens for the AI and data fixes, by name: chat (the assistant's chat), chart (the forecast), docs
+ * (answers from your files).
+ * The words come from screens.ai; the drawing (bar heights, order of appearance) stays here.
+ */
+import { useTranslations } from '@/i18n';
+
+interface Props {
+  screen: string;
+}
+const { screen } = Astro.props;
+const t = useTranslations(Astro.currentLocale);
+const chat = t('screens.ai.chat');
+const chart = t('screens.ai.chart');
+const docs = t('screens.ai.docs');
+/** six weeks of sales, then the forecast */
+const weeks = ['38%', '46%', '41%', '58%', '63%', '71%'];
+const forecast = '82%';
+---
+
+{screen === 'chat' && (
+<div class="scr scr-chat">
+          <div class="chat-top"><i class="av sm">{chat.initial}</i><p><b>{chat.name}</b><span>{chat.status}</span></p></div>
+          <div class="msgs">
+            {chat.messages.map((msg, i) => <p class={`msg ${msg.from}`} style={`--i:${i}`}>{msg.text}</p>)}
+            <p class="handoff" style={`--i:${chat.messages.length}`}>{chat.handoff}</p>
+          </div>
+        </div>
+)}
+{screen === 'chart' && (
+<div class="scr scr-chart">
+          <p class="scr-t">{chart.title}</p>
+          <p class="scr-s">{chart.sub}</p>
+          <div class="bars">{weeks.map((h, i) => <i style={`--h:${h};--i:${i}`}></i>)}<i class="fore" style={`--h:${forecast};--i:${weeks.length}`}></i></div>
+          <div class="bars-cap"><span>{chart.from}</span><span>{chart.to}</span></div>
+          <div class="aim"><small>{chart.aim.label}</small><p>{chart.aim.text}</p></div>
+        </div>
+)}
+{screen === 'docs' && (
+<div class="scr scr-docs">
+          <p class="scr-t">{docs.title}</p>
+          <p class="scr-s">{docs.sub}</p>
+          <ul class="files">
+            {docs.files.map((file, i) => <li style={`--i:${i}`}><i class="doc"></i><span>{file}</span></li>)}
+          </ul>
+          <div class="msgs">
+            <p class="msg them" style={`--i:${docs.files.length}`}>{docs.question}</p>
+            <p class="msg us" style={`--i:${docs.files.length + 1}`}>{docs.answer}<em>{docs.source}</em></p>
+          </div>
+        </div>
+)}

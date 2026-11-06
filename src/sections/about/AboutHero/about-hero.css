@@ -1,0 +1,67 @@
+/* AboutHero: the about page's top, on the home page's portrait. */
+
+/* ── about: the man, his story, what he does, and what he knows ── */
+.about-hero {
+  position: relative;
+  height: min(100svh, 940px);
+  min-height: 680px;
+  background: var(--k12);
+  overflow: hidden;
+}
+.about-hero .portrait {
+  width: min(70vw, 1100px);
+}
+.about-hero .copy {
+  position: absolute;
+  z-index: 2;
+  inset-inline-start: var(--gut);
+  top: 50%;
+  transform: translateY(-40%);
+  width: min(40vw, 560px);
+}
+.about-hero h1 {
+  font-family: var(--whisper);
+  font-weight: 300;
+  font-size: clamp(3.75rem, 8.4vw, 8.25rem);
+  line-height: 1.2;
+}
+.about-hero .lead {
+  font-family: var(--voice);
+  font-weight: 700;
+  font-size: clamp(1.25rem, 1.8vw, 1.625rem);
+  margin-top: 8px;
+}
+.about-hero .say {
+  font-size: var(--s1);
+  color: var(--ink-2);
+  margin-top: 18px;
+  max-width: 34ch;
+}
+
+@media (max-width: 1023px) {
+  /* the photo as on the home page: tall, filling the screen from the top, fading into the black the words sit on, which runs on into the story */
+  .about-hero {
+    height: auto;
+    min-height: 0;
+    background: var(--k0);
+  }
+  .about-hero .portrait {
+    width: 100%;
+  }
+  .about-hero .copy {
+    position: relative;
+    inset-inline-start: auto;
+    top: auto;
+    transform: none;
+    width: auto;
+    margin-top: -20svh;
+    padding: 0 var(--gut) 72px;
+    color: var(--snow);
+  }
+  .about-hero .say {
+    color: var(--snow-2);
+  }
+  .about-hero :focus-visible {
+    outline-color: var(--snow);
+  }
+}

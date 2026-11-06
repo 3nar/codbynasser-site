@@ -1,0 +1,53 @@
+/* ClosingCta: the close, where the light gathers around the decision. */
+
+/* ── 7. decide ── */
+
+.close {
+  position: relative;
+  isolation: isolate;
+  padding-block: clamp(150px, 15vw, 240px) clamp(130px, 13vw, 200px);
+  text-align: center;
+  overflow: clip;
+}
+.close .aura {
+  opacity: 0.5;
+  -webkit-mask-image: linear-gradient(to top, transparent, #000 26%);
+  mask-image: linear-gradient(to top, transparent, #000 26%);
+}
+.close > .wrap {
+  position: relative;
+  z-index: 1;
+}
+.close h2 {
+  font-family: var(--whisper);
+  font-weight: 300;
+  font-size: clamp(2.75rem, 6.2vw, 6rem);
+  line-height: 1.3;
+}
+/* the light gathers behind these lines, so they stay at full strength */
+.close p {
+  font-size: var(--s2);
+  color: var(--snow);
+  margin-top: 26px;
+  font-family: var(--whisper);
+  font-weight: 400;
+}
+.close .ctas {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  margin-top: 48px;
+  flex-wrap: wrap;
+}
+.close .alt {
+  margin-top: 22px;
+  font-size: 0.9375rem;
+  color: var(--snow);
+}
+.close .alt a {
+  color: var(--snow);
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  text-decoration-thickness: 1px;
+}

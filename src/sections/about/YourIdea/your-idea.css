@@ -1,0 +1,79 @@
+/* YourIdea: the steps from the first word, lit as they are reached. */
+
+/* ── your idea, from the first word, after «كيف أعمل» on the about page ── */
+.idea {
+  background: var(--k12);
+  padding-block: clamp(120px, 12vw, 190px);
+}
+.idea-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 64px;
+  align-items: start;
+  border-top: 1px solid var(--k10);
+  padding-top: clamp(80px, 8vw, 120px);
+}
+.idea-head {
+  position: sticky;
+  top: 140px;
+}
+.idea-head .pill {
+  margin-top: 32px;
+}
+.steps {
+  list-style: none;
+}
+.steps li {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr);
+  gap: 20px;
+  padding-block: 34px;
+  border-bottom: 1px solid var(--k10);
+  transition: opacity 0.5s var(--ease);
+}
+.steps li:first-child {
+  padding-top: 0;
+}
+.steps .n {
+  font-family: var(--whisper);
+  font-weight: 300;
+  font-size: 3.75rem;
+  line-height: 1;
+  color: var(--k6);
+  transition: color 0.5s var(--ease);
+}
+.steps h3 {
+  font-family: var(--voice);
+  font-weight: 800;
+  font-size: var(--s3);
+  line-height: 1.3;
+}
+.steps p {
+  color: var(--ink-2);
+  margin-top: 8px;
+  max-width: 40ch;
+}
+.motion .steps li {
+  opacity: 0.42;
+}
+.motion .steps li.on {
+  opacity: 1;
+}
+.motion .steps li.on .n {
+  color: var(--ink);
+}
+
+@media (max-width: 1023px) {
+  .idea-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .idea-head {
+    position: static;
+  }
+  .steps li {
+    grid-template-columns: 64px minmax(0, 1fr);
+  }
+  .steps .n {
+    font-size: 3rem;
+  }
+}
