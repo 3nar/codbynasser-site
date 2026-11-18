@@ -5,7 +5,7 @@ export const SITE = {
     instagram: 'codbynasser',
     email: 'nasser@codbynasser.com',
   },
-  searchable: false as boolean,
+  searchable: true as boolean,
 } as const;
 
 export const links = {
