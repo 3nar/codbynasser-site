@@ -1,0 +1,46 @@
+.dev-col {
+  display: none;
+}
+
+.dev-prog {
+  display: flex;
+  gap: 6px;
+  margin-top: 20px;
+  padding-inline: 22px;
+}
+.dev-prog i {
+  flex: 1;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--k9);
+  overflow: hidden;
+}
+.dev-prog b {
+  display: block;
+  height: 100%;
+  background: var(--ink);
+  transform: scaleX(0);
+  transform-origin: right;
+}
+html[dir='ltr'] .dev-prog b {
+  transform-origin: left;
+}
+.dev-prog + .dev-cap {
+  margin-top: 10px;
+}
+
+@media (min-width: 1024px) {
+  .dev-ready .scr-wrap {
+    display: none;
+  }
+  .dev-ready .dev-col {
+    --rest: max(72px, calc(50svh - 300px));
+    display: block;
+    grid-column: 2;
+    grid-row: 1 / span 3;
+    align-self: start;
+    position: sticky;
+    top: var(--rest);
+    margin-block: var(--rest);
+  }
+}

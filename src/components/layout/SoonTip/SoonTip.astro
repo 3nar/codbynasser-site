@@ -1,0 +1,12 @@
+---
+import type { soonSections } from '@/config/navigation';
+import { useTranslations } from '@/i18n';
+
+interface Props {
+  id: (typeof soonSections)[number];
+}
+const { id } = Astro.props;
+const t = useTranslations(Astro.currentLocale);
+---
+
+<span class="soon-item"><button type="button" class="soon" aria-disabled="true" aria-describedby={`tip-${id}`}>{t(`nav.soon.${id}.label`)}</button><span class="tip" role="tooltip" id={`tip-${id}`}>{t(`nav.soon.${id}.note`)}</span></span>

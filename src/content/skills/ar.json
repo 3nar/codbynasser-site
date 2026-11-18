@@ -1,0 +1,75 @@
+{
+  "groups": [
+    { "title": "لغات البرمجة", "items": ["Python", "C++", "SQL", "JavaScript"] },
+    {
+      "title": "الذكاء الاصطناعي والتعلّم الآلي",
+      "items": [
+        "Machine Learning",
+        "Deep Learning",
+        "NLP",
+        "Recommendation Systems",
+        "Transfer Learning",
+        "Fine-tuning (LoRA / PEFT)",
+        "RAG"
+      ]
+    },
+    {
+      "title": "مكتبات التعلّم الآلي",
+      "items": [
+        "TensorFlow",
+        "Keras",
+        "PyTorch",
+        "scikit-learn",
+        "Hugging Face Transformers",
+        "OpenCV",
+        "Pandas",
+        "NumPy",
+        "Matplotlib",
+        "Seaborn",
+        "Jupyter",
+        "Google Colab"
+      ]
+    },
+    {
+      "title": "الذكاء الاصطناعي التوليدي والوكلاء",
+      "items": [
+        "Claude",
+        "ChatGPT",
+        "Gemini",
+        "DeepSeek",
+        "Qwen",
+        "Ollama",
+        "Prompt Engineering",
+        "AI Agents",
+        "Multi-Agent Systems",
+        "MCP",
+        "n8n",
+        "Make",
+        "AI Chatbots"
+      ]
+    },
+    { "title": "التطوير بمساعدة الذكاء الاصطناعي", "items": ["Vibe Coding", "Vibe Design", "Claude Code"] },
+    {
+      "title": "تطوير الويب",
+      "items": ["HTML", "CSS", "React", "Next.js", "Tailwind CSS", "Node.js", "Express", "Django", "Flask", "FastAPI"]
+    },
+    { "title": "التصميم", "items": ["UI/UX", "Figma", "تصميم متجاوب يدعم العربية"] },
+    {
+      "title": "التسويق الرقمي وصناعة المحتوى",
+      "items": [
+        "إدارة حسابات التواصل الاجتماعي",
+        "كتابة المحتوى التسويقي",
+        "التصميم بالذكاء الاصطناعي",
+        "الموشن كرافيك بالذكاء الاصطناعي",
+        "فيديوهات الذكاء الاصطناعي"
+      ]
+    },
+    { "title": "بوتات تيليكرام", "items": ["Telegram Bot API", "aiogram", "python-telegram-bot"] },
+    { "title": "قواعد البيانات", "items": ["PostgreSQL", "MongoDB", "Redis", "Firebase", "Supabase"] },
+    {
+      "title": "النشر والبنية التحتية",
+      "items": ["Git", "GitHub", "GitHub Actions (CI/CD)", "Docker", "Linux", "Nginx", "VPS"]
+    },
+    { "title": "الأسس الهندسية", "items": ["OOP", "SOLID", "Data Structures & Algorithms"] }
+  ]
+}

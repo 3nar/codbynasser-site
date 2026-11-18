@@ -1,0 +1,10 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+interface Props extends HTMLAttributes<'a'> {
+  tone: 'ink' | 'snow' | 'line';
+}
+const { tone, ...attrs } = Astro.props;
+---
+
+<a class={`pill ${tone}`} {...attrs}><slot /></a>

@@ -1,0 +1,7 @@
+---
+import { useTranslations } from '@/i18n';
+
+const t = useTranslations(Astro.currentLocale);
+---
+
+<div class="sum" id="sum" tabindex="-1" role="alert" aria-labelledby="sum-h" hidden><h2 id="sum-h">{t('forms.summary')}</h2><ul id="sumList"></ul></div>

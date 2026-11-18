@@ -1,0 +1,10 @@
+{
+  "group": "featured",
+  "order": 1,
+  "title": "TutuBot",
+  "shortTitle": "TutuBot",
+  "kind": "منصة تعارف اجتماعية على تيليكرام",
+  "summary": "طوّرت هذه المنصة وأشغّلها بنفسي لمستخدمين في العراق والخليج: ملفات شخصية، وربط بين المستخدمين، وإدارة حساباتهم، وتواصل آمن.",
+  "tools": ["Python", "aiogram", "Telegram Bot API"],
+  "feature": { "badge": "يعمل الآن بمستخدمين حقيقيين", "live": true }
+}

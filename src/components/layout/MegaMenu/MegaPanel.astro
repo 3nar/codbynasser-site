@@ -1,0 +1,24 @@
+---
+export interface MegaLink {
+  href: string;
+  label: string;
+  head?: boolean;
+}
+export interface MegaColumn {
+  title: string;
+  href?: string;
+  links: MegaLink[];
+  next?: boolean;
+}
+interface Props {
+  id: string;
+  columns: MegaColumn[];
+}
+const { id, columns } = Astro.props;
+---
+
+<div class="mega-panel" data-panel={id}>
+  {columns.map((col) => (
+    <div class={col.next ? 'mega-next' : undefined}><h2>{col.href ? <a class="head" href={col.href}>{col.title}</a> : col.title}</h2>{col.links.map((link) => <a class={link.head ? 'head' : undefined} href={link.href}>{link.label}</a>)}</div>
+  ))}
+</div>

@@ -1,0 +1,229 @@
+.fields-sec {
+  --fields-top: clamp(88px, 7.2vw, 120px);
+  display: grid;
+  min-height: 100svh;
+  padding-block: var(--fields-top) clamp(56px, 5vw, 88px);
+  background: var(--k12);
+}
+#fields-title {
+  scroll-margin-top: calc(var(--fields-top) - 64px);
+}
+.fields-mosaic {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: clamp(28px, 2.6vw, 40px);
+}
+.fields-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: 12px 64px;
+}
+.fields-head .h2 {
+  align-self: start;
+}
+.fields-head .intro-p {
+  margin: 0;
+  max-width: 36ch;
+}
+
+.fields-tiles {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-rows: minmax(150px, 1fr);
+  grid-auto-flow: dense;
+  gap: 14px;
+}
+.fields-tiles li {
+  --f-panel: var(--k12);
+  --f-edge: var(--k10);
+  --f-soft: var(--k10);
+  --f-bar: var(--k9);
+  --f-mid: var(--k7);
+  --f-ink: var(--ink);
+  --f-paper: var(--k12);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-height: 0;
+  padding: clamp(18px, 1.7vw, 26px);
+  border-radius: 26px;
+  background: var(--k11);
+}
+.fields-tiles span {
+  font-family: var(--voice);
+  font-weight: 800;
+  font-size: clamp(1rem, 1.3vw, 1.1875rem);
+  line-height: 1.35;
+  text-wrap: balance;
+}
+.fig-box {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+}
+.fig-box .fig {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.fields-tiles [data-size='big'] {
+  --f-panel: var(--k2);
+  --f-edge: var(--k3);
+  --f-soft: var(--k3);
+  --f-bar: var(--k4);
+  --f-mid: var(--k5);
+  --f-ink: var(--snow);
+  grid-column: span 2;
+  grid-row: span 2;
+  background: var(--k1);
+  color: var(--snow);
+}
+.fields-tiles [data-size='big'] span {
+  font-size: clamp(1.375rem, 2.1vw, 1.875rem);
+}
+.fields-tiles [data-size='wide'] {
+  display: grid;
+  grid-column: span 2;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  grid-template-areas: 'name fig';
+  align-items: end;
+  gap: 20px;
+}
+.fields-tiles [data-size='wide'] span {
+  grid-area: name;
+  font-size: clamp(1.0625rem, 1.45vw, 1.3125rem);
+}
+.fields-tiles [data-size='wide'] .fig-box {
+  grid-area: fig;
+  align-self: stretch;
+}
+
+.fig * {
+  vector-effect: non-scaling-stroke;
+}
+.f-panel {
+  fill: var(--f-panel);
+  stroke: var(--f-edge);
+  stroke-width: 1;
+}
+.f-soft {
+  fill: var(--f-soft);
+}
+.f-bar {
+  fill: var(--f-bar);
+}
+.f-mid {
+  fill: var(--f-mid);
+}
+.f-ink {
+  fill: var(--f-ink);
+}
+.f-on-ink {
+  fill: var(--k4);
+}
+.f-line {
+  stroke: var(--f-bar);
+  stroke-width: 1;
+}
+.f-lit,
+.f-pen,
+.f-head {
+  fill: none;
+  stroke: var(--f-ink);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+.f-node {
+  fill: var(--f-paper);
+  stroke: var(--f-mid);
+  stroke-width: 1.5;
+}
+.f-node.is-lit {
+  stroke: var(--f-ink);
+  stroke-width: 2;
+}
+.f-handle {
+  stroke: var(--k6);
+  stroke-width: 1;
+}
+.f-anchor {
+  fill: var(--f-paper);
+  stroke: var(--f-ink);
+  stroke-width: 1.5;
+}
+.f-track {
+  stroke: var(--f-bar);
+  stroke-width: 1.5;
+}
+.f-play {
+  fill: var(--f-paper);
+  stroke: var(--f-paper);
+  stroke-width: 4;
+  stroke-linejoin: round;
+}
+.f-ring {
+  fill: none;
+  stroke: var(--f-ink);
+  stroke-width: 1.5;
+  opacity: 0.25;
+}
+.f-cursor {
+  fill: var(--f-ink);
+  stroke: var(--f-paper);
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+}
+.motion .f-caret {
+  animation: fields-caret 1.1s steps(1, end) infinite;
+}
+@keyframes fields-caret {
+  50% {
+    opacity: 0;
+  }
+}
+:root[dir='ltr'] .fig-flow {
+  transform: scaleX(-1);
+}
+
+@media (max-width: 1023px) {
+  .fields-tiles {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: minmax(136px, 1fr);
+    gap: 10px;
+  }
+  .fields-tiles li {
+    gap: 10px;
+    padding: 16px;
+    border-radius: 20px;
+  }
+  .fields-tiles span,
+  .fields-tiles [data-size='wide'] span {
+    font-size: 0.9375rem;
+  }
+  .fields-tiles [data-size='big'] {
+    grid-row: auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-areas: 'name fig';
+    align-items: end;
+    gap: 16px;
+  }
+  .fields-tiles [data-size='big'] span {
+    grid-area: name;
+    font-size: 1.1875rem;
+  }
+  .fields-tiles [data-size='big'] .fig-box {
+    grid-area: fig;
+    align-self: stretch;
+  }
+  .fields-tiles [data-size='wide'] {
+    grid-column: auto;
+    display: flex;
+    gap: 10px;
+  }
+}

@@ -1,0 +1,45 @@
+---
+import Logo from '@/components/ui/Logo/Logo.astro';
+import Pill from '@/components/ui/Pill/Pill.astro';
+import { routesFor, type ServiceId } from '@/config/routes';
+import { useTranslations } from '@/i18n';
+import LanguageButton from '../LanguageMenu/LanguageButton.astro';
+import LanguageList from '../LanguageMenu/LanguageList.astro';
+import MegaMenu from '../MegaMenu/MegaMenu.astro';
+import MobileSheet from '../MobileSheet/MobileSheet.astro';
+import SoonTip from '../SoonTip/SoonTip.astro';
+
+const routes = routesFor(Astro.currentLocale);
+
+interface Props {
+  current?: 'request';
+  service?: ServiceId;
+}
+const { current, service } = Astro.props;
+const t = useTranslations(Astro.currentLocale);
+---
+
+<header class="nav" id="nav">
+  <nav aria-label={t('nav.label')}>
+    <div class="nav-bar"><div class="wrap">
+      <Logo />
+      <div class="menu">
+        <button type="button" aria-expanded="false" aria-controls="mega" data-mega="services">{t('nav.services')}</button>
+        <SoonTip id="projects" />
+        <SoonTip id="academy" />
+        <SoonTip id="business" />
+        <button type="button" aria-expanded="false" aria-controls="mega" data-mega="about">{t('nav.about')}</button>
+      </div>
+      <div class="end">
+        <LanguageButton />
+        <LanguageList variant="menu" />
+        <Pill tone="ink" href={routes.requestFor({ service })} aria-current={current === 'request' ? 'page' : undefined}>{t('common.requestService')}</Pill>
+        <button type="button" class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="sheet" aria-label={t('nav.menu.open')}><span></span><span></span></button>
+      </div>
+    </div></div>
+    <MegaMenu />
+  </nav>
+</header>
+<div class="scrim" id="scrim"></div>
+
+<MobileSheet current={current} service={service} />

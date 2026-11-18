@@ -1,0 +1,13 @@
+{
+  "group": "featured",
+  "order": 1,
+  "title": "TutuBot",
+  "shortTitle": "TutuBot",
+  "kind": "Платформа знакомств в Telegram",
+  "summary": "Я создал эту платформу и сам её сопровождаю для пользователей из Ирака и стран Залива: профили, подбор пар, управление аккаунтами и безопасное общение.",
+  "tools": ["Python", "aiogram", "Telegram Bot API"],
+  "feature": {
+    "badge": "Работает с реальными пользователями",
+    "live": true
+  }
+}

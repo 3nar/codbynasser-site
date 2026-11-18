@@ -1,0 +1,33 @@
+import { $, $$ } from '@/scripts/dom';
+
+let dock: HTMLElement;
+let sheet: HTMLElement;
+let ownCtas: HTMLElement[] = [];
+
+const ctaOnScreen = () =>
+  ownCtas.some((el) => {
+    const r = el.getBoundingClientRect();
+    return r.width > 0 && r.bottom > 0 && r.top < innerHeight;
+  });
+
+export const updateDock = () => dock.classList.toggle('show', !ctaOnScreen() && !sheet.classList.contains('open'));
+
+export function initDock() {
+  dock = $('#dock')!;
+  sheet = $('#sheet')!;
+  ownCtas = $$('[data-dock-hide]');
+  let raf = 0;
+  addEventListener(
+    'scroll',
+    () => {
+      if (!raf)
+        raf = requestAnimationFrame(() => {
+          raf = 0;
+          updateDock();
+        });
+    },
+    { passive: true },
+  );
+  addEventListener('resize', updateDock);
+  updateDock();
+}

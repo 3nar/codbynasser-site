@@ -1,0 +1,14 @@
+---
+import Icon from '@/components/ui/Icon/Icon.astro';
+import { useTranslations } from '@/i18n';
+
+const t = useTranslations(Astro.currentLocale);
+---
+
+<div class="sent" id="done" hidden><Icon name="checkLarge" />
+        <h2 tabindex="-1" id="doneTitle">{t('forms.done.title')}</h2>
+        <p id="doneText"></p>
+        <div class="sent-acts"><a class="pill ink" id="doneOpen" href="#" target="_blank" rel="noopener">{t('forms.done.open.whatsapp')}</a><button class="pill line" type="button" id="doneCopy">{t('forms.done.copy')}</button></div>
+        <p class="copied" id="doneCopied" role="status"></p>
+        <button class="alt-send" type="button" id="again">{t('forms.done.again')}</button>
+      </div>

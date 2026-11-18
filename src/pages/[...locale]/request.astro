@@ -1,0 +1,14 @@
+---
+import { localePaths } from '@/config/routes';
+import { useTranslations } from '@/i18n';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import ServiceRequest from '@/sections/request/ServiceRequest/ServiceRequest.astro';
+
+export const getStaticPaths = localePaths;
+
+const t = useTranslations(Astro.currentLocale);
+---
+
+<BaseLayout title={t('request.meta.title')} description={t('request.meta.description')} current="request">
+  <ServiceRequest />
+</BaseLayout>

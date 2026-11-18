@@ -1,0 +1,22 @@
+---
+import Choice from './Choice.astro';
+
+export interface ChoiceOption {
+  value: string;
+  label: string;
+  checked?: boolean;
+}
+interface Props {
+  name: string;
+  legend: string;
+  options: ChoiceOption[];
+  error?: boolean;
+}
+const { name, legend, options, error = true } = Astro.props;
+---
+
+<fieldset class="field" id={`f-${name}`} role="radiogroup" aria-required={error ? 'true' : undefined} aria-describedby={error ? `e-${name}` : undefined}><legend>{legend}</legend>
+          <div class="choices">{options.map((option) => <Choice name={name} {...option} />)}</div>
+          <slot />
+          {error && <p class="err" id={`e-${name}`} aria-live="polite"></p>}
+        </fieldset>

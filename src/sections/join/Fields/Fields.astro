@@ -1,0 +1,28 @@
+---
+import { useTranslations } from '@/i18n';
+import { getJoinFields } from '@/lib/content';
+import FieldFigure from './FieldFigure.astro';
+
+const t = useTranslations(Astro.currentLocale);
+const fields = await getJoinFields(Astro.currentLocale);
+const sizes = ['big', 'wide', 'small', 'small', 'small', 'small', 'wide'];
+---
+
+<section class="fields-sec" data-stage="light" aria-labelledby="fields-title"><div class="wrap fields-mosaic">
+    <div class="fields-head">
+      <h2 class="h2" id="fields-title">{t('join.fieldsTitle')}</h2>
+      <p class="intro-p">{t('join.fieldsIntro')}</p>
+    </div>
+    <ul class="fields-tiles">
+      {
+        fields.map((field, i) => (
+          <li data-size={sizes[i] ?? 'small'}>
+            <div class="fig-box">
+              <FieldFigure field={field.value} />
+            </div>
+            <span>{field.label}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </div></section>

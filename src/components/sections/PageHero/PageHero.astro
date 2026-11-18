@@ -1,0 +1,13 @@
+---
+interface Props {
+  tone: 'light' | 'dark';
+}
+const { tone } = Astro.props;
+---
+
+<section class={`page-hero ${tone}`} id="top" data-stage={tone} aria-labelledby="page-title">
+    <slot name="aura" />
+    <div class="wrap"><div class="copy">
+      <slot />
+    </div></div>
+  </section>

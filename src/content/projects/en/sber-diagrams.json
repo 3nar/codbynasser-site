@@ -1,0 +1,13 @@
+{
+  "group": "featured",
+  "order": 2,
+  "title": "Generating diagrams from text with large language models",
+  "shortTitle": "Diagrams from text",
+  "kind": "An AI system",
+  "summary": "An academic project with Russia’s Sberbank to build a system that turns text into editable, interactive diagrams. By retraining and customising large language models, the system did away with the paid subscription to <bdi>GigaChat</bdi>, cutting running costs.",
+  "tools": ["PyTorch", "Hugging Face Transformers", "LoRA / PEFT"],
+  "feature": {
+    "badge": "Academic project with Sberbank",
+    "flip": true
+  }
+}

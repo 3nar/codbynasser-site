@@ -1,0 +1,13 @@
+---
+import { useTranslations } from '@/i18n';
+
+interface Props {
+  id: string;
+  items: string[];
+}
+const { id, items } = Astro.props;
+const t = useTranslations(Astro.currentLocale);
+---
+
+<p class="incl-h" id={id}>{t('service.includes')}</p>
+          <ul class="chips" aria-labelledby={id}>{items.map((item) => <li>{item}</li>)}</ul>

@@ -1,0 +1,12 @@
+---
+import { useTranslations } from '@/i18n';
+
+interface Props {
+  names: string[];
+}
+const { names } = Astro.props;
+const t = useTranslations(Astro.currentLocale);
+---
+
+<div class="dev-col" aria-hidden="true"><div class="device"><div class="glass" id="glass"></div></div>
+        <div class="dev-prog" id="devProg">{names.map(() => <i><b></b></i>)}</div><p class="dev-cap">{t('service.phoneCaption')} <span id="devName" data-names={names.join('|')}>{names[0]}</span></p></div>

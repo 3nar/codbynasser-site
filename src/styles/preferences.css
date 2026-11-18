@@ -1,0 +1,54 @@
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .nav-bar,
+  .mega,
+  .langs,
+  .dock {
+    background: var(--k12) !important;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+  .nav.on-dark .nav-bar,
+  .nav.on-dark .mega,
+  .dock {
+    background: var(--k1) !important;
+  }
+  .switch,
+  .push {
+    background: var(--k12) !important;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+  .dark .switch {
+    background: var(--k1) !important;
+  }
+  .push {
+    background: var(--k11) !important;
+  }
+  .scrim.on {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+  .aura::after,
+  .aura::before {
+    display: none;
+  }
+}
+@media (forced-colors: active) {
+  .choice span,
+  .pill {
+    border: 1px solid ButtonText;
+  }
+  .choice input:checked + span {
+    background: Highlight;
+    color: HighlightText;
+    forced-color-adjust: none;
+  }
+}

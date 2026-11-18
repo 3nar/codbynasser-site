@@ -1,0 +1,18 @@
+---
+import { localePaths } from '@/config/routes';
+import { useTranslations } from '@/i18n';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Apply from '@/sections/join/Apply/Apply.astro';
+import Fields from '@/sections/join/Fields/Fields.astro';
+import JoinHero from '@/sections/join/JoinHero/JoinHero.astro';
+
+export const getStaticPaths = localePaths;
+
+const t = useTranslations(Astro.currentLocale);
+---
+
+<BaseLayout title={t('join.meta.title')} description={t('join.meta.description')}>
+  <JoinHero />
+  <Fields />
+  <Apply />
+</BaseLayout>

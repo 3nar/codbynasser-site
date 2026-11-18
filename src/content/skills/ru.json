@@ -1,0 +1,75 @@
+{
+  "groups": [
+    { "title": "Языки программирования", "items": ["Python", "C++", "SQL", "JavaScript"] },
+    {
+      "title": "ИИ и машинное обучение",
+      "items": [
+        "Machine Learning",
+        "Deep Learning",
+        "NLP",
+        "Recommendation Systems",
+        "Transfer Learning",
+        "Fine-tuning (LoRA / PEFT)",
+        "RAG"
+      ]
+    },
+    {
+      "title": "Библиотеки машинного обучения",
+      "items": [
+        "TensorFlow",
+        "Keras",
+        "PyTorch",
+        "scikit-learn",
+        "Hugging Face Transformers",
+        "OpenCV",
+        "Pandas",
+        "NumPy",
+        "Matplotlib",
+        "Seaborn",
+        "Jupyter",
+        "Google Colab"
+      ]
+    },
+    {
+      "title": "Генеративный ИИ и агенты",
+      "items": [
+        "Claude",
+        "ChatGPT",
+        "Gemini",
+        "DeepSeek",
+        "Qwen",
+        "Ollama",
+        "Prompt Engineering",
+        "AI Agents",
+        "Multi-Agent Systems",
+        "MCP",
+        "n8n",
+        "Make",
+        "AI Chatbots"
+      ]
+    },
+    { "title": "Разработка с помощью ИИ", "items": ["Vibe Coding", "Vibe Design", "Claude Code"] },
+    {
+      "title": "Веб-разработка",
+      "items": ["HTML", "CSS", "React", "Next.js", "Tailwind CSS", "Node.js", "Express", "Django", "Flask", "FastAPI"]
+    },
+    { "title": "Дизайн", "items": ["UI/UX", "Figma", "Адаптивный дизайн с поддержкой арабского"] },
+    {
+      "title": "Цифровой маркетинг и контент",
+      "items": [
+        "Ведение аккаунтов в соцсетях",
+        "Маркетинговые тексты",
+        "Дизайн с помощью ИИ",
+        "Моушн-графика с помощью ИИ",
+        "Видео с помощью ИИ"
+      ]
+    },
+    { "title": "Боты в Telegram", "items": ["Telegram Bot API", "aiogram", "python-telegram-bot"] },
+    { "title": "Базы данных", "items": ["PostgreSQL", "MongoDB", "Redis", "Firebase", "Supabase"] },
+    {
+      "title": "Развёртывание и инфраструктура",
+      "items": ["Git", "GitHub", "GitHub Actions (CI/CD)", "Docker", "Linux", "Nginx", "VPS"]
+    },
+    { "title": "Инженерные основы", "items": ["OOP", "SOLID", "Data Structures & Algorithms"] }
+  ]
+}

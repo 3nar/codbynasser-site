@@ -1,0 +1,54 @@
+---
+import { routesFor, withBase } from '@/config/routes';
+import { links, SITE } from '@/config/site';
+import { useTranslations } from '@/i18n';
+import { LOCALE_ORDER, toLocale } from '@/i18n/config';
+import { getServices } from '@/lib/content';
+import type { SearchPage } from '@/lib/seo/pages';
+import { structuredData } from '@/lib/seo/structured-data';
+
+interface Props {
+  page: SearchPage;
+  title: string;
+  description: string;
+  url: string;
+}
+const { page, title, description, url } = Astro.props;
+const locale = toLocale(Astro.currentLocale);
+const t = useTranslations(locale);
+const routes = routesFor(locale);
+const at = (path: string) => new URL(path, Astro.site).href;
+
+const service = page.service ? (await getServices(locale)).find((s) => s.id === page.service) : undefined;
+const home = { name: t('common.home'), url: at(routes.home) };
+const name = service?.name ?? (page.label ? (t(page.label) as string) : title);
+
+const data = structuredData(
+  {
+    origin: at(withBase('/')),
+    locale,
+    locales: LOCALE_ORDER,
+    brand: t('common.brandName'),
+    alternateNames: [SITE.contact.instagram],
+    logo: { url: at(withBase('/icon-512.png')), size: 512 },
+    email: SITE.contact.email,
+    sameAs: [links.telegram(), links.instagram()],
+    person: { name: t('home.hero.signature'), jobTitle: t('home.hero.role'), url: at(routes.about) },
+  },
+  {
+    kind: page.kind,
+    url,
+    title,
+    description,
+    breadcrumbs: page.kind === 'home' ? [home] : [home, { name, url }],
+    service: service && {
+      name: service.name,
+      description: service.hero.say,
+      offers: service.problems.map((problem) => problem.name),
+    },
+  },
+);
+const json = JSON.stringify(data).replace(/</g, '\\u003c');
+---
+
+<script is:inline type="application/ld+json" set:html={json} />

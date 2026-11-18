@@ -1,0 +1,14 @@
+{
+  "group": "ai",
+  "order": 1,
+  "title": "A smart map-based travel guide",
+  "shortTitle": "The smart travel guide",
+  "kind": "A smart web platform",
+  "summary": "A smart web platform that guides the user on the map, answers their questions, and suggests nearby landmarks, sights and places to go. It also plans personal weekend trips, using a purpose-trained model, recommendation algorithms and RAG.",
+  "tools": ["Recommendation Systems", "RAG", "Deep Learning"],
+  "mini": {
+    "a": "28% 32%",
+    "b": "72% 66%",
+    "c": "58% 14%"
+  }
+}

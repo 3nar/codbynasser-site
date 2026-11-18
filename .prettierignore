@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.astro/
+.wrangler/
+test-results/
+playwright-report/
+package-lock.json
+src/styles/fonts.css
+
+*.astro

@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+User-agent: Bytespider
+Disallow: /
+
+Sitemap: https://codbynasser.com/sitemap.xml

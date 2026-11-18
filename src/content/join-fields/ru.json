@@ -1,0 +1,11 @@
+{
+  "fields": [
+    { "value": "development", "label": "Разработка программ и сайтов" },
+    { "value": "ai-data", "label": "ИИ и данные" },
+    { "value": "ui-ux", "label": "Дизайн интерфейсов и UX" },
+    { "value": "graphic", "label": "Дизайн постов и фирменного стиля" },
+    { "value": "video", "label": "Видео и моушн-графика" },
+    { "value": "content", "label": "Написание контента" },
+    { "value": "accounts", "label": "Ведение аккаунтов и работа с аудиторией" }
+  ]
+}

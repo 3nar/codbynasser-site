@@ -1,0 +1,9 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import Icon from '../Icon/Icon.astro';
+
+type Props = HTMLAttributes<'a'>;
+const attrs = Astro.props;
+---
+
+<a {...attrs}><slot /> <Icon name="chevron" /></a>

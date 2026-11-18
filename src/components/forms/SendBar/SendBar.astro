@@ -1,0 +1,10 @@
+---
+import { useTranslations } from '@/i18n';
+
+const t = useTranslations(Astro.currentLocale);
+const main = t('forms.send.main', { channel: t('forms.channels.whatsapp') });
+const alt = t('forms.send.alt', { channel: t('forms.channels.email') });
+---
+
+<div class="submit"><button class="pill ink" type="submit" id="sendMain">{main}</button><button class="alt-send" type="button" id="sendAlt">{alt}</button></div>
+        <p class="fine">{t('forms.send.fine')}</p>

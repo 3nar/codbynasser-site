@@ -1,0 +1,11 @@
+{
+  "fields": [
+    { "value": "development", "label": "Software and web development" },
+    { "value": "ai-data", "label": "AI and data" },
+    { "value": "ui-ux", "label": "Interface and user experience design" },
+    { "value": "graphic", "label": "Social media posts and brand identity" },
+    { "value": "video", "label": "Video and motion graphics" },
+    { "value": "content", "label": "Content writing" },
+    { "value": "accounts", "label": "Social media management and engagement" }
+  ]
+}

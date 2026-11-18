@@ -1,0 +1,75 @@
+{
+  "groups": [
+    { "title": "Programming languages", "items": ["Python", "C++", "SQL", "JavaScript"] },
+    {
+      "title": "AI and machine learning",
+      "items": [
+        "Machine Learning",
+        "Deep Learning",
+        "NLP",
+        "Recommendation Systems",
+        "Transfer Learning",
+        "Fine-tuning (LoRA / PEFT)",
+        "RAG"
+      ]
+    },
+    {
+      "title": "Machine learning libraries",
+      "items": [
+        "TensorFlow",
+        "Keras",
+        "PyTorch",
+        "scikit-learn",
+        "Hugging Face Transformers",
+        "OpenCV",
+        "Pandas",
+        "NumPy",
+        "Matplotlib",
+        "Seaborn",
+        "Jupyter",
+        "Google Colab"
+      ]
+    },
+    {
+      "title": "Generative AI and agents",
+      "items": [
+        "Claude",
+        "ChatGPT",
+        "Gemini",
+        "DeepSeek",
+        "Qwen",
+        "Ollama",
+        "Prompt Engineering",
+        "AI Agents",
+        "Multi-Agent Systems",
+        "MCP",
+        "n8n",
+        "Make",
+        "AI Chatbots"
+      ]
+    },
+    { "title": "AI-assisted development", "items": ["Vibe Coding", "Vibe Design", "Claude Code"] },
+    {
+      "title": "Web development",
+      "items": ["HTML", "CSS", "React", "Next.js", "Tailwind CSS", "Node.js", "Express", "Django", "Flask", "FastAPI"]
+    },
+    { "title": "Design", "items": ["UI/UX", "Figma", "Responsive design with Arabic support"] },
+    {
+      "title": "Digital marketing and content",
+      "items": [
+        "Social media account management",
+        "Marketing copywriting",
+        "AI design",
+        "AI motion graphics",
+        "AI video"
+      ]
+    },
+    { "title": "Telegram bots", "items": ["Telegram Bot API", "aiogram", "python-telegram-bot"] },
+    { "title": "Databases", "items": ["PostgreSQL", "MongoDB", "Redis", "Firebase", "Supabase"] },
+    {
+      "title": "Deployment and infrastructure",
+      "items": ["Git", "GitHub", "GitHub Actions (CI/CD)", "Docker", "Linux", "Nginx", "VPS"]
+    },
+    { "title": "Engineering foundations", "items": ["OOP", "SOLID", "Data Structures & Algorithms"] }
+  ]
+}

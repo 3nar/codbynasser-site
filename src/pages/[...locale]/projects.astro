@@ -1,0 +1,18 @@
+---
+import ClosingCta from '@/components/sections/ClosingCta/ClosingCta.astro';
+import { localePaths } from '@/config/routes';
+import { useTranslations } from '@/i18n';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import ProjectsHero from '@/sections/projects/ProjectsHero/ProjectsHero.astro';
+import Works from '@/sections/projects/Works/Works.astro';
+
+export const getStaticPaths = localePaths;
+
+const t = useTranslations(Astro.currentLocale);
+---
+
+<BaseLayout title={t('projects.meta.title')} description={t('projects.meta.description')}>
+  <ProjectsHero />
+  <Works />
+  <ClosingCta />
+</BaseLayout>

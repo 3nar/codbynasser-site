@@ -1,0 +1,26 @@
+{
+  "brandHome": "cod, главная страница",
+  "home": "Главная",
+  "brandName": "cod by nasser",
+  "brandBy": "by nasser",
+  "brandLine": "Идея остаётся призраком, пока не станет кодом.",
+  "ownerLine": "Насер, инженер по ИИ и инженер-программист.",
+  "skip": "Перейти к содержанию",
+  "requestService": "Заказать услугу",
+  "requestConsult": "Получить консультацию",
+  "soon": "Скоро",
+  "contact": {
+    "title": "Контакты",
+    "whatsapp": "WhatsApp",
+    "telegram": "Telegram",
+    "instagram": "Instagram",
+    "email": "E-mail",
+    "talkOnWhatsapp": "Написать мне в WhatsApp"
+  },
+  "close": {
+    "title": "Идея, которую вы откладываете, ждать не будет.",
+    "text": "Достаточно одного сообщения. Расскажите о своём проекте, даже если не нашли здесь своей проблемы.",
+    "alt": "Или напишите мне напрямую в {link}.",
+    "altLink": "WhatsApp"
+  }
+}

@@ -1,0 +1,11 @@
+---
+import { useTranslations } from '@/i18n';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Lost from '@/sections/not-found/Lost/Lost.astro';
+
+const t = useTranslations(Astro.currentLocale);
+---
+
+<BaseLayout title={t('notFound.meta.title')} description={t('notFound.meta.description')}>
+  <Lost />
+</BaseLayout>

@@ -1,0 +1,27 @@
+---
+import ChoiceGroup from '@/components/forms/ChoiceGroup/ChoiceGroup.astro';
+import type { PrefillData } from '@/components/forms/RequestForm/request-form';
+import Icon from '@/components/ui/Icon/Icon.astro';
+import ScriptData from '@/components/ui/ScriptData/ScriptData.astro';
+import { useTranslations } from '@/i18n';
+import { getProjects, getServices } from '@/lib/content';
+
+const t = useTranslations(Astro.currentLocale);
+const services = await getServices(Astro.currentLocale);
+const projects = await getProjects(Astro.currentLocale);
+const options = [
+  ...services.map((service) => ({ value: service.id, label: service.name })),
+  { value: 'unsure', label: t('request.service.unsure') },
+];
+const prefill: PrefillData = {
+  problems: Object.fromEntries(services.map((s) => [s.id, s.problems.map((p) => p.question)])),
+  projects: Object.fromEntries(projects.map((p) => [p.id, p.shortTitle])),
+  labels: { problem: t('request.context.problem'), project: t('request.context.project') },
+  noteHtml: t('request.context.noteHtml'),
+};
+---
+
+<ChoiceGroup name="service" legend={t('request.service.legend')} options={options}>
+  <div class="ctx" id="ctx" hidden><span id="ctxText"></span><button type="button" id="ctxClear" aria-label={t('request.service.clear')}><Icon name="close" /></button></div>
+</ChoiceGroup>
+<ScriptData name="prefill" value={prefill} />

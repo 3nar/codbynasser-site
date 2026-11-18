@@ -1,0 +1,37 @@
+{
+  "label": "Main navigation",
+  "services": "Services",
+  "about": "About me",
+  "start": "Start",
+  "soon": {
+    "projects": {
+      "label": "Work",
+      "note": "Coming soon. The work is being prepared."
+    },
+    "academy": {
+      "label": "Academy",
+      "note": "Coming soon. Courses are being prepared."
+    },
+    "business": {
+      "label": "For companies",
+      "note": "Coming soon. Services for companies are being prepared."
+    }
+  },
+  "language": {
+    "button": "Language: English",
+    "group": "Language"
+  },
+  "menu": {
+    "open": "Open menu",
+    "close": "Close menu",
+    "sheet": "Menu"
+  },
+  "links": {
+    "how": "How I work",
+    "faq": "Questions",
+    "skills": "Skills",
+    "join": "Work with me",
+    "joinFields": "The fields I need",
+    "joinApply": "Apply to collaborate"
+  }
+}

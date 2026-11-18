@@ -1,0 +1,14 @@
+{
+  "group": "ai",
+  "order": 2,
+  "title": "A smart assistant that recommends perfumes",
+  "shortTitle": "The perfume assistant",
+  "kind": "An assistant built on a neural network",
+  "summary": "A smart assistant built on a neural network. It guides the user to the perfume that suits them best, in four ways: by notes and fragrance family, through questions about their taste, from a description they write themselves, or by occasion and season.",
+  "tools": ["Deep Learning", "NLP", "Recommendation Systems"],
+  "mini": {
+    "a": "64% 30%",
+    "b": "30% 70%",
+    "c": "80% 78%"
+  }
+}
