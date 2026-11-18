@@ -11,6 +11,8 @@ const STYLESHEETS = [
   'https://fonts.googleapis.com/css2?family=Onest:wght@400..800&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..600;1,8..60,300..600&display=swap',
 ];
 
+const SUBSETS = new Set(['arabic', 'latin', 'cyrillic']);
+
 const BROWSER =
   'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36';
 
@@ -39,6 +41,7 @@ const names = new Set<string>();
 for (const stylesheet of STYLESHEETS) {
   const css = await (await get(stylesheet)).text();
   for (const [, subset, body] of css.matchAll(FACE)) {
+    if (!SUBSETS.has(subset)) continue;
     const url = body.match(/url\((https:\/\/fonts\.gstatic\.com\/[^)]+\.woff2)\)/)?.[1];
     if (!url) throw new Error(`no woff2 file in the ${subset} face of ${stylesheet}`);
     const family = descriptor(body, 'font-family').replace(/'/g, '');
@@ -48,20 +51,9 @@ for (const stylesheet of STYLESHEETS) {
     if (names.has(name)) throw new Error(`two faces would share ${name}`);
     names.add(name);
     await writeFile(join(FILES, name), Buffer.from(await (await get(url)).arrayBuffer()));
-    faces.push(`/* ${subset} */\n@font-face {${body.replace(url, `'../assets/fonts/${name}'`)}}`);
+    faces.push(`@font-face {${body.replace(url, `'../assets/fonts/${name}'`)}}`);
   }
 }
 
-await writeFile(
-  CSS,
-  [
-    '/*',
-    ' * The four families, served from this site: written by scripts/fonts.ts from Google Fonts (npm run fonts).',
-    ' * Do not edit by hand; change the stylesheets in the script and run it again.',
-    ' * The fonts are under the SIL Open Font License 1.1 (src/assets/fonts/README.md).',
-    ' */',
-    ...faces,
-    '',
-  ].join('\n'),
-);
+await writeFile(CSS, [...faces, ''].join('\n'));
 console.log(`${faces.length} faces, ${names.size} files in src/assets/fonts/`);
